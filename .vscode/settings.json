@@ -3,7 +3,6 @@
 	"biome.enabled": true,
 	"editor.codeActionsOnSave": [
 		"source.removeUnusedImports",
-		"source.removeUnused.ts",
 		"source.addMissingImports.ts",
 		"source.organizeImports.biome",
 		"source.biome",
@@ -34,7 +33,7 @@
 		"*.css": "tailwindcss"
 	},
 	"npm.packageManager": "bun",
-	"prettier.enable": true,
+	"prettier.enable": false,
 	"tailwindCSS.rootFontSize": 14,
 	"tailwindCSS.validate": true,
 	"typescript.enablePromptUseWorkspaceTsdk": true,
@@ -74,6 +73,9 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[markdown]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[scss]": {

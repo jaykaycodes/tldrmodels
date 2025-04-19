@@ -1,5 +1,5 @@
 ---
-description:
+description: 
 globs: *.astro,*.css
 alwaysApply: false
 ---
@@ -7,13 +7,13 @@ alwaysApply: false
 daisyUI 5 is a CSS library for Tailwind CSS 4
 daisyUI 5 provides class names for common UI components
 
-- [daisyUI 5 docs](http://daisyui.com)
-- [Guide: How to use this file in LLMs and code editors](https://daisyui.com/docs/editor/)
-- [daisyUI 5 release notes](https://daisyui.com/docs/v5/)
-- [daisyUI 4 to 5 upgrade guide](https://daisyui.com/docs/upgrade/)
+- [daisyUI 5 docs](mdc:http:/daisyui.com)
+- [Guide: How to use this file in LLMs and code editors](mdc:https:/daisyui.com/docs/editor)
+- [daisyUI 5 release notes](mdc:https:/daisyui.com/docs/v5)
+- [daisyUI 4 to 5 upgrade guide](mdc:https:/daisyui.com/docs/upgrade)
 
 ## daisyUI 5 install notes
-[install guide](https://daisyui.com/docs/install/)
+[install guide](mdc:https:/daisyui.com/docs/install)
 1. daisyUI 5 requires Tailwind CSS 4
 2. `tailwind.config.js` file is deprecated in Tailwind CSS v4. do not use `tailwind.config.js`. Tailwind CSS v4 only needs `@import "tailwindcss";` in the CSS file if it's a node dependency.
 3. daisyUI 5 can be installed using `npm i -D daisyui@latest` and then adding `@plugin "daisyui";` to the CSS file
@@ -181,7 +181,7 @@ You can use https://daisyui.com/theme-generator/ to create your own theme
 ### accordion
 Accordion is used for showing and hiding content but only one item can stay open at a time
 
-[accordion docs](https://daisyui.com/components/accordion/)
+[accordion docs](mdc:https:/daisyui.com/components/accordion)
 
 #### Class names
 - component: `collapse`
@@ -209,7 +209,7 @@ where content is:
 ### alert
 Alert informs users about important events
 
-[alert docs](https://daisyui.com/components/alert/)
+[alert docs](mdc:https:/daisyui.com/components/alert)
 
 #### Class names
 - component: `alert`
@@ -229,7 +229,7 @@ Alert informs users about important events
 ### avatar
 Avatars are used to show a thumbnail
 
-[avatar docs](https://daisyui.com/components/avatar/)
+[avatar docs](mdc:https:/daisyui.com/components/avatar)
 
 #### Class names
 - component: `avatar`, `avatar-group`
@@ -253,7 +253,7 @@ Avatars are used to show a thumbnail
 ### badge
 Badges are used to inform the user of the status of specific data
 
-[badge docs](https://daisyui.com/components/badge/)
+[badge docs](mdc:https:/daisyui.com/components/badge)
 
 #### Class names
 - component: `badge`
@@ -274,7 +274,7 @@ Badges are used to inform the user of the status of specific data
 ### breadcrumbs
 Breadcrumbs helps users to navigate
 
-[breadcrumbs docs](https://daisyui.com/components/breadcrumbs/)
+[breadcrumbs docs](mdc:https:/daisyui.com/components/breadcrumbs)
 
 #### Class names
 - component: `breadcrumbs`
@@ -294,7 +294,7 @@ Breadcrumbs helps users to navigate
 ### button
 Buttons allow the user to take actions
 
-[button docs](https://daisyui.com/components/button/)
+[button docs](mdc:https:/daisyui.com/components/button)
 
 #### Class names
 - component: `btn`
@@ -317,7 +317,7 @@ Buttons allow the user to take actions
 ### calendar
 Calendar includes styles for different calendar libraries
 
-[calendar docs](https://daisyui.com/components/calendar/)
+[calendar docs](mdc:https:/daisyui.com/components/calendar)
 
 #### Class names
 - component
@@ -345,7 +345,7 @@ For React Day Picker:
 ### card
 Cards are used to group and display content
 
-[card docs](https://daisyui.com/components/card/)
+[card docs](mdc:https:/daisyui.com/components/card)
 
 #### Class names
 - component: `card`
@@ -375,7 +375,7 @@ Cards are used to group and display content
 ### carousel
 Carousel show images or content in a scrollable area
 
-[carousel docs](https://daisyui.com/components/carousel/)
+[carousel docs](mdc:https:/daisyui.com/components/carousel)
 
 #### Class names
 - component: `carousel`
@@ -396,7 +396,7 @@ Carousel show images or content in a scrollable area
 ### chat
 Chat bubbles are used to show one line of conversation and all its data, including the author image, author name, time, etc
 
-[chat docs](https://daisyui.com/components/chat/)
+[chat docs](mdc:https:/daisyui.com/components/chat)
 
 #### Class names
 - component: `chat`
@@ -422,7 +422,7 @@ Chat bubbles are used to show one line of conversation and all its data, includi
 ### checkbox
 Checkboxes are used to select or deselect a value
 
-[checkbox docs](https://daisyui.com/components/checkbox/)
+[checkbox docs](mdc:https:/daisyui.com/components/checkbox)
 
 #### Class names
 - component: `checkbox`
@@ -440,7 +440,7 @@ Checkboxes are used to select or deselect a value
 ### collapse
 Collapse is used for showing and hiding content
 
-[collapse docs](https://daisyui.com/components/collapse/)
+[collapse docs](mdc:https:/daisyui.com/components/collapse)
 
 #### Class names
 - component: `collapse`
@@ -463,7 +463,7 @@ Collapse is used for showing and hiding content
 ### countdown
 Countdown gives you a transition effect when you change a number between 0 to 99
 
-[countdown docs](https://daisyui.com/components/countdown/)
+[countdown docs](mdc:https:/daisyui.com/components/countdown)
 
 #### Class names
 - component: `countdown`
@@ -483,7 +483,7 @@ Countdown gives you a transition effect when you change a number between 0 to 99
 ### diff
 Diff component shows a side-by-side comparison of two items
 
-[diff docs](https://daisyui.com/components/diff/)
+[diff docs](mdc:https:/daisyui.com/components/diff)
 
 #### Class names
 - component: `diff`
@@ -504,7 +504,7 @@ Diff component shows a side-by-side comparison of two items
 ### divider
 Divider will be used to separate content vertically or horizontally
 
-[divider docs](https://daisyui.com/components/divider/)
+[divider docs](mdc:https:/daisyui.com/components/divider)
 
 #### Class names
 - component: `divider`
@@ -524,7 +524,7 @@ Divider will be used to separate content vertically or horizontally
 ### dock
 Dock (also know as Bottom navigation or Bottom bar) is a UI element that provides navigation options to the user. Dock sticks to the bottom of the screen
 
-[dock docs](https://daisyui.com/components/dock/)
+[dock docs](mdc:https:/daisyui.com/components/dock)
 
 #### Class names
 - component: `dock`
@@ -552,7 +552,7 @@ where content is a list of buttons:
 ### drawer
 Drawer is a grid layout that can show/hide a sidebar on the left or right side of the page
 
-[drawer docs](https://daisyui.com/components/drawer/)
+[drawer docs](mdc:https:/daisyui.com/components/drawer)
 
 #### Class names
 - component: `drawer`
@@ -588,7 +588,7 @@ and {SIDEBAR} can be a menu like:
 ### dropdown
 Dropdown can open a menu or any other element when the button is clicked
 
-[dropdown docs](https://daisyui.com/components/dropdown/)
+[dropdown docs](mdc:https:/daisyui.com/components/dropdown)
 
 #### Class names
 - component: `dropdown`
@@ -628,7 +628,7 @@ Using CSS focus
 ### fieldset
 Fieldset is a container for grouping related form elements. It includes fieldset-legend as a title and label as a description
 
-[fieldset docs](https://daisyui.com/components/fieldset/)
+[fieldset docs](mdc:https:/daisyui.com/components/fieldset)
 
 #### Class names
 - Component: `fieldset`, `label`
@@ -649,7 +649,7 @@ Fieldset is a container for grouping related form elements. It includes fieldset
 ### file-input
 File Input is a an input field for uploading files
 
-[file-input docs](https://daisyui.com/components/file-input/)
+[file-input docs](mdc:https:/daisyui.com/components/file-input)
 
 #### Class Names:
 - Component: `file-input`
@@ -668,7 +668,7 @@ File Input is a an input field for uploading files
 ### filter
 Filter is a group of radio buttons. Choosing one of the options will hide the others and shows a reset button next to the chosen option
 
-[filter docs](https://daisyui.com/components/filter/)
+[filter docs](mdc:https:/daisyui.com/components/filter)
 
 #### Class names
 - component: `filter`
@@ -701,7 +701,7 @@ Without HTML form
 ### footer
 Footer can contain logo, copyright notice, and links to other pages
 
-[footer docs](https://daisyui.com/components/footer/)
+[footer docs](mdc:https:/daisyui.com/components/footer)
 
 #### Class names
 - component: `footer`
@@ -723,7 +723,7 @@ where content can contain several `<nav>` tags with `footer-title` and links ins
 ### hero
 Hero is a component for displaying a large box or image with a title and description
 
-[hero docs](https://daisyui.com/components/hero/)
+[hero docs](mdc:https:/daisyui.com/components/hero)
 
 #### Class names
 - component: `hero`
@@ -743,7 +743,7 @@ Hero is a component for displaying a large box or image with a title and descrip
 ### indicator
 Indicators are used to place an element on the corner of another element
 
-[indicator docs](https://daisyui.com/components/indicator/)
+[indicator docs](mdc:https:/daisyui.com/components/indicator)
 
 #### Class names
 - component: `indicator`
@@ -765,7 +765,7 @@ Indicators are used to place an element on the corner of another element
 ### input
 Text Input is a simple input field
 
-[input docs](https://daisyui.com/components/input/)
+[input docs](mdc:https:/daisyui.com/components/input)
 
 #### Class names
 - component: `input`
@@ -786,7 +786,7 @@ Text Input is a simple input field
 ### join
 Join is a container for grouping multiple items, it can be used to group buttons, inputs, etc. Join applies border radius to the first and last item. Join can be used to create a horizontal or vertical list of items
 
-[join docs](https://daisyui.com/components/join/)
+[join docs](mdc:https:/daisyui.com/components/join)
 
 #### Class names
 - component: `join`, `join-item`
@@ -806,7 +806,7 @@ Join is a container for grouping multiple items, it can be used to group buttons
 ### kbd
 Kbd is used to display keyboard shortcuts
 
-[kbd docs](https://daisyui.com/components/kbd/)
+[kbd docs](mdc:https:/daisyui.com/components/kbd)
 
 #### Class names
 - component: `kbd`
@@ -823,7 +823,7 @@ Kbd is used to display keyboard shortcuts
 ### label
 Label is used to provide a name or title for an input field. Label can be placed before or after the field
 
-[label docs](https://daisyui.com/components/label/)
+[label docs](mdc:https:/daisyui.com/components/label)
 
 #### Class names
 - component: `label`, `floating-label`
@@ -851,7 +851,7 @@ For floating label:
 ### link
 Link adds the missing underline style to links
 
-[link docs](https://daisyui.com/components/link/)
+[link docs](mdc:https:/daisyui.com/components/link)
 
 #### Class names
 - component: `link`
@@ -869,7 +869,7 @@ Link adds the missing underline style to links
 ### list
 List is a vertical layout to display information in rows
 
-[list docs](https://daisyui.com/components/list/)
+[list docs](mdc:https:/daisyui.com/components/list)
 
 #### Class Names:
 - Component: `list`, `list-row`
@@ -890,7 +890,7 @@ List is a vertical layout to display information in rows
 ### loading
 Loading shows an animation to indicate that something is loading
 
-[loading docs](https://daisyui.com/components/loading/)
+[loading docs](mdc:https:/daisyui.com/components/loading)
 
 #### Class names
 - component: `loading`
@@ -908,7 +908,7 @@ Loading shows an animation to indicate that something is loading
 ### mask
 Mask crops the content of the element to common shapes
 
-[mask docs](https://daisyui.com/components/mask/)
+[mask docs](mdc:https:/daisyui.com/components/mask)
 
 #### Class names
 - component: `mask`
@@ -928,7 +928,7 @@ Mask crops the content of the element to common shapes
 ### menu
 Menu is used to display a list of links vertically or horizontally
 
-[menu docs](https://daisyui.com/components/menu/)
+[menu docs](mdc:https:/daisyui.com/components/menu)
 
 #### Class names
 - component: `menu`
@@ -961,7 +961,7 @@ Horizontal menu:
 ### mockup-browser
 Browser mockup shows a box that looks like a browser window
 
-[mockup-browser docs](https://daisyui.com/components/mockup-browser/)
+[mockup-browser docs](mdc:https:/daisyui.com/components/mockup-browser)
 
 #### Class names
 - component: `mockup-browser`
@@ -984,7 +984,7 @@ Browser mockup shows a box that looks like a browser window
 ### mockup-code
 Code mockup is used to show a block of code in a box that looks like a code editor
 
-[mockup-code docs](https://daisyui.com/components/mockup-code/)
+[mockup-code docs](mdc:https:/daisyui.com/components/mockup-code)
 
 #### Class names
 - component: `mockup-code`
@@ -1004,7 +1004,7 @@ Code mockup is used to show a block of code in a box that looks like a code edit
 ### mockup-phone
 Phone mockup shows a mockup of an iPhone
 
-[mockup-phone docs](https://daisyui.com/components/mockup-phone/)
+[mockup-phone docs](mdc:https:/daisyui.com/components/mockup-phone)
 
 #### Class names
 - component: `mockup-phone`
@@ -1024,7 +1024,7 @@ Phone mockup shows a mockup of an iPhone
 ### mockup-window
 Window mockup shows a box that looks like an operating system window
 
-[mockup-window docs](https://daisyui.com/components/mockup-window/)
+[mockup-window docs](mdc:https:/daisyui.com/components/mockup-window)
 
 #### Class names
 - component: `mockup-window`
@@ -1039,7 +1039,7 @@ Window mockup shows a box that looks like an operating system window
 ### modal
 Modal is used to show a dialog or a box when you click a button
 
-[modal docs](https://daisyui.com/components/modal/)
+[modal docs](mdc:https:/daisyui.com/components/modal)
 
 #### Class names
 - component: `modal`
@@ -1084,7 +1084,7 @@ Using anchor links (legacy)
 ### navbar
 Navbar is used to show a navigation bar on the top of the page
 
-[navbar docs](https://daisyui.com/components/navbar/)
+[navbar docs](mdc:https:/daisyui.com/components/navbar)
 
 #### Class names
 - component: `navbar`
@@ -1103,7 +1103,7 @@ Navbar is used to show a navigation bar on the top of the page
 ### pagination
 Pagination is a group of buttons
 
-[pagination docs](https://daisyui.com/components/pagination/)
+[pagination docs](mdc:https:/daisyui.com/components/pagination)
 
 #### Class names
 - component: `join`
@@ -1122,7 +1122,7 @@ Pagination is a group of buttons
 ### progress
 Progress bar can be used to show the progress of a task or to show the passing of time
 
-[progress docs](https://daisyui.com/components/progress/)
+[progress docs](mdc:https:/daisyui.com/components/progress)
 
 #### Class names
 - component: `progress`
@@ -1140,7 +1140,7 @@ Progress bar can be used to show the progress of a task or to show the passing o
 ### radial-progress
 Radial progress can be used to show the progress of a task or to show the passing of time
 
-[radial-progress docs](https://daisyui.com/components/radial-progress/)
+[radial-progress docs](mdc:https:/daisyui.com/components/radial-progress)
 
 #### Class names
 - component: `radial-progress`
@@ -1159,7 +1159,7 @@ Radial progress can be used to show the progress of a task or to show the passin
 ### radio
 Radio buttons allow the user to select one option
 
-[radio docs](https://daisyui.com/components/radio/)
+[radio docs](mdc:https:/daisyui.com/components/radio)
 
 #### Class names
 - component: `radio`
@@ -1179,7 +1179,7 @@ Radio buttons allow the user to select one option
 ### range
 Range slider is used to select a value by sliding a handle
 
-[range docs](https://daisyui.com/components/range/)
+[range docs](mdc:https:/daisyui.com/components/range)
 
 #### Class names
 - component: `range`
@@ -1198,7 +1198,7 @@ Range slider is used to select a value by sliding a handle
 ### rating
 Rating is a set of radio buttons that allow the user to rate something
 
-[rating docs](https://daisyui.com/components/rating/)
+[rating docs](mdc:https:/daisyui.com/components/rating)
 
 #### Class names
 - component: `rating`
@@ -1220,7 +1220,7 @@ Rating is a set of radio buttons that allow the user to rate something
 ### select
 Select is used to pick a value from a list of options
 
-[select docs](https://daisyui.com/components/select/)
+[select docs](mdc:https:/daisyui.com/components/select)
 
 #### Class names
 - component: `select`
@@ -1241,7 +1241,7 @@ Select is used to pick a value from a list of options
 ### skeleton
 Skeleton is a component that can be used to show a loading state
 
-[skeleton docs](https://daisyui.com/components/skeleton/)
+[skeleton docs](mdc:https:/daisyui.com/components/skeleton)
 
 #### Class names
 - component: `skeleton`
@@ -1257,7 +1257,7 @@ Skeleton is a component that can be used to show a loading state
 ### stack
 Stack visually puts elements on top of each other
 
-[stack docs](https://daisyui.com/components/stack/)
+[stack docs](mdc:https:/daisyui.com/components/stack)
 
 #### Class Names:
 - Component: `stack`
@@ -1275,7 +1275,7 @@ Stack visually puts elements on top of each other
 ### stat
 Stat is used to show numbers and data in a block
 
-[stat docs](https://daisyui.com/components/stat/)
+[stat docs](mdc:https:/daisyui.com/components/stat)
 
 #### Class names
 - Component: `stats`
@@ -1297,7 +1297,7 @@ Stat is used to show numbers and data in a block
 ### status
 Status is a really small icon to visually show the current status of an element, like online, offline, error, etc
 
-[status docs](https://daisyui.com/components/status/)
+[status docs](mdc:https:/daisyui.com/components/status)
 
 #### Class Names:
 - Component: `status`
@@ -1316,7 +1316,7 @@ Status is a really small icon to visually show the current status of an element,
 ### steps
 Steps can be used to show a list of steps in a process
 
-[steps docs](https://daisyui.com/components/steps/)
+[steps docs](mdc:https:/daisyui.com/components/steps)
 
 #### Class Names:
 - Component: `steps`
@@ -1340,7 +1340,7 @@ Steps can be used to show a list of steps in a process
 ### swap
 Swap allows you to toggle the visibility of two elements using a checkbox or a class name
 
-[swap docs](https://daisyui.com/components/swap/)
+[swap docs](mdc:https:/daisyui.com/components/swap)
 
 #### Class Names:
 - Component: `swap`
@@ -1374,7 +1374,7 @@ Using class name
 ### tab
 Tabs can be used to show a list of links in a tabbed format
 
-[tab docs](https://daisyui.com/components/tab/)
+[tab docs](mdc:https:/daisyui.com/components/tab)
 
 #### Class Names:
 - Component: `tabs`
@@ -1406,7 +1406,7 @@ Using radio inputs:
 ### table
 Table can be used to show a list of data in a table format
 
-[table docs](https://daisyui.com/components/table/)
+[table docs](mdc:https:/daisyui.com/components/table)
 
 #### Class Names:
 - Component: `table`
@@ -1438,7 +1438,7 @@ Table can be used to show a list of data in a table format
 ### textarea
 Textarea allows users to enter text in multiple lines
 
-[textarea docs](https://daisyui.com/components/textarea/)
+[textarea docs](mdc:https:/daisyui.com/components/textarea)
 
 #### Class Names:
 - Component: `textarea`
@@ -1457,7 +1457,7 @@ Textarea allows users to enter text in multiple lines
 ### theme-controller
 If a checked checkbox input or a checked radio input with theme-controller class exists in the page, The page will have the same theme as that input's value
 
-[theme-controller docs](https://daisyui.com/components/theme-controller/)
+[theme-controller docs](mdc:https:/daisyui.com/components/theme-controller)
 
 #### Class names
 - component: `theme-controller`
@@ -1473,7 +1473,7 @@ If a checked checkbox input or a checked radio input with theme-controller class
 ### timeline
 Timeline component shows a list of events in chronological order
 
-[timeline docs](https://daisyui.com/components/timeline/)
+[timeline docs](mdc:https:/daisyui.com/components/timeline)
 
 #### Class Names:
 - Component: `timeline`
@@ -1501,7 +1501,7 @@ Timeline component shows a list of events in chronological order
 ### toast
 Toast is a wrapper to stack elements, positioned on the corner of page
 
-[toast docs](https://daisyui.com/components/toast/)
+[toast docs](mdc:https:/daisyui.com/components/toast)
 
 #### Class Names:
 - Component: `toast`
@@ -1518,7 +1518,7 @@ Toast is a wrapper to stack elements, positioned on the corner of page
 ### toggle
 Toggle is a checkbox that is styled to look like a switch button
 
-[toggle docs](https://daisyui.com/components/toggle/)
+[toggle docs](mdc:https:/daisyui.com/components/toggle)
 
 #### Class Names:
 - Component: `toggle`
@@ -1536,7 +1536,7 @@ Toggle is a checkbox that is styled to look like a switch button
 ### validator
 Validator class changes the color of form elements to error or success based on input's validation rules
 
-[validator docs](https://daisyui.com/components/validator/)
+[validator docs](mdc:https:/daisyui.com/components/validator)
 
 #### Class names
 - component: `validator`

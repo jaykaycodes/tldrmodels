@@ -8,14 +8,13 @@ interface Props {
 	title?: string
 	description?: string
 	image?: ImageMetadata
-	pagefindIgnore?: boolean
 	article?: {
 		createdAt: Date
 		updatedAt?: Date
 	}
 }
 
-const { title = constants.SITE_NAME, description = constants.SITE_DESCRIPTION, image, pagefindIgnore, article } = Astro.props
+const { title = constants.SITE_NAME, description = constants.SITE_DESCRIPTION, image, article } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ const { title = constants.SITE_NAME, description = constants.SITE_DESCRIPTION, i
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
 	</head>
 	<body>
-		<main class="mx-auto max-w-6xl container" data-pagefind-ignore={pagefindIgnore}>
+		<main class="mx-auto max-w-6xl container">
 			<Navbar />
 
 			<slot />
