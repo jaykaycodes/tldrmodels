@@ -1,40 +1,44 @@
 {
-	"npm.packageManager": "bun",
+	"astro.content-intellisense": true,
 	"biome.enabled": true,
-	"biome.searchInPath": true,
 	"editor.codeActionsOnSave": [
 		"source.removeUnusedImports",
+		"source.removeUnused.ts",
 		"source.addMissingImports.ts",
-		"source.biome",
 		"source.organizeImports.biome",
-		"fixAll"
+		"source.biome",
+		"source.fixAll.ts",
+		"source.fixAll"
 	],
-	"editor.formatOnSave": true,
 	"editor.formatOnPaste": false,
-	"editor.tabSize": 2,
+	"editor.formatOnSave": true,
+	"editor.gotoLocation.multipleDefinitions": "goto",
 	"editor.insertSpaces": false,
 	"editor.quickSuggestions": {
-		"other": "on",
 		"comments": "off",
+		"other": "on",
 		"strings": "on"
 	},
+	"editor.tabSize": 2,
+	"explorer.fileNesting.enabled": true,
+	"eslint.enable": false,
+	"explorer.fileNesting.patterns": {
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.ts": "${capture}.js",
+		"*.tsx": "${capture}.ts, ${capture}.*.tsx",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+		"tsconfig.json": "tsconfig.*.json"
+	},
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"npm.packageManager": "bun",
+	"prettier.enable": true,
+	"tailwindCSS.rootFontSize": 14,
 	"tailwindCSS.validate": true,
-	"tailwindCSS.classFunctions": ["cva", "cn", "twMerge"],
-	"tailwindCSS.experimental.classRegex": [
-		["(?<=cva\\([\\s\\S]*?)[\"']([^\"']+)[\"']"],
-		["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"],
-		["cn\\(\\s*[\"'`]([^\"'`]*)[\"'`]\\s*,\\s*\\{[^}]*\\}\\)", "\\1"],
-		["(\\w+)ClassName\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]", "\\2"],
-		["classNames\\s*=\\s*\\{\\{([^}]*)\\}\\}", "[\"'`]([^\"'`]*)[\"'`]"],
-		["className\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]", "\\1"],
-		["className\\s*=\\s*\\{([^}]*)\\}", "[\"'`]([^\"'`]*)[\"'`]"]
-	],
-	"typescript.preferences.importModuleSpecifierEnding": "minimal",
-	"typescript.preferences.includePackageJsonAutoImports": "on",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
-		"@radix-ui",
 		"^assert",
 		"^console",
 		"^node:console",
@@ -50,33 +54,20 @@
 		"^net",
 		"^tls"
 	],
-	"files.watcherExclude": {
-		"**/.git/objects/**": true,
-		"**/.git/subtree-cache/**": true,
-		"**/.hg/store/**": true,
-		"**/src-tauri/target/**": true
+	"typescript.preferences.importModuleSpecifierEnding": "minimal",
+	"typescript.preferences.includePackageJsonAutoImports": "on",
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"[astro]": {
+		"editor.defaultFormatter": "astro-build.astro-vscode"
 	},
-	"files.associations": {
-		"*.css": "tailwindcss",
-		"*.sql": "sql"
-	},
-	"files.exclude": {
-		"**/src-tauri/target": true
-	},
-	"explorer.fileNesting.enabled": true,
-	"explorer.fileNesting.patterns": {
-		"*.ts": "${capture}.js",
-		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-		"*.jsx": "${capture}.js",
-		"*.tsx": "${capture}.ts, ${capture}.*.tsx",
-		"tsconfig.json": "tsconfig.*.json",
-		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
-		"Cargo.toml": "Cargo.lock"
-	},
-	"[javascript]": {
+	"[css]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[javascriptreact]": {
+	"[html]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[json]": {
@@ -85,28 +76,13 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[html]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[css]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	"[scss]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[tailwindcss]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"[astro]": {
+	"[typescript]": {
 		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"tailwindCSS.rootFontSize": 14,
-	"editor.gotoLocation.multipleDefinitions": "goto"
+	}
 }

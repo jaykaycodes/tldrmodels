@@ -1,6 +1,5 @@
 const SITE_NAME = 'tl;dr models'
-const SITE_DESCRIPTION = 'just tell me which damn model to use already'
-const THEME_COLOR = '#8c5cf5'
+const SITE_DESCRIPTION = "find the right ai model or your money back! (it's free)"
 const TWITTER_HANDLE = 'jaykaycodes'
 const GITHUB_REPO = 'jaykaycodes/tldrmodels'
 
@@ -21,7 +20,6 @@ const OPEN_GRAPH = {
 const constants = {
 	SITE_NAME,
 	SITE_DESCRIPTION,
-	THEME_COLOR,
 	TWITTER_HANDLE,
 	GITHUB_REPO,
 	OPEN_GRAPH,

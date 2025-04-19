@@ -1,121 +1,167 @@
 ---
-import '#/styles/index.css'
+import constants from "#/constants";
+import Layout from "#/layouts/Layout.astro";
 
-import { getCollection } from 'astro:content'
-import { getEntry } from 'astro:content'
-import { render } from 'astro:content'
-
-import ProfilePicture from '#/assets/pfp.png'
-import Card from '#/components/Card.astro'
-import Icon from '#/components/Icon.astro'
-import ImageGlow from '#/components/ImageGlow.astro'
-import constants from '#/constants'
-import Layout from '#/layouts/Layout.astro'
-
-const [posts, projects, about, workExperience, quickInfo, socials] = await Promise.all([
-	getCollection('posts', (post) => post.data.draft !== true),
-	getCollection('projects'),
-	getEntry('other', 'about'),
-	getCollection('workExperience'),
-	getCollection('quickInfo'),
-	getCollection('socials'),
-])
-
-// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
-const { Content: About } = await render(about!)
+// const [models] = await Promise.all([getCollection('models')])
 ---
 
 <Layout
-	title={constants.SITE_NAME}
-	description={constants.SITE_DESCRIPTION}
-	pagefindIgnore
+  title={constants.SITE_NAME}
+  description={constants.SITE_DESCRIPTION}
+  pagefindIgnore
 >
-	<div class="layout-grid-left" slot="left">
-		<Card class="flex-col-card">
-			<ImageGlow quality={100} width={80} height={80} src={ProfilePicture} alt="Louis looking out of a window" loading='eager' />
-			<h2>{constants.SITE_NAME}</h2>
-			<ul class="overview-list">
-				{quickInfo.map((info) => (
-					<li>
-						<Icon type={info.data.icon.type} name={info.data.icon.name as any} width={24} height={24} class='glow-icon' />
-						<span>{info.data.text}</span>
-					</li>
-				))}
-			</ul>
-		</Card>
-		<Card>
-			<h3 class="no-mt">Socials</h3>
-			<ul class="overview-list">
-				{socials.map((item) => (
-					<li>
-						<a href={item.data.link} class="socials-link">
-							<Icon type={item.data.icon.type} name={item.data.icon.name as any} width={24} height={24} class='glow-icon' />
-							<span>{item.data.text}</span>
-						</a>
-					</li>
-				))}
-			</ul>
-		</Card>
-	</div>
-	<div class="layout-grid-right" slot="right">
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="user" width={24} height={24} class='glow-icon' />
-				<h2>About me</h2>
-			</div>
-			<div class="prose">
-				<About />
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="rss" width={24} height={24} class='glow-icon' />
-				<h2>Latest Posts</h2>
-			</div>
-			<div class="content-container">
-				{posts.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()).slice(0, 2).map((post) => (
-					<a href={`/blog/${post.id}`} class="post-container">
-						<div class="post-header">
-							<h3>{post.data.title}</h3>
-							<span class="post-date">{post.data.createdAt.toLocaleDateString()}</span>
-						</div>
-						<span>{post.data.description}</span>
-					</a>
-				))}
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="folder-git" width={24} height={24} class='glow-icon' />
-				<h2>Latest Projects</h2>
-			</div>
-			<div class="content-container">
-				{projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 2).map((project) => (
-					<a href={`/projects/${project.id}`} class="post-container">
-						<div class="post-header">
-							<h3>{project.data.title}</h3>
-							<span class="post-date">{project.data.date.toLocaleDateString()}</span>
-						</div>
-						<span>{project.data.description}</span>
-					</a>
-				))}
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
-				<h2>Work Experience</h2>
-			</div>
-			<div class="work-experience-container">
-				{workExperience.reverse().map((entry) => (
-					<div class="work-experience-entry">
-						<span class="work-experience-duration">{entry.data.duration}</span>
-						<h3 class="work-experience-company">{entry.data.company}</h3>
-						<span class="work-experience-role">{entry.data.title}</span>
-						<p class="work-experience-desc">{entry.data.description}</p>
-					</div>
-				))}
-			</div>
-		</Card>
-	</div>
+  <!-- Hero Section -->
+  <section class="hero py-4 bg-base-100">
+    <div class="hero-content text-center">
+      <div class="max-w-3xl">
+        <h1 class="text-5xl font-bold mb-3">TL;DR Models</h1>
+        <p class="text-xl mb-8">
+          The fastest way to pick an LLM. No nonsense, just rankings. Because
+          who reads the fine print?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Task Category Tabs -->
+  <div class="tabs tabs-boxed justify-center mb-6">
+    <a class="tab tab-active">All Tasks</a>
+    <a class="tab">Coding</a>
+    <a class="tab">Writing</a>
+    <a class="tab">Research</a>
+    <a class="tab">Chat</a>
+  </div>
+
+  <!-- Models Table -->
+  <div class="overflow-x-auto rounded-box shadow-md">
+    <table class="table table-zebra w-full">
+      <thead>
+        <tr>
+          <th class="w-12">#</th>
+          <th>Model</th>
+          <th class="hidden md:table-cell">Overall</th>
+          <th>Task Rating</th>
+          <th class="hidden md:table-cell">Speed</th>
+          <th class="hidden lg:table-cell">Reasoning</th>
+          <th class="hidden lg:table-cell">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example rows - these would be populated from actual data -->
+        <tr>
+          <td>1</td>
+          <td
+            ><a href="/models/claude-3-opus" class="font-medium"
+              >Claude 3 Opus</a
+            ></td
+          >
+          <td class="hidden md:table-cell"
+            ><span class="badge badge-primary">A+</span></td
+          >
+          <td><span class="badge badge-success">A</span></td>
+          <td class="hidden md:table-cell">
+            <div class="flex">
+              <span>⚡⚡</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">
+            <div class="flex">
+              <span>🧠🧠🧠🧠</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">$15/$45</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="/models/gpt-4o" class="font-medium">GPT-4o</a></td>
+          <td class="hidden md:table-cell"
+            ><span class="badge badge-primary">A</span></td
+          >
+          <td><span class="badge badge-success">A-</span></td>
+          <td class="hidden md:table-cell">
+            <div class="flex">
+              <span>⚡⚡⚡</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">
+            <div class="flex">
+              <span>🧠🧠🧠🧠</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">$5/$15</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td
+            ><a href="/models/claude-3-sonnet" class="font-medium"
+              >Claude 3 Sonnet</a
+            ></td
+          >
+          <td class="hidden md:table-cell"
+            ><span class="badge badge-secondary">B+</span></td
+          >
+          <td><span class="badge badge-success">A-</span></td>
+          <td class="hidden md:table-cell">
+            <div class="flex">
+              <span>⚡⚡⚡</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">
+            <div class="flex">
+              <span>🧠🧠🧠</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">$3/$15</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td
+            ><a href="/models/gemini-pro" class="font-medium">Gemini Pro</a></td
+          >
+          <td class="hidden md:table-cell"
+            ><span class="badge badge-secondary">B</span></td
+          >
+          <td><span class="badge badge-secondary">B</span></td>
+          <td class="hidden md:table-cell">
+            <div class="flex">
+              <span>⚡⚡⚡</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">
+            <div class="flex">
+              <span>🧠🧠</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">$2/$10</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><a href="/models/llama-3" class="font-medium">Llama 3</a></td>
+          <td class="hidden md:table-cell"
+            ><span class="badge badge-accent">C+</span></td
+          >
+          <td><span class="badge badge-secondary">B-</span></td>
+          <td class="hidden md:table-cell">
+            <div class="flex">
+              <span>⚡⚡⚡⚡</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">
+            <div class="flex">
+              <span>🧠🧠</span>
+            </div>
+          </td>
+          <td class="hidden lg:table-cell">Free</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Awesome Meter Legend -->
+  <div class="flex flex-wrap justify-center gap-4 mt-10 mb-16 px-4">
+    <div class="badge badge-lg">A+ to F: Task ratings</div>
+    <div class="badge badge-lg">⚡: Speed (more = faster)</div>
+    <div class="badge badge-lg">🧠: Reasoning (more = better)</div>
+    <div class="badge badge-lg">$Input/$Output per million tokens</div>
+  </div>
 </Layout>

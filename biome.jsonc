@@ -6,12 +6,11 @@
 		"useIgnoreFile": true
 	},
 	"formatter": {
+		"useEditorconfig": true,
 		"attributePosition": "auto",
 		"enabled": true,
 		"formatWithErrors": true,
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 100
+		"lineWidth": 120
 	},
 	"linter": {
 		"enabled": true,
@@ -105,6 +104,9 @@
 			"quoteStyle": "single",
 			"semicolons": "asNeeded",
 			"trailingCommas": "all"
+		},
+		"assist": {
+			"enabled": true
 		}
 	}
 }

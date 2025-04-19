@@ -1,378 +1,241 @@
 ---
-import constants from '#/constants'
+import constants from "#/constants";
 
-import Icon from './Icon.astro'
+import Icon from "./Icon.astro";
 
-const path = Astro.url.pathname
+const path = Astro.url.pathname;
 ---
 
-<nav>
-  <a class="site-title" href="/">{constants.SITE_NAME}</a>
-  <ul>
-    <li>
-      <a href="/blog" class:list={{ active: path === "/blog" }}>Blog</a>
-    </li>
-    <li class="nav-separator">/</li>
-    <li>
-      <a href="/projects" class:list={{ active: path === "/projects" }}
-        >Projects</a
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <button tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <Icon type="lucide" name="menu" width={24} height={24} />
+      </button>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-    </li>
-    <li class="nav-separator">/</li>
-    <li>
-      <input id="search" type="text" placeholder="Search (Ctrl+K)" />
-      <div id="search-results"></div>
-    </li>
-  </ul>
-  <button class="mobile-nav-toggle">
-    <Icon
-      type="lucide"
-      name="menu"
-      width={24}
-      height={24}
-      class="menu-closed"
-    />
-    <Icon type="lucide" name="x" width={24} height={24} class="menu-open" />
-  </button>
-</nav>
+        <li>
+          <a href="/models" class:list={[{ active: path === "/models" }]}
+            >Models</a>
+        </li>
+        <li>
+          <div class="form-control relative">
+            <input
+              id="search-mobile"
+              type="text"
+              placeholder="Search"
+              class="input input-bordered w-full"
+            />
+            <div
+              id="search-results-mobile"
+              class="absolute top-full left-0 mt-1 bg-base-200 border border-base-300 hidden w-full z-10 p-2 rounded-box shadow"
+            >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <a href="/" class="btn btn-ghost text-xl normal-case"
+      >{constants.SITE_NAME}</a
+    >
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <a
+          href="/models"
+          class:list={["btn btn-ghost", { "btn-active": path === "/models" }]}
+          >Models</a>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <div class="form-control relative hidden sm:block">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search (Ctrl+K)"
+        class="input input-bordered w-24 md:w-auto"
+      />
+      <div
+        id="search-results"
+        class="absolute top-full right-0 mt-1 bg-base-200 border border-base-300 hidden w-96 z-10 p-2 rounded-box shadow"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+
 <script is:inline>
-  const searchElement = document.querySelector("#search");
-  const results = document.querySelector("#search-results");
-  const navToggle = document.querySelector(".mobile-nav-toggle");
+  // Combine search logic for both desktop and mobile
+  const setupSearch = (inputId, resultsId) => {
+    const searchElement = document.querySelector(`#${inputId}`);
+    const resultsContainer = document.querySelector(`#${resultsId}`);
+    if (!searchElement || !resultsContainer) return;
 
-  let focusIndex = -1;
+    let focusIndex = -1;
+    let pagefind;
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "k" && e.ctrlKey) {
-      searchElement.focus();
-    }
+    const loadPagefind = async () => {
+      if (!pagefind) {
+        pagefind = await import("/pagefind/pagefind.js");
+      }
+    };
 
-    if (e.key === "Escape") {
-      searchElement.blur();
-      results.classList.remove("active");
-      focusIndex = -1;
-    }
-
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-
-      focusIndex++;
-      const results = document.querySelectorAll("#search-results a");
-
-      if (focusIndex >= results.length) {
-        focusIndex = 0;
+    const performSearch = async (query) => {
+      if (!query) {
+        resultsContainer.innerHTML = "";
+        resultsContainer.style.display = "none";
+        return;
       }
 
-      results[focusIndex]?.focus();
-    }
+      await loadPagefind();
+      const search = await pagefind.search(query);
+      resultsContainer.innerHTML = ""; // Clear previous results
 
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-
-      focusIndex--;
-      const results = document.querySelectorAll("#search-results a");
-
-      if (focusIndex < 0) {
-        focusIndex = results.length - 1;
+      if (search.results.length === 0) {
+        resultsContainer.innerHTML = '<p class="p-2">No results found</p>';
+      } else {
+        let i = 0;
+        for (const result of search.results) {
+          i++;
+          const data = await result.data();
+          // NOTE: Using daisyUI menu structure for results
+          resultsContainer.innerHTML += `
+            <li>
+              <a href="${data.url}">
+                <div class="flex flex-col">
+                  <span class="font-bold">${data.meta.title}</span>
+                  <span class="text-sm text-base-content/70">${data.excerpt}</span>
+                </div>
+              </a>
+            </li>
+            ${i < search.results.length ? '<li><div class="divider my-0"></div></li>' : ""}
+          `;
+        }
+        // Wrap results in a menu for styling
+        resultsContainer.innerHTML = `<ul class="menu bg-base-200 rounded-box w-full">${resultsContainer.innerHTML}</ul>`;
       }
+      resultsContainer.style.display = "block";
+    };
 
-      results[focusIndex]?.focus();
-    }
-  });
+    searchElement.addEventListener("focus", async () => {
+      await loadPagefind(); // Preload on focus
+      resultsContainer.style.display = "block"; // Show container, might be empty
+      // Clear placeholder only on focus if needed, handled by CSS focus state often
+      // searchElement.placeholder = '';
+    });
 
-  searchElement?.addEventListener("focus", () => {
-    searchElement.placeholder = "";
-    results.classList.add("active");
-  });
+    searchElement.addEventListener("blur", (e) => {
+      // Use setTimeout to allow clicking on results
+      setTimeout(() => {
+        if (
+          !resultsContainer.contains(document.activeElement) &&
+          document.activeElement !== searchElement
+        ) {
+          resultsContainer.style.display = "none";
+          focusIndex = -1;
+          // Restore placeholder if needed
+          // searchElement.placeholder = searchElement.id === 'search-mobile' ? 'Search' : 'Search (Ctrl+K)';
+        }
+      }, 150); // Increased timeout slightly
+    });
 
-  searchElement?.addEventListener("blur", () => {
-    searchElement.placeholder = "Search (Ctrl+K)";
-  });
+    searchElement.addEventListener("input", (e) => {
+      performSearch(e.target.value);
+      focusIndex = -1; // Reset focus index on new input
+    });
 
-  searchElement?.addEventListener("blur", () => {
-    setTimeout(() => {
-      if (!document.activeElement?.closest("#search-results")) {
-        results.classList.remove("active");
-        focusIndex = -1;
+    // Keyboard navigation (ArrowDown, ArrowUp, Escape)
+    searchElement.addEventListener("keydown", (e) => {
+      const resultsLinks = resultsContainer.querySelectorAll("a");
+      if (!resultsLinks.length) return;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        focusIndex = (focusIndex + 1) % resultsLinks.length;
+        resultsLinks[focusIndex]?.focus();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        focusIndex =
+          (focusIndex - 1 + resultsLinks.length) % resultsLinks.length;
+        resultsLinks[focusIndex]?.focus();
+      } else if (e.key === "Enter" && focusIndex > -1) {
+        // Allow selecting result with Enter
+        resultsLinks[focusIndex]?.click();
       }
-    }, 1);
-  });
+    });
 
-  results?.addEventListener("focusout", (e) => {
-    if (!e.relatedTarget?.closest("#search-results")) {
-      results.classList.remove("active");
-      focusIndex = -1;
-    }
-  });
-
-  searchElement?.addEventListener("input", async (e) => {
-    if (e.target.dataset.loaded !== "true") {
-      e.target.dataset.loaded = "true";
-
-      window.pagefind = await import("/pagefind/pagefind.js");
-    }
-
-    results.innerHTML = "";
-
-    const search = await window.pagefind.search(e.target.value);
-
-    let i = 0;
-    for (const result of search.results) {
-      i++;
-
-      const data = await result.data();
-
-      results.innerHTML += `
-        <a href="${data.url}">
-          <h3 class="no-mt">${data.meta.title}</h3>
-          <p>${data.excerpt}</p>
-        </a>
-        ${i < search.results.length ? '<hr class="separator">' : ""}
-      `;
-    }
-
-    if (search.results.length === 0 && e.target.value.length > 0) {
-      results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
-    }
-
-    results.classList.add("active");
-  });
-
-  navToggle?.addEventListener("click", () => {
-    navToggle.classList.toggle("active");
-    document.querySelector("nav").classList.toggle("active");
-  });
-
-  const handleTabletChange = () => {
-    if (window.matchMedia("(max-width: 640px)").matches) {
-      searchElement.placeholder = "Search";
-    } else {
-      searchElement.placeholder = "Search (Ctrl+K)";
-    }
+    // Close results when focusing out of the results container itself
+    resultsContainer.addEventListener("focusout", (e) => {
+      // Check if the new focused element is outside the search input and results
+      if (
+        !e.relatedTarget ||
+        (!resultsContainer.contains(e.relatedTarget) &&
+          e.relatedTarget !== searchElement)
+      ) {
+        setTimeout(() => {
+          // Use timeout to allow interaction finish
+          if (
+            !resultsContainer.contains(document.activeElement) &&
+            document.activeElement !== searchElement
+          ) {
+            resultsContainer.style.display = "none";
+            focusIndex = -1;
+          }
+        }, 150);
+      }
+    });
   };
 
-  document.addEventListener("DOMContentLoaded", handleTabletChange);
-  document.addEventListener("resize", handleTabletChange);
+  // Global Ctrl+K listener
+  document.addEventListener("keydown", (e) => {
+    const searchDesktop = document.querySelector("#search");
+    if (e.key === "k" && e.ctrlKey && searchDesktop) {
+      e.preventDefault(); // Prevent browser's default Ctrl+K
+      searchDesktop.focus();
+    }
+    // Global Escape listener to close active search results
+    if (e.key === "Escape") {
+      const activeResults =
+        document.querySelector(
+          '#search-results:not([style*="display: none"])'
+        ) ||
+        document.querySelector(
+          '#search-results-mobile:not([style*="display: none"])'
+        );
+      if (activeResults) {
+        activeResults.style.display = "none";
+        // Optionally blur the input as well
+        const searchInput = activeResults.id.includes("mobile")
+          ? document.querySelector("#search-mobile")
+          : document.querySelector("#search");
+        searchInput?.blur();
+      }
+    }
+  });
+
+  // Initialize search for both desktop and mobile
+  document.addEventListener("DOMContentLoaded", () => {
+    setupSearch("search", "search-results");
+    setupSearch("search-mobile", "search-results-mobile");
+
+    // Handle placeholder change based on screen size (optional, could use CSS)
+    const searchDesktopInput = document.querySelector("#search");
+    const handleResize = () => {
+      if (!searchDesktopInput) return;
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        // Placeholder is only visible on larger screens in this layout
+      } else {
+        searchDesktopInput.placeholder = "Search (Ctrl+K)";
+      }
+    };
+    // window.addEventListener('resize', handleResize);
+    // handleResize(); // Initial check
+  });
+
+  // NOTE: Mobile nav toggle is handled by daisyUI dropdown component now.
+  // The old navToggle logic is removed.
 </script>
-<style>
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Geist Mono", monospace;
-    z-index: 50;
-  }
-
-  .site-title {
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 1.25em;
-    z-index: 2;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    align-items: center;
-  }
-
-  nav ul li {
-    position: relative;
-  }
-
-  nav a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-  }
-
-  nav a:hover,
-  nav a:focus-visible,
-  nav a.active {
-    background-color: var(--primary);
-    outline: none;
-  }
-
-  #search {
-    background: none;
-    border: none;
-    outline: none;
-    padding: 0.25rem 0.5rem;
-    width: 160px;
-  }
-
-  #search::placeholder {
-    color: white;
-  }
-
-  #search:focus {
-    background-color: var(--primary);
-  }
-
-  #search-results {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    background-color: #252525;
-    border: 1px solid var(--primary);
-    display: none;
-    width: 200%;
-    z-index: 10;
-    padding: 0.5rem;
-  }
-
-  #search-results.active:has(*) {
-    display: block;
-  }
-
-  .mobile-nav-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: #121212;
-    border: 1px solid #353535;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  .menu-open {
-    display: none;
-  }
-
-  .mobile-nav-toggle.active .menu-open {
-    display: flex;
-  }
-
-  .mobile-nav-toggle.active .menu-closed {
-    display: none;
-  }
-
-  @media screen and (max-width: 640px) {
-    nav {
-      padding: 0 1rem;
-      padding-top: 1rem;
-      transition: all 0.25s ease;
-    }
-
-    .mobile-nav-toggle {
-      display: flex;
-    }
-
-    .nav-separator {
-      display: none;
-    }
-
-    nav ul {
-      flex-direction: column;
-      gap: 0;
-      position: absolute;
-      width: 100%;
-      top: calc(1rem + 40px);
-      right: 0;
-      padding: 1rem;
-      z-index: 1;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s ease;
-      user-select: none;
-      height: calc(100vh - 1rem - 40px);
-      align-items: start;
-    }
-
-    nav.active {
-      background-color: #181818;
-    }
-
-    nav.active ul {
-      opacity: 1;
-      pointer-events: all;
-      background-color: #181818;
-    }
-
-    nav ul li {
-      position: relative;
-      transition: all 0.25s ease-out;
-      top: -1.5rem;
-      border-bottom: 1px solid #353535;
-      width: 100%;
-      max-width: none;
-      padding: 0;
-      font-size: 1.125em;
-    }
-
-    nav ul li a {
-      display: block;
-      padding: 0.75rem 0;
-      width: 100%;
-      padding-left: 1rem;
-    }
-
-    nav ul li:first-child {
-      border-top: 1px solid #353535;
-    }
-
-    nav.active ul li {
-      top: 0;
-    }
-
-    #search {
-      width: 100%;
-      max-width: none;
-      padding: 0.75rem 1rem;
-    }
-
-    #search-results {
-      width: 100%;
-      top: 100%;
-      font-size: 0.875em;
-    }
-  }
-</style>
-<style is:global>
-  #search-results a {
-    display: block;
-    text-decoration: none;
-    color: white !important;
-    padding: 0.5rem;
-  }
-
-  #search-results a:hover,
-  #search-results a:focus-visible {
-    background-color: var(--primary);
-    outline: none;
-  }
-
-  #search-results a:hover mark,
-  #search-results a:focus-visible mark {
-    background-color: #ffffff;
-    color: #000000;
-  }
-
-  #search-results a h3 {
-    margin-bottom: 0.5rem;
-  }
-
-  #search-results a p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  #search-results mark {
-    background-color: var(--primary);
-    color: white;
-  }
-
-  .separator {
-    margin: 0.5rem 0.5rem;
-    border: none;
-    height: 1px;
-    background-color: #353535;
-  }
-</style>

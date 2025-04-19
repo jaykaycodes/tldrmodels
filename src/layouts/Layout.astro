@@ -1,15 +1,11 @@
 ---
-import '#/styles/reset.css'
-import '#/styles/globals.css'
-import '#/styles/global.css'
+import '#/assets/styles/global.css'
 
-import Background from '#/components/Background.astro'
-import LayoutGrid from '#/components/LayoutGrid.astro'
 import Navbar from '#/components/Navbar.astro'
 import constants from '#/constants'
 
 interface Props {
-	title: string
+	title?: string
 	description?: string
 	image?: ImageMetadata
 	pagefindIgnore?: boolean
@@ -19,11 +15,11 @@ interface Props {
 	}
 }
 
-const { title, description, image, pagefindIgnore, article } = Astro.props
+const { title = constants.SITE_NAME, description = constants.SITE_DESCRIPTION, image, pagefindIgnore, article } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +28,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props
 
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
-		<meta name="theme-color" content={constants.THEME_COLOR}>
+		<!-- <meta name="theme-color" content={constants.THEME_COLOR}> -->
 
 		<link rel="canonical" href={Astro.site} />
 
@@ -61,14 +57,12 @@ const { title, description, image, pagefindIgnore, article } = Astro.props
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
 	</head>
 	<body>
-		<main data-pagefind-ignore={pagefindIgnore}>
+		<main class="mx-auto max-w-6xl container" data-pagefind-ignore={pagefindIgnore}>
 			<Navbar />
-			<LayoutGrid>
-				<slot name="left" slot="left" />
-				<slot name="right" slot="right" />
-			</LayoutGrid>
+
+			<slot />
+
 			<slot name="404" />
 		</main>
-		<Background />
 	</body>
 </html>

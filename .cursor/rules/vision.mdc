@@ -1,0 +1,35 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Vision
+
+TL;DR Models (tldrmodels.com) is a free, open resource designed to cut through the noise and help users pick the best LLM for their task in under 30 seconds. We are inspired by tools like tldrlegal, tldroptions, and levels.fyi.
+
+We skip the overhyped benchmark leaderboards and focus on real-world vibes—sourcing insights from user comments on subreddits, x.com, and HackerNews, blended with hard data like pricing, token counts, and context windows.
+
+The UX takes inspiration from OpenAI's clean, scannable model pages, delivering a main table of LLMs with metrics that pop: think emojis (⚡ for speed, 🧠 for reasoning), an "awesome-meter" progress bar, and letter grades for tasks like coding or text generation. Our tone is snarky but straightforward—think "pick a damn model already.”
+
+Model pages dive deeper with metrics, user comments, and a GitHub Discussions-powered comment system that loops feedback into our ratings. We evaluate models on speed, reasoning, cost efficiency, task fit, context window, and trustworthiness of insights, ensuring users get the full picture without the fluff.
+
+## Goal
+
+Help visitors decide what model is right for them AS QUICKLY AS POSSIBLE.
+
+
+## UX and Tone Examples
+
+- **Main Table Row**:
+  - `o4-mini | Coding: A- | Text: B+ | ⚡⚡⚡ | 🧠🧠🧠🧠 | $1.10/$4.40 | Awesome: 80%`
+	- A glanceable row with grades, emojis, and pricing to compare models fast.
+- **Model Page Snippet**:
+	- `o4-mini: Small but mighty. Great for coding sprints, but don't ask it to write a novel.`
+	- User comments: 'Saved my butt on a tight deadline!'
+	- Snarky tone with key info upfront, plus real user feedback.
+- **Categories in Action**:
+	- `Speed (⚡⚡⚡ for medium), Reasoning (🧠🧠🧠🧠 for higher)`
+	- Task Fit (e.g., "Text Generation: B+”)
+	- Trustworthiness (weighted by comment source and age).
+
+
