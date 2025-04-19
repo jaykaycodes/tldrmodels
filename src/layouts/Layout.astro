@@ -1,24 +1,24 @@
 ---
-import '../styles/reset.css';
-import '../styles/globals.css';
+import '#/styles/reset.css'
+import '#/styles/globals.css'
 
-import Background from '../components/Background.astro';
-import Navbar from '../components/Navbar.astro';
-import LayoutGrid from '../components/LayoutGrid.astro';
-import { name, themeColor, twitterHandle } from 'spectre:globals';
+import Background from '#/components/Background.astro'
+import LayoutGrid from '#/components/LayoutGrid.astro'
+import Navbar from '#/components/Navbar.astro'
+import constants from '#/constants'
 
 interface Props {
-	title: string;
-	description?: string;
-	image?: ImageMetadata;
-	pagefindIgnore?: boolean;
+	title: string
+	description?: string
+	image?: ImageMetadata
+	pagefindIgnore?: boolean
 	article?: {
-		createdAt: Date;
-		updatedAt?: Date;
-	};
+		createdAt: Date
+		updatedAt?: Date
+	}
 }
 
-const { title, description, image, pagefindIgnore, article } = Astro.props;
+const { title, description, image, pagefindIgnore, article } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
-		<meta name="theme-color" content={themeColor}>
+		<meta name="theme-color" content={constants.THEME_COLOR}>
 
 		<link rel="canonical" href={Astro.site} />
 
@@ -45,7 +45,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		{article && (
 			<meta name="og:type" content="article" />
 			<meta property="article:published_time" content={article.createdAt.toISOString()} />
-			<meta name="author" content={name} />
+			<meta name="author" content={constants.SITE_NAME} />
 		)}
 
 		{article && article.updatedAt && (
@@ -53,10 +53,8 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		)}
 
 		<meta name="twitter:card" content="summary_large_image" />
-		{twitterHandle && (
-			<meta name="twitter:site" content={twitterHandle} />
-			<meta name="twitter:creator" content={twitterHandle} />
-		)}
+		<meta name="twitter:site" content={constants.TWITTER_HANDLE} />
+		<meta name="twitter:creator" content={constants.TWITTER_HANDLE} />
 		<meta name="twitter:title" content={title} />
 		{description && <meta name="twitter:description" content={description} />}
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />

@@ -1,42 +1,9 @@
-![Spectre, a terminal-inspired theme for Astro.](./images/README.png)
+# tl;dr models
 
-Spectre is a terminal-inspired theme for Astro, built using TypeScript and Astro.
+Was it 4o or o4? High or mini? Opus, Sonnet, Haiku?? Don't even get me started on the Llama universe.
 
-## Getting Started
+[tldrmodels.com](https://tldrmodels.com) crawls the web for the latest discussion on models and attempts to give you a simple answer for which model to use on what tasks.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/louisescher/spectre/tree/main)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/louisescher/spectre/tree/main)
+You can even add your own 2-cents to the mix via the [GitHub discussions](https://github.com/jaykaycodes/tldrmodels/discussions).
 
-Alternatively, you can create a new Astro project with Spectre like this:
-
-```bash
-# bun
-bun create astro@latest -- --template louisescher/spectre
-
-# pnpm
-pnpm create astro@latest --template louisescher/spectre
-
-# yarn
-yarn create astro --template louisescher/spectre
-```
-
-## Features
-
-- 100 / 100 Lighthouse performance
-- Responsive for all screen sizes
-- Fully accessible
-- Type-Safe
-- Auto-generated sitemap
-- Markdown / MDX Support
-- Builds on content collections
-- Search powered by [pagefind](https://pagefind.app)
-- Comments powered by [giscus](https://giscus.app) (can be turned off)
-- More!
-
-## Curious?
-
-Head over to [the preview page](https://spectre.louisescher.dev) to find out more!
-
-### Spectre Integration
-
-If you want to know more about how the custom integration that is used in the `astro.config.ts` file works, head over to the [integration's own README](https://github.com/louisescher/spectre/tree/master/package)!
+Best way to get in touch is on [X](https://x.com/jaykaycodes).

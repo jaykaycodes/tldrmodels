@@ -1,31 +1,31 @@
 ---
-import '../../styles/article.css';
+import '#/styles/article.css'
 
-import Card from "../../components/Card.astro";
-import Layout from "../../layouts/Layout.astro";
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import { getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
 
-import type { GetStaticPaths } from "astro";
-import type { CollectionEntry } from "astro:content";
-import { render } from "astro:content";
-import { getCollection } from "astro:content";
-import ImageGlow from "../../components/ImageGlow.astro";
-import Icon from "../../components/Icon.astro";
+import Card from '#/components/Card.astro'
+import Icon from '#/components/Icon.astro'
+import ImageGlow from '#/components/ImageGlow.astro'
+import Layout from '#/layouts/Layout.astro'
 
 interface Props {
-  project: CollectionEntry<'projects'>;
+	project: CollectionEntry<'projects'>
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection('projects');
+	const projects = await getCollection('projects')
 
-  return projects.map((project) => ({ params: { project: project.id }, props: { project } }));
-}) satisfies GetStaticPaths;
+	return projects.map((project) => ({ params: { project: project.id }, props: { project } }))
+}) satisfies GetStaticPaths
 
-console.log(project.data.info);
+console.log(project.data.info)
 
-const { Content } = await render(project);
+const { Content } = await render(project)
 ---
 <Layout
   title={project.data.title}

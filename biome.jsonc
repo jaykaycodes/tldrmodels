@@ -1,0 +1,110 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"formatter": {
+		"attributePosition": "auto",
+		"enabled": true,
+		"formatWithErrors": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 100
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"a11y": "info",
+			"complexity": {
+				"noStaticOnlyClass": "off",
+				"noBannedTypes": "info"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": {
+					"level": "error",
+					"options": {
+						"hooks": [
+							{ "name": "useAtom", "stableResult": [1] },
+							{ "name": "useSetAtom", "stableResult": [0] }
+						]
+					}
+				}
+			},
+			"performance": {
+				"noAccumulatingSpread": "off",
+				"noDelete": "info"
+			},
+			"recommended": true,
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			},
+			"style": {
+				"noParameterAssign": "info",
+				"noNonNullAssertion": "info",
+				"useNodejsImportProtocol": { "fix": "unsafe", "level": "error" },
+				"useTemplate": { "fix": "unsafe", "level": "warn" },
+				"noUnusedTemplateLiteral": { "fix": "unsafe", "level": "warn" }
+			},
+			"suspicious": { "noExplicitAny": "warn" },
+			"nursery": {
+				// "useSortedClasses": {
+				// 	"fix": "safe",
+				// 	"level": "info",
+				// 	"options": {
+				// 		"attributes": ["className"],
+				// 		"functions": ["cva", "cx", "cn"]
+				// 	}
+				// },
+				"useParseIntRadix": "info",
+				"noEnum": "error",
+				"noProcessEnv": "error",
+				"noFloatingPromises": "error"
+			}
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							":URL:",
+							":BLANK_LINE:",
+							":BUN:",
+							":NODE:",
+							":BLANK_LINE:",
+							["react", "react-dom"],
+							":BLANK_LINE:",
+							":PACKAGE_WITH_PROTOCOL:",
+							":PACKAGE:",
+							":BLANK_LINE:",
+							":ALIAS:",
+							":BLANK_LINE:",
+							":PATH:"
+						]
+					}
+				},
+				"useSortedAttributes": "on",
+				"useSortedKeys": "off",
+				"useSortedProperties": "on"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"arrowParentheses": "always",
+			"attributePosition": "auto",
+			"bracketSameLine": false,
+			"bracketSpacing": true,
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
+		}
+	}
+}

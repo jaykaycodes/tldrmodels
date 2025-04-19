@@ -1,17 +1,18 @@
 ---
-import '../styles/article-list.css';
+import '#/styles/article-list.css'
 
-import { getCollection } from "astro:content";
-import Card from "../components/Card.astro";
-import Icon from "../components/Icon.astro";
-import Layout from "../layouts/Layout.astro";
-import { openGraph } from 'spectre:globals';
+import { getCollection } from 'astro:content'
 
-const projects = await getCollection('projects');
+import Card from '#/components/Card.astro'
+import Icon from '#/components/Icon.astro'
+import constants from '#/constants'
+import Layout from '#/layouts/Layout.astro'
+
+const projects = await getCollection('projects')
 ---
 <Layout
-	title={openGraph.projects.title || "Projects"}
-	description={openGraph.projects.description}
+	title={constants.SITE_NAME}
+	description={constants.SITE_DESCRIPTION}
 	pagefindIgnore
 >
   <div class="layout-grid-left" slot="left">
