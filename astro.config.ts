@@ -6,10 +6,13 @@ import sitemap from '@astrojs/sitemap'
 
 import { spectreDark } from './src/ec-theme'
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://tldrmodels.com',
   output: 'static',
+
   integrations: [
     expressiveCode({
       themes: [spectreDark],
@@ -17,4 +20,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

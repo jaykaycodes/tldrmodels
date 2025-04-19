@@ -9,41 +9,40 @@ import type { GetStaticPaths } from 'astro'
 import Card from '#/components/Card.astro'
 import Icon from '#/components/Icon.astro'
 import ImageGlow from '#/components/ImageGlow.astro'
+import { buildGiscusScriptHtml } from '#/giscus'
 import Layout from '#/layouts/Layout.astro'
 
 interface Props {
-	project: CollectionEntry<'projects'>
+	model: CollectionEntry<'models'>
 }
 
-const { project } = Astro.props
+const { model } = Astro.props
 
 export const getStaticPaths = (async () => {
-	const projects = await getCollection('projects')
+	const models = await getCollection('models')
 
-	return projects.map((project) => ({ params: { project: project.id }, props: { project } }))
+	return models.map((model) => ({ params: { model: model.id }, props: { model } }))
 }) satisfies GetStaticPaths
 
-console.log(project.data.info)
-
-const { Content } = await render(project)
+const { Content } = await render(model)
 ---
 <Layout
-  title={project.data.title}
-  description={project.data.description}
-  image={project.data.image}
+  title={model.data.title}
+  description={model.data.description}
+  image={model.data.image}
   article={{
-    createdAt: project.data.date,
+    createdAt: model.data.date,
   }}
 >
   <div class="left" slot="left">
     <Card class="toc-card">
-      <h2 class="no-mt">Info</h2>
+      <h2 class="no-mt">tl;dr</h2>
       <ul class="overview-list">
-        {project.data.info.map((info) => {
+        {model.data.info.map((info) => {
           const Tag = info.link ? 'a' : 'div';
           return (
             <li>
-              <Tag href={info.link} class='project-info-item'>
+              <Tag href={info.link} class='model-info-item'>
                 <Icon type={info.icon.type} name={info.icon.name as any} width={24} height={24} class='glow-icon' />
                 <span>{info.text}</span>
               </Tag>
@@ -56,26 +55,35 @@ const { Content } = await render(project)
   <article slot="right" data-pagefind-body>
     <Card>
       <div class="article-header" id="_top" data-pagefind-ignore>
-        {project.data.image && <ImageGlow quality={100} class="article-image" src={project.data.image} alt={project.data.title} />}
+        {model.data.image && <ImageGlow quality={100} class="article-image" src={model.data.image} alt={model.data.title} />}
         <div class="header">
           <div>
-            <h1 class="no-mt article-h1">{project.data.title}</h1>
+            <h1 class="no-mt article-h1">{model.data.title}</h1>
           </div>
           <div class="article-info">
-            <span>{project.data.date.toLocaleDateString()}</span>
+            <span>{model.data.date.toLocaleDateString()}</span>
           </div>
         </div>
       </div>
       <Content />
       <hr class="end-of-article" />
-      <a href="/projects" class="block-link" data-pagefind-ignore>← Back to projects</a>
+      <a href="/models" class="block-link" data-pagefind-ignore>← All models</a>
+    </Card>
+
+
+    <Card>
+      <div class="comments" data-pagefind-ignore set:html={buildGiscusScriptHtml()} />
     </Card>
   </article>
 </Layout>
 <style>
-  .project-info-item {
+  .model-info-item {
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+
+  .comments * {
+    border-color: #353535 !important;
   }
 </style>
