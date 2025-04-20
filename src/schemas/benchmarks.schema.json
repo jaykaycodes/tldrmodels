@@ -1,0 +1,114 @@
+{
+  "$ref": "#/definitions/Benchmarks",
+  "definitions": {
+    "Benchmarks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the benchmark."
+          },
+          "benchmark_name": {
+            "type": "string",
+            "description": "The common name of the benchmark (e.g., MMLU, HumanEval)."
+          },
+          "benchmark_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Optional URL linking to the benchmark's official site, paper, or leaderboard."
+          },
+          "primary_task_category": {
+            "type": "string",
+            "enum": [
+              "overall",
+              "coding",
+              "writing",
+              "research",
+              "chat",
+              "image_tasks",
+              "translation"
+            ],
+            "description": "The most fitting primary task category evaluated by the benchmark."
+          },
+          "primary_metric_name": {
+            "type": "string",
+            "enum": [
+              "Accuracy",
+              "Pass@1",
+              "Elo Rating",
+              "Accuracy (Pass@1)",
+              "Resolved Rate",
+              "LC Win Rate"
+            ],
+            "description": "The name of the main score metric reported for this benchmark (e.g., Accuracy, Pass@1, Elo Rating)."
+          },
+          "primary_metric_unit": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "%",
+                  "Elo"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The unit of the main score metric (e.g., '%', 'Elo', 'points'). Null if unitless."
+          },
+          "model_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "model_id": {
+                  "type": "string",
+                  "description": "The unique identifier of the AI model evaluated, matching the id field in the static model info schema."
+                },
+                "score": {
+                  "type": "number",
+                  "description": "The numerical score achieved by the model on the benchmark's primary metric."
+                },
+                "score_date": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Optional date (YYYY-MM-DD) indicating when the score was recorded or published."
+                }
+              },
+              "required": [
+                "model_id",
+                "score"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "description": "An array containing performance results for specific models on this benchmark."
+          }
+        },
+        "required": [
+          "id",
+          "benchmark_name",
+          "benchmark_url",
+          "primary_task_category",
+          "primary_metric_name",
+          "primary_metric_unit",
+          "model_results"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

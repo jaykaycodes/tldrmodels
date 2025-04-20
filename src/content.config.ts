@@ -1,7 +1,11 @@
 import { defineCollection, z } from 'astro:content'
 import type { icons as lucideIcons } from '@iconify-json/lucide'
 import type { icons as simpleIcons } from '@iconify-json/simple-icons'
-import { glob } from 'astro/loaders'
+import { file } from 'astro/loaders'
+
+import { BenchmarksSchema } from './schemas/benchmarks.schema'
+import { ModelsSchema } from './schemas/models.schema'
+import { VibesSchema } from './schemas/vibes.schema'
 
 const lucideIconSchema = z.object({
 	type: z.literal('lucide'),
@@ -14,22 +18,18 @@ const simpleIconSchema = z.object({
 })
 
 const models = defineCollection({
-	loader: glob({ base: 'src/content/models', pattern: '**/*.{json}' }),
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			description: z.string(),
-			date: z.coerce.date(),
-			image: image(),
-			link: z.string().url().optional(),
-			info: z.array(
-				z.object({
-					text: z.string(),
-					icon: z.union([lucideIconSchema, simpleIconSchema]),
-					link: z.string().url().optional(),
-				}),
-			),
-		}),
+	loader: file('src/data/models.yaml'),
+	schema: ModelsSchema,
 })
 
-export const collections = { models }
+const vibes = defineCollection({
+	loader: file('src/data/vibes.yaml'),
+	schema: VibesSchema,
+})
+
+const benchmarks = defineCollection({
+	loader: file('src/data/benchmarks.yaml'),
+	schema: BenchmarksSchema,
+})
+
+export const collections = { models, vibes, benchmarks }

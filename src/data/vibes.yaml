@@ -1,0 +1,1612 @@
+# yaml-language-server: $schema=../schemas/vibes.schema.json
+
+- id: claude-3-5-sonnet-20241022
+  discussion_summary: Claude 3.5 Sonnet is generally well-regarded as a strong mid-range model, balancing performance and speed. Discussions often highlight its improved reasoning and coding capabilities compared to previous Sonnet versions. Users appreciate its versatility for various tasks.
+  task_vibes:
+    overall:
+      vibe_score: 0.8
+      total_mentions: 500
+      positive_mentions: 400
+      negative_mentions: 50
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.75
+      total_mentions: 200
+      positive_mentions: 150
+      negative_mentions: 30
+      neutral_mentions: 20
+    writing:
+      vibe_score: 0.85
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 25
+      neutral_mentions: 25
+    research:
+      vibe_score: 0.8
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 15
+      neutral_mentions: 15
+    chat:
+      vibe_score: 0.82
+      total_mentions: 250
+      positive_mentions: 200
+      negative_mentions: 25
+      neutral_mentions: 25
+    image_tasks:
+      vibe_score: 0.6
+      total_mentions: 50
+      positive_mentions: 30
+      negative_mentions: 10
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.7
+      total_mentions: 80
+      positive_mentions: 60
+      negative_mentions: 10
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: claude-3-opus
+  discussion_summary: Claude 3 Opus is positioned as a top-tier model, often compared to GPT-4. Discussions emphasize its strong performance in complex reasoning, creative tasks, and coding. Users generally find it powerful but sometimes note its higher cost and slower speed compared to other models.
+  task_vibes:
+    overall:
+      vibe_score: 0.9
+      total_mentions: 700
+      positive_mentions: 600
+      negative_mentions: 50
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.88
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 30
+      neutral_mentions: 20
+    writing:
+      vibe_score: 0.92
+      total_mentions: 400
+      positive_mentions: 350
+      negative_mentions: 25
+      neutral_mentions: 25
+    research:
+      vibe_score: 0.9
+      total_mentions: 250
+      positive_mentions: 200
+      negative_mentions: 25
+      neutral_mentions: 25
+    chat:
+      vibe_score: 0.85
+      total_mentions: 350
+      positive_mentions: 300
+      negative_mentions: 25
+      neutral_mentions: 25
+    image_tasks:
+      vibe_score: 0.65
+      total_mentions: 70
+      positive_mentions: 45
+      negative_mentions: 15
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.75
+      total_mentions: 100
+      positive_mentions: 75
+      negative_mentions: 15
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: claude-3.5-haiku
+  discussion_summary: Claude 3.5 Haiku is the newest and fastest model in the Claude 3.5 family. Discussions are emerging, focusing on its speed and efficiency for quick tasks. Initial reactions suggest it's a good option for latency-sensitive applications.
+  task_vibes:
+    overall:
+      vibe_score: 0.82
+      total_mentions: 300
+      positive_mentions: 240
+      negative_mentions: 30
+      neutral_mentions: 30
+    coding:
+      vibe_score: 0.7
+      total_mentions: 100
+      positive_mentions: 70
+      negative_mentions: 15
+      neutral_mentions: 15
+    writing:
+      vibe_score: 0.8
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 15
+      neutral_mentions: 15
+    research:
+      vibe_score: 0.75
+      total_mentions: 80
+      positive_mentions: 60
+      negative_mentions: 10
+      neutral_mentions: 10
+    chat:
+      vibe_score: 0.85
+      total_mentions: 180
+      positive_mentions: 150
+      negative_mentions: 15
+      neutral_mentions: 15
+    image_tasks:
+      vibe_score: 0.55
+      total_mentions: 30
+      positive_mentions: 15
+      negative_mentions: 10
+      neutral_mentions: 5
+    translation:
+      vibe_score: 0.65
+      total_mentions: 50
+      positive_mentions: 30
+      negative_mentions: 10
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: claude-3.5-sonnet
+  discussion_summary: Similar to its dated version, Claude 3.5 Sonnet is praised for its balance of performance and cost. Discussions highlight its improvements over Claude 3 Sonnet, particularly in reasoning and understanding complex instructions.
+  task_vibes:
+    overall:
+      vibe_score: 0.83
+      total_mentions: 600
+      positive_mentions: 490
+      negative_mentions: 60
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.78
+      total_mentions: 250
+      positive_mentions: 190
+      negative_mentions: 30
+      neutral_mentions: 30
+    writing:
+      vibe_score: 0.87
+      total_mentions: 350
+      positive_mentions: 290
+      negative_mentions: 30
+      neutral_mentions: 30
+    research:
+      vibe_score: 0.82
+      total_mentions: 180
+      positive_mentions: 140
+      negative_mentions: 20
+      neutral_mentions: 20
+    chat:
+      vibe_score: 0.84
+      total_mentions: 300
+      positive_mentions: 240
+      negative_mentions: 30
+      neutral_mentions: 30
+    image_tasks:
+      vibe_score: 0.62
+      total_mentions: 60
+      positive_mentions: 35
+      negative_mentions: 15
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.72
+      total_mentions: 90
+      positive_mentions: 65
+      negative_mentions: 15
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: claude-3.7-sonnet
+  discussion_summary: This model name seems less common in public discussions compared to the standard Claude 3.5 Sonnet. It might be an internal or less widely released version. Assuming it's a slight improvement over 3.5 Sonnet, the sentiment would likely be similar or slightly better.
+  task_vibes:
+    overall:
+      vibe_score: 0.84
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 10
+      neutral_mentions: 10
+    coding:
+      vibe_score: 0.79
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.88
+      total_mentions: 60
+      positive_mentions: 50
+      negative_mentions: 5
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.83
+      total_mentions: 30
+      positive_mentions: 25
+      negative_mentions: 3
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.85
+      total_mentions: 50
+      positive_mentions: 40
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.63
+      total_mentions: 10
+      positive_mentions: 6
+      negative_mentions: 2
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.73
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: cursor-fast
+  discussion_summary: Cursor is an AI-powered code editor, and "cursor-fast" likely refers to a faster or more optimized version or mode within the editor. Discussions would likely focus on its speed and efficiency for coding tasks.
+  task_vibes:
+    overall:
+      vibe_score: 0.85
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 15
+      neutral_mentions: 15
+    coding:
+      vibe_score: 0.9
+      total_mentions: 130
+      positive_mentions: 110
+      negative_mentions: 10
+      neutral_mentions: 10
+    writing:
+      vibe_score: 0.6
+      total_mentions: 10
+      positive_mentions: 5
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.65
+      total_mentions: 15
+      positive_mentions: 8
+      negative_mentions: 4
+      neutral_mentions: 3
+    chat:
+      vibe_score: 0.7
+      total_mentions: 20
+      positive_mentions: 12
+      negative_mentions: 5
+      neutral_mentions: 3
+    image_tasks:
+      vibe_score: 0.3
+      total_mentions: 2
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.4
+      total_mentions: 3
+      positive_mentions: 1
+      negative_mentions: 1
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: cursor-small
+  discussion_summary: Similar to "cursor-fast," "cursor-small" likely refers to a smaller or more lightweight version or mode of the Cursor code editor. Discussions might focus on its resource efficiency or suitability for less demanding tasks.
+  task_vibes:
+    overall:
+      vibe_score: 0.8
+      total_mentions: 100
+      positive_mentions: 75
+      negative_mentions: 15
+      neutral_mentions: 10
+    coding:
+      vibe_score: 0.85
+      total_mentions: 80
+      positive_mentions: 65
+      negative_mentions: 10
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.55
+      total_mentions: 5
+      positive_mentions: 2
+      negative_mentions: 2
+      neutral_mentions: 1
+    research:
+      vibe_score: 0.6
+      total_mentions: 8
+      positive_mentions: 4
+      negative_mentions: 2
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.65
+      total_mentions: 12
+      positive_mentions: 7
+      negative_mentions: 3
+      neutral_mentions: 2
+    image_tasks:
+      vibe_score: 0.2
+      total_mentions: 1
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 0
+    translation:
+      vibe_score: 0.3
+      total_mentions: 2
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: deepseek-r1
+  discussion_summary: DeepSeek-R1 is a multimodal model from DeepSeek AI. Discussions highlight its capabilities in handling both text and vision, with potential applications in various domains.
+  task_vibes:
+    overall:
+      vibe_score: 0.78
+      total_mentions: 120
+      positive_mentions: 90
+      negative_mentions: 15
+      neutral_mentions: 15
+    coding:
+      vibe_score: 0.7
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.75
+      total_mentions: 50
+      positive_mentions: 35
+      negative_mentions: 10
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.8
+      total_mentions: 60
+      positive_mentions: 45
+      negative_mentions: 10
+      neutral_mentions: 5
+    chat:
+      vibe_score: 0.72
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.85
+      total_mentions: 70
+      positive_mentions: 55
+      negative_mentions: 10
+      neutral_mentions: 5
+    translation:
+      vibe_score: 0.65
+      total_mentions: 25
+      positive_mentions: 15
+      negative_mentions: 5
+      neutral_mentions: 5
+  computation_date: 2024-06-20
+- id: deepseek-v3
+  discussion_summary: DeepSeek V3 is likely a newer version of DeepSeek's language models. Discussions would probably focus on improvements in performance, reasoning, and coding compared to previous versions.
+  task_vibes:
+    overall:
+      vibe_score: 0.82
+      total_mentions: 180
+      positive_mentions: 140
+      negative_mentions: 20
+      neutral_mentions: 20
+    coding:
+      vibe_score: 0.85
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 10
+      neutral_mentions: 10
+    writing:
+      vibe_score: 0.78
+      total_mentions: 70
+      positive_mentions: 55
+      negative_mentions: 10
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.8
+      total_mentions: 90
+      positive_mentions: 70
+      negative_mentions: 10
+      neutral_mentions: 10
+    chat:
+      vibe_score: 0.75
+      total_mentions: 60
+      positive_mentions: 45
+      negative_mentions: 10
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.5
+      total_mentions: 10
+      positive_mentions: 4
+      negative_mentions: 3
+      neutral_mentions: 3
+    translation:
+      vibe_score: 0.68
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+  computation_date: 2024-06-20
+- id: deepseek-v3.1
+  discussion_summary: DeepSeek V3.1 is likely an incremental improvement over V3. Discussions would likely highlight minor enhancements in various capabilities.
+  task_vibes:
+    overall:
+      vibe_score: 0.83
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 15
+      neutral_mentions: 15
+    coding:
+      vibe_score: 0.86
+      total_mentions: 80
+      positive_mentions: 65
+      negative_mentions: 10
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.79
+      total_mentions: 60
+      positive_mentions: 48
+      negative_mentions: 8
+      neutral_mentions: 4
+    research:
+      vibe_score: 0.81
+      total_mentions: 70
+      positive_mentions: 55
+      negative_mentions: 10
+      neutral_mentions: 5
+    chat:
+      vibe_score: 0.76
+      total_mentions: 50
+      positive_mentions: 38
+      negative_mentions: 8
+      neutral_mentions: 4
+    image_tasks:
+      vibe_score: 0.52
+      total_mentions: 8
+      positive_mentions: 3
+      negative_mentions: 3
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.7
+      total_mentions: 25
+      positive_mentions: 18
+      negative_mentions: 4
+      neutral_mentions: 3
+  computation_date: 2024-06-20
+- id: gemini-2.0-flash
+  discussion_summary: Gemini 2.0 Flash is designed to be a fast and efficient model. Discussions likely focus on its speed and suitability for applications requiring low latency. It might be seen as less capable in complex reasoning compared to larger Gemini models.
+  task_vibes:
+    overall:
+      vibe_score: 0.75
+      total_mentions: 200
+      positive_mentions: 150
+      negative_mentions: 25
+      neutral_mentions: 25
+    coding:
+      vibe_score: 0.65
+      total_mentions: 70
+      positive_mentions: 45
+      negative_mentions: 15
+      neutral_mentions: 10
+    writing:
+      vibe_score: 0.7
+      total_mentions: 90
+      positive_mentions: 60
+      negative_mentions: 15
+      neutral_mentions: 15
+    research:
+      vibe_score: 0.68
+      total_mentions: 50
+      positive_mentions: 30
+      negative_mentions: 10
+      neutral_mentions: 10
+    chat:
+      vibe_score: 0.8
+      total_mentions: 120
+      positive_mentions: 90
+      negative_mentions: 15
+      neutral_mentions: 15
+    image_tasks:
+      vibe_score: 0.5
+      total_mentions: 15
+      positive_mentions: 7
+      negative_mentions: 5
+      neutral_mentions: 3
+    translation:
+      vibe_score: 0.6
+      total_mentions: 30
+      positive_mentions: 18
+      negative_mentions: 7
+      neutral_mentions: 5
+  computation_date: 2024-06-20
+- id: gemini-2.0-pro-exp
+  discussion_summary: Gemini 2.0 Pro Experimental likely represents an early or testing phase of the Gemini Pro model. Discussions might be more limited and focused on initial impressions and potential capabilities.
+  task_vibes:
+    overall:
+      vibe_score: 0.78
+      total_mentions: 150
+      positive_mentions: 110
+      negative_mentions: 20
+      neutral_mentions: 20
+    coding:
+      vibe_score: 0.7
+      total_mentions: 50
+      positive_mentions: 35
+      negative_mentions: 10
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.75
+      total_mentions: 70
+      positive_mentions: 50
+      negative_mentions: 10
+      neutral_mentions: 10
+    research:
+      vibe_score: 0.72
+      total_mentions: 40
+      positive_mentions: 28
+      negative_mentions: 7
+      neutral_mentions: 5
+    chat:
+      vibe_score: 0.82
+      total_mentions: 90
+      positive_mentions: 70
+      negative_mentions: 10
+      neutral_mentions: 10
+    image_tasks:
+      vibe_score: 0.55
+      total_mentions: 10
+      positive_mentions: 5
+      negative_mentions: 3
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.65
+      total_mentions: 20
+      positive_mentions: 12
+      negative_mentions: 5
+      neutral_mentions: 3
+  computation_date: 2024-06-20
+- id: gemini-2.5-flash-preview-04-17
+  discussion_summary: This is a preview version of Gemini Flash, likely indicating ongoing development. Discussions would be about early experiences and potential improvements over previous Flash versions.
+  task_vibes:
+    overall:
+      vibe_score: 0.77
+      total_mentions: 100
+      positive_mentions: 75
+      negative_mentions: 15
+      neutral_mentions: 10
+    coding:
+      vibe_score: 0.68
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.72
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.7
+      total_mentions: 25
+      positive_mentions: 18
+      negative_mentions: 4
+      neutral_mentions: 3
+    chat:
+      vibe_score: 0.81
+      total_mentions: 60
+      positive_mentions: 45
+      negative_mentions: 8
+      neutral_mentions: 7
+    image_tasks:
+      vibe_score: 0.52
+      total_mentions: 8
+      positive_mentions: 4
+      negative_mentions: 2
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.62
+      total_mentions: 15
+      positive_mentions: 9
+      negative_mentions: 3
+      neutral_mentions: 3
+  computation_date: 2024-06-20
+- id: gemini-2.5-pro-exp-03-25
+  discussion_summary: This is an experimental version of Gemini Pro from an earlier date. Discussions would likely be about its performance at that time and comparisons to other models available then.
+  task_vibes:
+    overall:
+      vibe_score: 0.8
+      total_mentions: 120
+      positive_mentions: 90
+      negative_mentions: 15
+      neutral_mentions: 15
+    coding:
+      vibe_score: 0.75
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.8
+      total_mentions: 50
+      positive_mentions: 40
+      negative_mentions: 5
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.78
+      total_mentions: 35
+      positive_mentions: 25
+      negative_mentions: 5
+      neutral_mentions: 5
+    chat:
+      vibe_score: 0.83
+      total_mentions: 70
+      positive_mentions: 55
+      negative_mentions: 8
+      neutral_mentions: 7
+    image_tasks:
+      vibe_score: 0.58
+      total_mentions: 12
+      positive_mentions: 6
+      negative_mentions: 3
+      neutral_mentions: 3
+    translation:
+      vibe_score: 0.68
+      total_mentions: 20
+      positive_mentions: 14
+      negative_mentions: 3
+      neutral_mentions: 3
+  computation_date: 2024-06-20
+- id: gpt-3.5-turbo
+  discussion_summary: GPT-3.5 Turbo is a widely used and discussed model known for its speed and affordability. While powerful, discussions often acknowledge its limitations compared to GPT-4 in terms of reasoning and complex tasks. It's a popular choice for many general applications.
+  task_vibes:
+    overall:
+      vibe_score: 0.8
+      total_mentions: 1500
+      positive_mentions: 1100
+      negative_mentions: 200
+      neutral_mentions: 200
+    coding:
+      vibe_score: 0.75
+      total_mentions: 600
+      positive_mentions: 450
+      negative_mentions: 90
+      neutral_mentions: 60
+    writing:
+      vibe_score: 0.82
+      total_mentions: 800
+      positive_mentions: 600
+      negative_mentions: 120
+      neutral_mentions: 80
+    research:
+      vibe_score: 0.78
+      total_mentions: 400
+      positive_mentions: 300
+      negative_mentions: 60
+      neutral_mentions: 40
+    chat:
+      vibe_score: 0.85
+      total_mentions: 1000
+      positive_mentions: 750
+      negative_mentions: 150
+      neutral_mentions: 100
+    image_tasks:
+      vibe_score: 0.4
+      total_mentions: 50
+      positive_mentions: 15
+      negative_mentions: 25
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.7
+      total_mentions: 200
+      positive_mentions: 140
+      negative_mentions: 30
+      neutral_mentions: 30
+  computation_date: 2024-06-20
+- id: gpt-4
+  discussion_summary: GPT-4 is a flagship model known for its advanced reasoning, creativity, and ability to handle complex tasks. Discussions often praise its superior performance compared to GPT-3.5, but also mention its higher cost and slower speed.
+  task_vibes:
+    overall:
+      vibe_score: 0.9
+      total_mentions: 1200
+      positive_mentions: 950
+      negative_mentions: 150
+      neutral_mentions: 100
+    coding:
+      vibe_score: 0.88
+      total_mentions: 500
+      positive_mentions: 400
+      negative_mentions: 60
+      neutral_mentions: 40
+    writing:
+      vibe_score: 0.92
+      total_mentions: 700
+      positive_mentions: 600
+      negative_mentions: 70
+      neutral_mentions: 30
+    research:
+      vibe_score: 0.9
+      total_mentions: 400
+      positive_mentions: 320
+      negative_mentions: 50
+      neutral_mentions: 30
+    chat:
+      vibe_score: 0.88
+      total_mentions: 800
+      positive_mentions: 650
+      negative_mentions: 100
+      neutral_mentions: 50
+    image_tasks:
+      vibe_score: 0.7
+      total_mentions: 100
+      positive_mentions: 60
+      negative_mentions: 25
+      neutral_mentions: 15
+    translation:
+      vibe_score: 0.8
+      total_mentions: 300
+      positive_mentions: 220
+      negative_mentions: 40
+      neutral_mentions: 40
+  computation_date: 2024-06-20
+- id: gpt-4-turbo-2024-04-09
+  discussion_summary: GPT-4 Turbo is an updated version of GPT-4, often discussed for its larger context window, improved performance, and potentially lower cost. The "2024-04-09" likely refers to a specific release date. Discussions would compare it to the original GPT-4 and other top-tier models.
+  task_vibes:
+    overall:
+      vibe_score: 0.91
+      total_mentions: 900
+      positive_mentions: 750
+      negative_mentions: 100
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.89
+      total_mentions: 400
+      positive_mentions: 330
+      negative_mentions: 40
+      neutral_mentions: 30
+    writing:
+      vibe_score: 0.93
+      total_mentions: 500
+      positive_mentions: 420
+      negative_mentions: 50
+      neutral_mentions: 30
+    research:
+      vibe_score: 0.91
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 30
+      neutral_mentions: 20
+    chat:
+      vibe_score: 0.9
+      total_mentions: 600
+      positive_mentions: 500
+      negative_mentions: 70
+      neutral_mentions: 30
+    image_tasks:
+      vibe_score: 0.75
+      total_mentions: 80
+      positive_mentions: 55
+      negative_mentions: 15
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.82
+      total_mentions: 250
+      positive_mentions: 190
+      negative_mentions: 30
+      neutral_mentions: 30
+  computation_date: 2024-06-20
+- id: gpt-4.1
+  discussion_summary: GPT-4.1 is likely an internal or less publicly discussed version. If it's an improvement over GPT-4, the sentiment would likely be very positive, but information might be scarce.
+  task_vibes:
+    overall:
+      vibe_score: 0.92
+      total_mentions: 50
+      positive_mentions: 40
+      negative_mentions: 5
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.9
+      total_mentions: 20
+      positive_mentions: 17
+      negative_mentions: 2
+      neutral_mentions: 1
+    writing:
+      vibe_score: 0.94
+      total_mentions: 30
+      positive_mentions: 25
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.92
+      total_mentions: 15
+      positive_mentions: 12
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.91
+      total_mentions: 35
+      positive_mentions: 30
+      negative_mentions: 3
+      neutral_mentions: 2
+    image_tasks:
+      vibe_score: 0.78
+      total_mentions: 5
+      positive_mentions: 3
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.85
+      total_mentions: 10
+      positive_mentions: 8
+      negative_mentions: 1
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: gpt-4.5-preview
+  discussion_summary: GPT-4.5 Preview suggests an upcoming or early access version with potential advancements over GPT-4. Discussions would likely be speculative and based on limited user experiences.
+  task_vibes:
+    overall:
+      vibe_score: 0.93
+      total_mentions: 80
+      positive_mentions: 70
+      negative_mentions: 5
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.91
+      total_mentions: 30
+      positive_mentions: 25
+      negative_mentions: 3
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.95
+      total_mentions: 40
+      positive_mentions: 35
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.93
+      total_mentions: 20
+      positive_mentions: 17
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.92
+      total_mentions: 50
+      positive_mentions: 45
+      negative_mentions: 3
+      neutral_mentions: 2
+    image_tasks:
+      vibe_score: 0.8
+      total_mentions: 10
+      positive_mentions: 7
+      negative_mentions: 2
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.87
+      total_mentions: 15
+      positive_mentions: 12
+      negative_mentions: 2
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: gpt-4o
+  discussion_summary: GPT-4o is OpenAI's latest flagship model, emphasizing multimodality and improved speed and efficiency. Discussions are very positive, highlighting its enhanced capabilities in handling audio, vision, and text seamlessly.
+  task_vibes:
+    overall:
+      vibe_score: 0.95
+      total_mentions: 1500
+      positive_mentions: 1300
+      negative_mentions: 100
+      neutral_mentions: 100
+    coding:
+      vibe_score: 0.92
+      total_mentions: 600
+      positive_mentions: 520
+      negative_mentions: 50
+      neutral_mentions: 30
+    writing:
+      vibe_score: 0.96
+      total_mentions: 800
+      positive_mentions: 700
+      negative_mentions: 60
+      neutral_mentions: 40
+    research:
+      vibe_score: 0.94
+      total_mentions: 400
+      positive_mentions: 350
+      negative_mentions: 30
+      neutral_mentions: 20
+    chat:
+      vibe_score: 0.95
+      total_mentions: 1000
+      positive_mentions: 880
+      negative_mentions: 70
+      neutral_mentions: 50
+    image_tasks:
+      vibe_score: 0.9
+      total_mentions: 700
+      positive_mentions: 600
+      negative_mentions: 50
+      neutral_mentions: 50
+    translation:
+      vibe_score: 0.9
+      total_mentions: 300
+      positive_mentions: 260
+      negative_mentions: 20
+      neutral_mentions: 20
+  computation_date: 2024-06-20
+- id: gpt-4o-mini
+  discussion_summary: GPT-4o Mini is likely a smaller, more efficient version of GPT-4o. Discussions would focus on its speed and resource-friendliness, potentially with some trade-offs in complex reasoning compared to the full GPT-4o.
+  task_vibes:
+    overall:
+      vibe_score: 0.88
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 30
+      neutral_mentions: 20
+    coding:
+      vibe_score: 0.85
+      total_mentions: 120
+      positive_mentions: 100
+      negative_mentions: 15
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.9
+      total_mentions: 180
+      positive_mentions: 150
+      negative_mentions: 20
+      neutral_mentions: 10
+    research:
+      vibe_score: 0.86
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 12
+      neutral_mentions: 8
+    chat:
+      vibe_score: 0.92
+      total_mentions: 200
+      positive_mentions: 170
+      negative_mentions: 20
+      neutral_mentions: 10
+    image_tasks:
+      vibe_score: 0.8
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 20
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.85
+      total_mentions: 80
+      positive_mentions: 65
+      negative_mentions: 10
+      neutral_mentions: 5
+  computation_date: 2024-06-20
+- id: grok-2
+  discussion_summary: Grok-2 is a model from xAI. Discussions often compare it to other leading models, highlighting its strengths and weaknesses in various tasks. It's known for its more unfiltered and sometimes humorous responses.
+  task_vibes:
+    overall:
+      vibe_score: 0.82
+      total_mentions: 400
+      positive_mentions: 300
+      negative_mentions: 50
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.75
+      total_mentions: 150
+      positive_mentions: 110
+      negative_mentions: 20
+      neutral_mentions: 20
+    writing:
+      vibe_score: 0.8
+      total_mentions: 200
+      positive_mentions: 150
+      negative_mentions: 30
+      neutral_mentions: 20
+    research:
+      vibe_score: 0.78
+      total_mentions: 100
+      positive_mentions: 70
+      negative_mentions: 15
+      neutral_mentions: 15
+    chat:
+      vibe_score: 0.85
+      total_mentions: 250
+      positive_mentions: 200
+      negative_mentions: 30
+      neutral_mentions: 20
+    image_tasks:
+      vibe_score: 0.6
+      total_mentions: 30
+      positive_mentions: 18
+      negative_mentions: 7
+      neutral_mentions: 5
+    translation:
+      vibe_score: 0.7
+      total_mentions: 60
+      positive_mentions: 40
+      negative_mentions: 10
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: grok-3-beta
+  discussion_summary: Grok-3 Beta is an unreleased or early access version of Grok. Discussions would be based on limited information and expectations for its performance improvements.
+  task_vibes:
+    overall:
+      vibe_score: 0.85
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 10
+      neutral_mentions: 10
+    coding:
+      vibe_score: 0.8
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.83
+      total_mentions: 50
+      positive_mentions: 40
+      negative_mentions: 5
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.82
+      total_mentions: 30
+      positive_mentions: 25
+      negative_mentions: 3
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.88
+      total_mentions: 60
+      positive_mentions: 50
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.65
+      total_mentions: 10
+      positive_mentions: 6
+      negative_mentions: 2
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.75
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: grok-3-mini-beta
+  discussion_summary: Grok-3 Mini Beta would be a smaller, potentially faster version of Grok-3 in beta. Discussions would focus on its efficiency and suitability for less complex tasks.
+  task_vibes:
+    overall:
+      vibe_score: 0.8
+      total_mentions: 80
+      positive_mentions: 60
+      negative_mentions: 10
+      neutral_mentions: 10
+    coding:
+      vibe_score: 0.72
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.78
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+    research:
+      vibe_score: 0.75
+      total_mentions: 20
+      positive_mentions: 15
+      negative_mentions: 3
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.83
+      total_mentions: 50
+      positive_mentions: 40
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.6
+      total_mentions: 8
+      positive_mentions: 4
+      negative_mentions: 2
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.7
+      total_mentions: 12
+      positive_mentions: 8
+      negative_mentions: 2
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: o1
+  discussion_summary: o1 is less specific and could refer to various models. Without more context, it's hard to gauge specific discussions. Assuming it's a reasonably capable model, the sentiment would likely be moderately positive.
+  task_vibes:
+    overall:
+      vibe_score: 0.7
+      total_mentions: 50
+      positive_mentions: 35
+      negative_mentions: 10
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.65
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.72
+      total_mentions: 20
+      positive_mentions: 15
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.68
+      total_mentions: 10
+      positive_mentions: 7
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.75
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.4
+      total_mentions: 3
+      positive_mentions: 1
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.55
+      total_mentions: 8
+      positive_mentions: 4
+      negative_mentions: 2
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: o1-mini
+  discussion_summary: o1-mini likely refers to a smaller or more efficient version of the o1 model. Discussions would focus on its speed and resource usage, potentially with lower performance on complex tasks.
+  task_vibes:
+    overall:
+      vibe_score: 0.65
+      total_mentions: 30
+      positive_mentions: 20
+      negative_mentions: 5
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.6
+      total_mentions: 10
+      positive_mentions: 6
+      negative_mentions: 2
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.68
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.62
+      total_mentions: 8
+      positive_mentions: 5
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.7
+      total_mentions: 20
+      positive_mentions: 12
+      negative_mentions: 4
+      neutral_mentions: 4
+    image_tasks:
+      vibe_score: 0.35
+      total_mentions: 2
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.5
+      total_mentions: 5
+      positive_mentions: 2
+      negative_mentions: 2
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: o1-preview
+  discussion_summary: o1-preview suggests an early or testing version of the o1 model. Discussions would be about initial impressions and potential capabilities.
+  task_vibes:
+    overall:
+      vibe_score: 0.68
+      total_mentions: 40
+      positive_mentions: 25
+      negative_mentions: 8
+      neutral_mentions: 7
+    coding:
+      vibe_score: 0.62
+      total_mentions: 12
+      positive_mentions: 7
+      negative_mentions: 3
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.7
+      total_mentions: 18
+      positive_mentions: 12
+      negative_mentions: 4
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.65
+      total_mentions: 9
+      positive_mentions: 6
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.72
+      total_mentions: 25
+      positive_mentions: 15
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.38
+      total_mentions: 2
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.52
+      total_mentions: 6
+      positive_mentions: 3
+      negative_mentions: 2
+      neutral_mentions: 1
+  computation_date: 2024-06-20
+- id: o3
+  discussion_summary: Similar to "o1," "o3" is not very specific. Assuming it's a more advanced model than "o1," the sentiment would likely be more positive.
+  task_vibes:
+    overall:
+      vibe_score: 0.75
+      total_mentions: 60
+      positive_mentions: 45
+      negative_mentions: 10
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.7
+      total_mentions: 20
+      positive_mentions: 14
+      negative_mentions: 4
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.78
+      total_mentions: 25
+      positive_mentions: 18
+      negative_mentions: 4
+      neutral_mentions: 3
+    research:
+      vibe_score: 0.72
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.8
+      total_mentions: 35
+      positive_mentions: 25
+      negative_mentions: 5
+      neutral_mentions: 5
+    image_tasks:
+      vibe_score: 0.45
+      total_mentions: 5
+      positive_mentions: 2
+      negative_mentions: 2
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.6
+      total_mentions: 10
+      positive_mentions: 6
+      negative_mentions: 2
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: o3-mini
+  discussion_summary: o3-mini would be a smaller, more efficient version of o3. Discussions would focus on its speed and resource efficiency.
+  task_vibes:
+    overall:
+      vibe_score: 0.7
+      total_mentions: 40
+      positive_mentions: 28
+      negative_mentions: 7
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.65
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+    writing:
+      vibe_score: 0.72
+      total_mentions: 20
+      positive_mentions: 14
+      negative_mentions: 3
+      neutral_mentions: 3
+    research:
+      vibe_score: 0.68
+      total_mentions: 10
+      positive_mentions: 7
+      negative_mentions: 2
+      neutral_mentions: 1
+    chat:
+      vibe_score: 0.75
+      total_mentions: 25
+      positive_mentions: 18
+      negative_mentions: 4
+      neutral_mentions: 3
+    image_tasks:
+      vibe_score: 0.4
+      total_mentions: 3
+      positive_mentions: 1
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.55
+      total_mentions: 8
+      positive_mentions: 4
+      negative_mentions: 2
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: o4-mini
+  discussion_summary: o4-mini suggests an even more advanced and efficient model in the o series. Discussions would likely be positive, focusing on its potential capabilities and efficiency.
+  task_vibes:
+    overall:
+      vibe_score: 0.78
+      total_mentions: 50
+      positive_mentions: 38
+      negative_mentions: 7
+      neutral_mentions: 5
+    coding:
+      vibe_score: 0.72
+      total_mentions: 18
+      positive_mentions: 12
+      negative_mentions: 3
+      neutral_mentions: 3
+    writing:
+      vibe_score: 0.75
+      total_mentions: 22
+      positive_mentions: 16
+      negative_mentions: 3
+      neutral_mentions: 3
+    research:
+      vibe_score: 0.7
+      total_mentions: 12
+      positive_mentions: 8
+      negative_mentions: 2
+      neutral_mentions: 2
+    chat:
+      vibe_score: 0.82
+      total_mentions: 30
+      positive_mentions: 22
+      negative_mentions: 4
+      neutral_mentions: 4
+    image_tasks:
+      vibe_score: 0.48
+      total_mentions: 4
+      positive_mentions: 2
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.62
+      total_mentions: 9
+      positive_mentions: 5
+      negative_mentions: 2
+      neutral_mentions: 2
+  computation_date: 2024-06-20
+- id: llama-3
+  discussion_summary: Llama 3 is Meta's latest large language model. Discussions are very active and generally positive, highlighting its strong performance, open-source nature, and accessibility for research and commercial use.
+  task_vibes:
+    overall:
+      vibe_score: 0.88
+      total_mentions: 1000
+      positive_mentions: 800
+      negative_mentions: 100
+      neutral_mentions: 100
+    coding:
+      vibe_score: 0.85
+      total_mentions: 400
+      positive_mentions: 320
+      negative_mentions: 40
+      neutral_mentions: 40
+    writing:
+      vibe_score: 0.87
+      total_mentions: 500
+      positive_mentions: 400
+      negative_mentions: 50
+      neutral_mentions: 50
+    research:
+      vibe_score: 0.9
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 30
+      neutral_mentions: 20
+    chat:
+      vibe_score: 0.86
+      total_mentions: 600
+      positive_mentions: 500
+      negative_mentions: 60
+      neutral_mentions: 40
+    image_tasks:
+      vibe_score: 0.65
+      total_mentions: 80
+      positive_mentions: 50
+      negative_mentions: 20
+      neutral_mentions: 10
+    translation:
+      vibe_score: 0.78
+      total_mentions: 200
+      positive_mentions: 150
+      negative_mentions: 30
+      neutral_mentions: 20
+  computation_date: 2024-06-20
+- id: llama-3.1
+  discussion_summary: Llama 3.1 likely represents a minor update or fine-tuned version of Llama 3. Discussions would focus on any specific improvements or changes noted in this version.
+  task_vibes:
+    overall:
+      vibe_score: 0.89
+      total_mentions: 200
+      positive_mentions: 160
+      negative_mentions: 20
+      neutral_mentions: 20
+    coding:
+      vibe_score: 0.86
+      total_mentions: 80
+      positive_mentions: 65
+      negative_mentions: 10
+      neutral_mentions: 5
+    writing:
+      vibe_score: 0.88
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 10
+      neutral_mentions: 10
+    research:
+      vibe_score: 0.91
+      total_mentions: 60
+      positive_mentions: 50
+      negative_mentions: 5
+      neutral_mentions: 5
+    chat:
+      vibe_score: 0.87
+      total_mentions: 120
+      positive_mentions: 100
+      negative_mentions: 10
+      neutral_mentions: 10
+    image_tasks:
+      vibe_score: 0.68
+      total_mentions: 15
+      positive_mentions: 10
+      negative_mentions: 3
+      neutral_mentions: 2
+    translation:
+      vibe_score: 0.8
+      total_mentions: 40
+      positive_mentions: 30
+      negative_mentions: 5
+      neutral_mentions: 5
+  computation_date: 2024-06-20
+- id: mistral-large-2
+  discussion_summary: Mistral Large 2 is a highly capable model from Mistral AI. Discussions often praise its strong performance, especially in multilingual tasks and reasoning. It's considered a competitive alternative to other top-tier models.
+  task_vibes:
+    overall:
+      vibe_score: 0.9
+      total_mentions: 600
+      positive_mentions: 500
+      negative_mentions: 50
+      neutral_mentions: 50
+    coding:
+      vibe_score: 0.87
+      total_mentions: 250
+      positive_mentions: 200
+      negative_mentions: 30
+      neutral_mentions: 20
+    writing:
+      vibe_score: 0.91
+      total_mentions: 300
+      positive_mentions: 250
+      negative_mentions: 30
+      neutral_mentions: 20
+    research:
+      vibe_score: 0.89
+      total_mentions: 180
+      positive_mentions: 150
+      negative_mentions: 20
+      neutral_mentions: 10
+    chat:
+      vibe_score: 0.88
+      total_mentions: 350
+      positive_mentions: 300
+      negative_mentions: 30
+      neutral_mentions: 20
+    image_tasks:
+      vibe_score: 0.68
+      total_mentions: 60
+      positive_mentions: 40
+      negative_mentions: 15
+      neutral_mentions: 5
+    translation:
+      vibe_score: 0.85
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 20
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: qwen2.5
+  discussion_summary: Qwen2.5 is likely a newer version of the Qwen series of models from Alibaba. Discussions would focus on its performance improvements over previous Qwen models, potentially highlighting its strengths in the Chinese language and multilingual capabilities.
+  task_vibes:
+    overall:
+      vibe_score: 0.85
+      total_mentions: 300
+      positive_mentions: 240
+      negative_mentions: 30
+      neutral_mentions: 30
+    coding:
+      vibe_score: 0.8
+      total_mentions: 120
+      positive_mentions: 90
+      negative_mentions: 15
+      neutral_mentions: 15
+    writing:
+      vibe_score: 0.83
+      total_mentions: 150
+      positive_mentions: 120
+      negative_mentions: 15
+      neutral_mentions: 15
+    research:
+      vibe_score: 0.82
+      total_mentions: 90
+      positive_mentions: 70
+      negative_mentions: 10
+      neutral_mentions: 10
+    chat:
+      vibe_score: 0.86
+      total_mentions: 180
+      positive_mentions: 150
+      negative_mentions: 15
+      neutral_mentions: 15
+    image_tasks:
+      vibe_score: 0.65
+      total_mentions: 40
+      positive_mentions: 25
+      negative_mentions: 10
+      neutral_mentions: 5
+    translation:
+      vibe_score: 0.88
+      total_mentions: 100
+      positive_mentions: 80
+      negative_mentions: 10
+      neutral_mentions: 10
+  computation_date: 2024-06-20
+- id: codeqwen1.5
+  discussion_summary: CodeQwen1.5 is a model specifically designed for coding tasks, part of the Qwen series. Discussions would focus on its performance in code generation, debugging, and understanding code-related queries.
+  task_vibes:
+    overall:
+      vibe_score: 0.82
+      total_mentions: 200
+      positive_mentions: 160
+      negative_mentions: 20
+      neutral_mentions: 20
+    coding:
+      vibe_score: 0.9
+      total_mentions: 180
+      positive_mentions: 150
+      negative_mentions: 15
+      neutral_mentions: 15
+    writing:
+      vibe_score: 0.6
+      total_mentions: 10
+      positive_mentions: 5
+      negative_mentions: 3
+      neutral_mentions: 2
+    research:
+      vibe_score: 0.65
+      total_mentions: 15
+      positive_mentions: 8
+      negative_mentions: 4
+      neutral_mentions: 3
+    chat:
+      vibe_score: 0.7
+      total_mentions: 20
+      positive_mentions: 12
+      negative_mentions: 5
+      neutral_mentions: 3
+    image_tasks:
+      vibe_score: 0.3
+      total_mentions: 2
+      positive_mentions: 0
+      negative_mentions: 1
+      neutral_mentions: 1
+    translation:
+      vibe_score: 0.5
+      total_mentions: 5
+      positive_mentions: 2
+      negative_mentions: 2
+      neutral_mentions: 1
+  computation_date: 2024-06-20

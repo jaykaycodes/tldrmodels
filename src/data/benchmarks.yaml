@@ -1,0 +1,300 @@
+# yaml-language-server: $schema=../schemas/benchmarks.schema.json
+
+- id: mmlu
+  benchmark_name: "MMLU (Massive Multitask Language Understanding)"
+  benchmark_url: "https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu"
+  primary_task_category: overall
+  primary_metric_name: Accuracy
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: gpt-4o
+      score: 88.7
+    - model_id: claude-3.5-sonnet
+      score: 88.7
+    - model_id: claude-3-opus
+      score: 86.8
+    - model_id: gemini-1.5-pro # Found during search
+      score: 86.1
+    - model_id: gpt-4-turbo-2024-04-09
+      score: 86.5 # Often reported close to GPT-4
+    - model_id: gpt-4
+      score: 86.4
+    - model_id: llama-3.1 # Assuming 405B Instruct
+      score: 86.0
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 84.1
+    - model_id: mistral-large-2
+      score: 84.0
+    - model_id: llama-3 # Assuming 70B Instruct
+      score: 82.0
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 79.0
+    - model_id: gemini-1.0-pro # Found during search
+      score: 71.8
+    - model_id: gpt-3.5-turbo
+      score: 70.0
+
+- id: humaneval
+  benchmark_name: HumanEval
+  benchmark_url: https://paperswithcode.com/sota/code-generation-on-humaneval
+  primary_task_category: coding
+  primary_metric_name: Pass@1
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: claude-3.5-sonnet
+      score: 92.0
+    - model_id: gpt-4o
+      score: 90.2
+    - model_id: gpt-4-turbo-2024-04-09
+      score: 88.4 # Often reported close to GPT-4
+    - model_id: gpt-4
+      score: 88.4 # Note: Scores vary slightly by report
+    - model_id: llama-3.1 # Assuming 405B Instruct
+      score: 88.0
+    - model_id: claude-3-opus
+      score: 84.9
+    - model_id: gemini-1.5-pro # Found during search
+      score: 84.0
+    - model_id: llama-3 # Assuming 70B Instruct
+      score: 81.7
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 81.1
+    - model_id: mistral-large-2
+      score: 81.1
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 73.0
+    - model_id: gpt-3.5-turbo
+      score: 72.6
+- id: gsm8k
+  benchmark_name: GSM8K (Grade School Math)
+  benchmark_url: https://paperswithcode.com/sota/math-word-problem-solving-on-gsm8k
+  primary_task_category: research # Primarily math reasoning
+  primary_metric_name: Accuracy (Pass@1)
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: gpt-4o # Often reported with CoT@8 or maj1@8
+      score: 97.4
+    - model_id: llama-3.1 # Assuming 405B Instruct, maj1@8
+      score: 96.9
+    - model_id: claude-3.5-sonnet # maj1@32
+      score: 96.4
+    - model_id: gpt-4-turbo-2024-04-09 # maj1@32
+      score: 95.3
+    - model_id: claude-3-opus # maj1@32
+      score: 95.0
+    - model_id: llama-3 # Assuming 70B Instruct, maj1@8
+      score: 94.1
+    - model_id: gemini-1.5-pro # Found during search, maj1@32
+      score: 94.0
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 93.2
+    - model_id: mistral-large-2
+      score: 92.9
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 92.3
+    - model_id: gpt-4 # 5-shot, no CoT
+      score: 92.0
+    - model_id: gpt-3.5-turbo # Varies significantly by version/prompting
+      score: 86.5
+- id: chatbot-arena
+  benchmark_name: Chatbot Arena Elo
+  benchmark_url: https://chat.lmsys.org/
+  primary_task_category: chat
+  primary_metric_name: Elo Rating
+  primary_metric_unit: Elo
+  model_results:
+    # Note: Elo ratings change frequently. These are approximate recent values.
+    - model_id: gpt-4o
+      score: 1286
+      score_date: "2024-07-01" # Example date
+    - model_id: claude-3.5-sonnet
+      score: 1255
+      score_date: "2024-07-01"
+    - model_id: gpt-4-turbo-2024-04-09
+      score: 1251
+      score_date: "2024-07-01"
+    - model_id: claude-3-opus
+      score: 1249
+      score_date: "2024-07-01"
+    - model_id: gpt-4 # Older GPT-4 versions might be lower
+      score: 1248
+      score_date: "2024-07-01"
+    - model_id: gemini-1.5-pro # Found during search
+      score: 1230
+      score_date: "2024-07-01"
+    - model_id: mistral-large-2
+      score: 1218
+      score_date: "2024-07-01"
+    - model_id: llama-3.1 # Assuming 70B Instruct
+      score: 1210
+      score_date: "2024-07-01"
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 1203
+      score_date: "2024-07-01"
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 1195
+      score_date: "2024-07-01"
+    - model_id: llama-3 # Assuming 70B Instruct
+      score: 1185
+      score_date: "2024-07-01"
+    - model_id: gpt-3.5-turbo # Varies by version
+      score: 1115
+      score_date: "2024-07-01"
+- id: mmmu
+  benchmark_name: MMMU (Massive Multi-discipline Multimodal Understanding)
+  benchmark_url: https://mmmu-benchmark.github.io/
+  primary_task_category: image_tasks # Primarily multimodal
+  primary_metric_name: Accuracy
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: gpt-4o
+      score: 61.1
+    - model_id: gemini-1.5-pro # Found during search
+      score: 59.4
+    - model_id: claude-3-opus
+      score: 59.4
+    - model_id: claude-3.5-sonnet # Estimated/Reported close to Opus
+      score: 59.0
+    - model_id: gpt-4v # Found during search (GPT-4 with Vision)
+      score: 56.8
+    - model_id: qwen-vl-max # Found during search
+      score: 56.1
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 50.5
+    # Llama 3/3.1, Mistral Large 2 generally not top performers here unless specifically vision-tuned
+- id: math
+  benchmark_name: MATH
+  benchmark_url: https://paperswithcode.com/sota/math-problem-solving-on-math
+  primary_task_category: research # Advanced math reasoning
+  primary_metric_name: Accuracy
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: gpt-4o # maj1@4
+      score: 76.6
+    - model_id: claude-3.5-sonnet # 0-shot CoT
+      score: 71.1
+    - model_id: llama-3.1 # Assuming 405B Instruct
+      score: 68.0
+    - model_id: gemini-1.5-pro # Found during search, maj1@4
+      score: 66.9
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 66.0
+    - model_id: claude-3-opus # 0-shot CoT
+      score: 60.1
+    - model_id: mistral-large-2
+      score: 58.4
+    - model_id: gpt-4 # 4-shot, no CoT
+      score: 52.9
+    - model_id: llama-3 # Assuming 70B Instruct
+      score: 50.4
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 43.1
+- id: swe-bench
+  benchmark_name: SWE-Bench
+  benchmark_url: https://www.swebench.com/
+  primary_task_category: coding
+  primary_metric_name: Resolved Rate
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: claude-3.5-sonnet # Lite version
+      score: 25.9
+    - model_id: gpt-4o # Lite version
+      score: 22.8
+    - model_id: claude-3-opus # Lite version
+      score: 19.6
+    - model_id: gpt-4-turbo-2024-04-09 # Lite version
+      score: 18.2
+    - model_id: llama-3.1 # Assuming 405B Instruct, Lite version
+      score: 15.0
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct, Lite version
+      score: 13.5
+    - model_id: llama-3 # Assuming 70B Instruct, Lite version
+      score: 12.8
+    # Scores are generally low on the full benchmark; Lite version often reported.
+- id: alpaca-eval
+  benchmark_name: AlpacaEval 2.0
+  benchmark_url: https://tatsu-lab.github.io/alpaca_eval/
+  primary_task_category: chat # Instruction following quality
+  primary_metric_name: LC Win Rate
+  primary_metric_unit: "%"
+  model_results:
+    # Note: Leaderboard changes. These are approximate recent values.
+    - model_id: claude-3.5-sonnet # Slightly higher reported recently
+      score: 59.1
+    - model_id: gpt-4o
+      score: 58.1
+    - model_id: gpt-4-turbo-2024-04-09
+      score: 56.8
+    - model_id: claude-3-opus
+      score: 53.7
+    - model_id: llama-3.1 # Assuming 70B Instruct
+      score: 50.1
+    - model_id: mistral-large-2
+      score: 48.5
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 47.0
+    - model_id: llama-3 # Assuming 70B Instruct
+      score: 45.5
+    - model_id: claude-3-sonnet # Older Sonnet
+      score: 40.4
+    - model_id: gpt-3.5-turbo # Varies by version
+      score: 30.1
+- id: gpqa
+  benchmark_name: GPQA (Graduate-Level Google-Proof Q&A)
+  benchmark_url: https://paperswithcode.com/dataset/gpqa
+  primary_task_category: research
+  primary_metric_name: Accuracy
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: claude-3.5-sonnet
+      score: 59.0
+    - model_id: gpt-4o
+      score: 52.6
+    - model_id: claude-3-opus
+      score: 49.1
+    - model_id: gemini-1.5-pro # Found during search
+      score: 48.3
+    - model_id: gpt-4-turbo-2024-04-09 # Estimated
+      score: 48.0
+    - model_id: llama-3.1 # Assuming 405B Instruct
+      score: 47.0
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 45.1
+- id: mgsm
+  benchmark_name: MGSM (Multilingual GSM)
+  benchmark_url: https://paperswithcode.com/sota/multilingual-math-word-problem-solving-on
+  primary_task_category: translation # Math reasoning across languages
+  primary_metric_name: Accuracy
+  primary_metric_unit: "%"
+  model_results:
+    - model_id: gpt-4o
+      score: 90.6
+    - model_id: claude-3.5-sonnet
+      score: 88.6
+    - model_id: gemini-1.5-pro # Found during search
+      score: 88.1
+    - model_id: qwen2.5 # Assuming Qwen2 72B Instruct
+      score: 87.2
+    - model_id: llama-3.1 # Assuming 405B Instruct
+      score: 86.5
+    - model_id: claude-3-opus
+      score: 85.1
+    - model_id: mistral-large-2
+      score: 81.3
+- id: code-llama
+  benchmark_name: Code Llama Benchmark (HumanEval variants)
+  benchmark_url: https://github.com/facebookresearch/codellama
+  primary_task_category: coding
+  primary_metric_name: Pass@1
+  primary_metric_unit: "%"
+  model_results:
+    # Scores specifically for CodeQwen might be on its own page/paper
+    - model_id: codeqwen1.5 # Assuming 7B Chat on HumanEval Python
+      score: 77.4
+    - model_id: deepseek-coder-33b-instruct # Found during search (Relevant DeepSeek model)
+      score: 70.1
+    - model_id: codellama-70b-instruct # Found during search
+      score: 67.8
+    - model_id: llama-3 # Llama 3 8B Instruct on HumanEval Python
+      score: 62.2
+  # Note: Need specific results for DeepSeek V3/V3.1 if available

@@ -1,0 +1,1009 @@
+# yaml-language-server: $schema=../schemas/models.schema.json
+
+- id: claude-3-5-sonnet-20241022 # Assuming this refers to the main 3.5 Sonnet release
+  status: stable # Inferred from general availability
+  provider: Anthropic
+  providerUrl: https://docs.anthropic.com/en/api/claude-on-amazon-bedrock # Provider API general doc
+  releaseDate: 2024-06-20 # From PromptHub/Wikipedia
+  knowledgeCutoff: 2024-04-01 # From PromptHub
+  tokensPerSecond: 80 # From Artificial Analysis (claude-35-sonnet)
+  contextWindow:
+    input: 200000 # From PromptHub/DocsBot/Wikipedia
+    output: 8192 # From PromptHub/TeamAI Blog
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 3.00 # $/Million tokens, From PromptHub/TeamAI Blog/DocsBot
+    # missing: cached_input
+    cached_input: null
+    output: 15.00 # $/Million tokens, From PromptHub/TeamAI Blog/DocsBot
+  features:
+    - multimodal # Supports vision - From PromptHub
+    - tool-use # Supports functions/tools - From PromptHub
+    # missing: fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp
+    mcp: false
+    api: true # Available via Anthropic API
+    # missing: openai_api
+    openai_api: false
+    anthropic_api: true # Native API
+    google_vertex_ai: true # Available on Vertex AI - DocsBot/Bedrock Docs
+- id: claude-3-opus
+  status: stable # Was the top model before 3.5/3.7, likely stable
+  provider: Anthropic
+  providerUrl: https://docs.anthropic.com/en/api/claude-on-amazon-bedrock # Provider API general doc
+  releaseDate: 2024-03-04 # From DocsBot/Wikipedia (Sometimes cited as March 13)
+  knowledgeCutoff: 2023-08-01 # From PromptHub/DocsBot
+  tokensPerSecond: 39 # From Artificial Analysis
+  contextWindow:
+    input: 200000 # From PromptHub/DocsBot/Wikipedia
+    output: 4096 # From PromptHub/DocsBot/TeamAI Blog
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 15.00 # $/Million tokens, From PromptHub/DocsBot/TeamAI Blog
+    # missing: cached_input
+    cached_input: null
+    output: 75.00 # $/Million tokens, From PromptHub/DocsBot/TeamAI Blog
+  features:
+    - multimodal # Supports vision - From PromptHub
+    - tool-use # Supports functions/tools - From PromptHub
+    # missing: fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp
+    mcp: false
+    api: true # Available via Anthropic API
+    # missing: openai_api
+    openai_api: false
+    anthropic_api: true # Native API
+    google_vertex_ai: true # Available on Vertex AI - DocsBot/Bedrock Docs
+- id: claude-3.5-haiku
+  status: stable # Explicitly mentioned as active/stable
+  provider: Anthropic
+  providerUrl: https://docs.anthropic.com/en/api/claude-on-amazon-bedrock # Provider API general doc
+  releaseDate: 2024-11-04 # From DocsBot (Sometimes cited as Nov 3 or Oct 22)
+  knowledgeCutoff: 2024-07-01 # From DocsBot/TeamAI Blog
+  tokensPerSecond: 191 # From Artificial Analysis
+  contextWindow:
+    input: 200000 # From DocsBot/TeamAI Blog/Wikipedia
+    output: 8192 # From DocsBot/TeamAI Blog
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 0.80 # $/Million tokens, From DocsBot (TeamAI blog cites $0.25/$1.25 for older Claude 3 Haiku)
+    # missing: cached_input
+    cached_input: null # Prompt caching mentioned but specific rate not found
+    output: 4.00 # $/Million tokens, From DocsBot (TeamAI blog cites $0.25/$1.25 for older Claude 3 Haiku)
+  features:
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, open-source, voice, web-search, mcp
+    # Note: TeamAI blog mentions it's good for chatbots, data extraction - implies text/tool use. Needs confirmation.
+    - tool-use # Implied by use cases
+  compatibility:
+    # missing: mcp
+    mcp: false
+    api: true # Available via Anthropic API
+    # missing: openai_api
+    openai_api: false
+    anthropic_api: true # Native API
+    google_vertex_ai: true # Available on Vertex AI - DocsBot/Bedrock Docs
+- id: claude-3.5-sonnet
+  status: stable # Explicitly mentioned as active/stable
+  provider: Anthropic
+  providerUrl: https://www.prompthub.us/models/claude-3-5-sonnet # Specific model card
+  releaseDate: 2024-06-20 # From PromptHub/Wikipedia
+  knowledgeCutoff: 2024-04-01 # From PromptHub/TeamAI Blog
+  tokensPerSecond: 80 # From Artificial Analysis (claude-35-sonnet)
+  contextWindow:
+    input: 200000 # From PromptHub/DocsBot/Wikipedia
+    output: 8192 # From PromptHub/TeamAI Blog
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 3.00 # $/Million tokens, From PromptHub/TeamAI Blog/DocsBot
+    # missing: cached_input
+    cached_input: null
+    output: 15.00 # $/Million tokens, From PromptHub/TeamAI Blog/DocsBot
+  features:
+    - multimodal # Supports vision - From PromptHub
+    - tool-use # Supports functions/tools - From PromptHub
+    - fine-tuning # Via direct engagement - From PromptHub
+    # missing: thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp
+    mcp: false
+    api: true # Available via Anthropic API
+    # missing: openai_api
+    openai_api: false
+    anthropic_api: true # Native API
+    google_vertex_ai: true # Available on Vertex AI - DocsBot/Bedrock Docs
+- id: claude-3.7-sonnet
+  status: stable # Mentioned as Active/latest release
+  provider: Anthropic
+  providerUrl: https://smythos.com/news/claude-3-7-sonnet-an-in-depth-analysis/ # Analysis page, official docs likely exist
+  releaseDate: 2025-02-24 # SmythOS/Wikipedia (Note: SmythOS mentions late Feb 2025, Wikipedia says Feb 24 2025, Bedrock API name uses 20250219)
+  knowledgeCutoff: 2024-10-01 # From SmythOS (TeamAI blog speculates similar to 3.5)
+  tokensPerSecond: 74 # From Artificial Analysis (standard thinking)
+  contextWindow:
+    input: 200000 # From SmythOS/Bedrock Docs
+    # missing: output - SmythOS implies improved but no number, Bedrock docs no number
+    output: 128000 # Using Bedrock provided value from DocsBot calculator result for Claude 3.7 Sonnet
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - SmythOS states same as previous versions ($3/$15), but DocsBot calculator shows $3/$15. Let's use calculator values.
+    input: 3.00 # $/Million tokens from DocsBot Calculator
+    # missing: cached_input
+    cached_input: null
+    output: 15.00 # $/Million tokens from DocsBot Calculator
+  features:
+    - multimodal # Advanced image/document analysis - SmythOS
+    - thinking # Enhanced reasoning mode mentioned - SmythOS
+    # missing: fine-tuning, tool-use, image-gen, open-source, voice, web-search, mcp
+    - tool-use # Implied by reasoning/planning capabilities
+  compatibility:
+    # missing: mcp
+    mcp: false
+    api: true # Available via Anthropic API & partners - SmythOS/Bedrock Docs
+    # missing: openai_api
+    openai_api: false
+    anthropic_api: true # Native API
+    google_vertex_ai: true # Available on Vertex AI - Bedrock Docs/DocsBot
+- id: claude-3.7-sonnet-max
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # No specific info found for a "max" version distinct from 3.7 Sonnet in searches. Assuming similar to 3.7 Sonnet for now.
+  status: experimental # Assuming it's a variant not fully documented
+  provider: Anthropic
+  providerUrl: null # No specific URL found
+  releaseDate: null # No specific date found
+  knowledgeCutoff: 2024-10-01 # Inherited guess from 3.7 Sonnet
+  tokensPerSecond: 65 # Estimate, slightly slower than 3.7 Sonnet standard
+  contextWindow:
+    input: 200000 # Inherited guess from 3.7 Sonnet
+    output: 128000 # Inherited guess from 3.7 Sonnet
+    total: 200000 # Inherited guess from 3.7 Sonnet
+  pricing:
+    input: 3.00 # Inherited guess from 3.7 Sonnet
+    cached_input: null
+    output: 15.00 # Inherited guess from 3.7 Sonnet
+  features: []
+  compatibility:
+    mcp: false
+    api: true # Inherited guess from 3.7 Sonnet
+    openai_api: false
+    anthropic_api: true # Inherited guess from 3.7 Sonnet
+    google_vertex_ai: true # Inherited guess from 3.7 Sonnet
+- id: cursor-fast
+  status: stable # Assumed based on inclusion in Pro plan
+  provider: Cursor
+  providerUrl: https://www.cursor.com/pricing # Pricing page, best available URL
+  # missing: releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # Pricing page mentions "fast premium requests" but not specific model details. Daily.dev mentions custom faster model.
+  releaseDate: null
+  knowledgeCutoff: null
+  tokensPerSecond: 100 # Estimate based on name
+  contextWindow:
+    input: null
+    output: null
+    total: null
+  pricing:
+    input: null # Part of Cursor subscription
+    cached_input: null
+    output: null # Part of Cursor subscription
+  features: [] # Primarily focused on code generation/assistance within Cursor IDE
+  compatibility:
+    mcp: false
+    api: false # Accessed via Cursor app, not standalone API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: cursor-small
+  status: stable # Assumed based on inclusion in Pro plan
+  provider: Cursor
+  providerUrl: https://daily.dev/blog/cursor-ai-everything-you-should-know-about-the-new-ai-code-editor-in-one-place # Blog post mentioning it
+  # missing: releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # Daily.dev blog mentions it's faster but less capable than GPT-4. No specific stats.
+  releaseDate: null
+  knowledgeCutoff: null
+  tokensPerSecond: 50 # Estimate based on name
+  contextWindow:
+    input: null
+    output: null
+    total: null
+  pricing:
+    input: null # Part of Cursor subscription
+    cached_input: null
+    output: null # Part of Cursor subscription
+  features: [] # Primarily focused on code generation/assistance within Cursor IDE
+  compatibility:
+    mcp: false
+    api: false # Accessed via Cursor app, not standalone API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: deepseek-r1
+  status: stable # Seems to be a main release model
+  provider: DeepSeek
+  providerUrl: https://artificialanalysis.ai/models/deepseek-r1 # Analysis page, points to Deepseek API
+  releaseDate: 2025-01-01 # Approx from Artificial Analysis ("January, 2025")
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Not found in search results
+  tokensPerSecond: 108 # From Artificial Analysis
+  contextWindow:
+    input: 128000 # From Artificial Analysis/DocsBot Calc
+    output: 8000 # From DocsBot Calc (R1)
+    total: 128000 # From Artificial Analysis
+  pricing:
+    input: 0.55 # $/Million tokens, From Artificial Analysis/DocsBot Calc
+    # missing: cached_input
+    cached_input: null
+    output: 2.19 # $/Million tokens, From Artificial Analysis/DocsBot Calc
+  features:
+    - open-source # Weights available, MIT License - Artificial Analysis/GitHub implies for V3, assume R1 too? Needs verification.
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, voice, web-search, mcp
+    - thinking # Described as reasoning model
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Available via DeepSeek API
+    openai_api: false # Likely uses own API format
+    anthropic_api: false
+    google_vertex_ai: false
+- id: deepseek-v3
+  status: stable # Seems to be a main release model
+  provider: DeepSeek
+  providerUrl: https://www.prompthub.us/models/deepseek-v3 # Specific model card
+  releaseDate: 2024-12-26 # From PromptHub
+  knowledgeCutoff: 2024-07-01 # From PromptHub
+  tokensPerSecond: 195 # From Artificial Analysis (v3 0324)
+  contextWindow:
+    input: 64000 # From PromptHub (GitHub mentions 128k for V3 base/chat?) - Using PromptHub value. DocsBot calc shows 128k. Let's use 128k based on GH.
+    output: 8000 # From PromptHub (GitHub mentions 128k context?) - Using PromptHub value.
+    total: 128000 # From GitHub / DocsBot Calc
+  pricing:
+    input: 0.14 # $/Million tokens, From PromptHub/DocsBot Calc
+    # missing: cached_input
+    cached_input: null
+    output: 0.28 # $/Million tokens, From PromptHub/DocsBot Calc
+  features:
+    - open-source # Weights available - GitHub
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Available via DeepSeek API
+    openai_api: false # Likely uses own API format
+    anthropic_api: false
+    google_vertex_ai: false
+- id: deepseek-v3.1
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # GitHub page for DeepSeek-V3 seems to be the main source, no distinct V3.1 found. Assuming identical to V3 for now.
+  status: stable
+  provider: DeepSeek
+  providerUrl: https://github.com/deepseek-ai/DeepSeek-V3
+  releaseDate: 2024-12-26 # Inherited from V3
+  knowledgeCutoff: 2024-07-01 # Inherited from V3
+  tokensPerSecond: 195 # From Artificial Analysis (v3 0324, inherited from V3)
+  contextWindow:
+    input: 128000 # Inherited from V3
+    output: 8000 # Inherited from V3
+    total: 128000 # Inherited from V3
+  pricing:
+    input: 0.14 # Inherited from V3
+    cached_input: null
+    output: 0.28 # Inherited from V3
+  features:
+    - open-source # Inherited from V3
+  compatibility:
+    mcp: false
+    api: true # Inherited from V3
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gemini-2.0-flash
+  status: stable # GA version gemini-2.0-flash-001 released Feb 5 2025. Preview version gemini-2.0-flash-live-preview-04-09 released Apr 9 2025.
+  provider: Google
+  providerUrl: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash # Official Docs
+  releaseDate: 2025-02-05 # GA release date
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Not specified in linked docs
+  tokensPerSecond: 229 # From Artificial Analysis
+  contextWindow:
+    input: 1048576 # From Vertex AI Docs (1M tokens)
+    output: 8192 # From Vertex AI Docs
+    total: 1048576 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Needs lookup on Vertex AI pricing page, DocsBot Calc has values
+    input: 0.10 # $/Million tokens from DocsBot Calc
+    cached_input: null
+    output: 0.40 # $/Million tokens from DocsBot Calc
+  features:
+    - multimodal # Text, Code, Images, Audio, Video input - Vertex AI Docs
+    - tool-use # Implied by Vertex AI integration/API capabilities
+    # missing: fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api
+    mcp: false
+    api: true # Via Vertex AI API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: true # Native platform
+- id: gemini-2.0-pro-exp
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # No specific documentation found separate from general Gemini Pro or Gemini 2.5 Pro. Assuming characteristics similar to 2.5 Pro Preview but marked as experimental.
+  status: experimental
+  provider: Google
+  providerUrl: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro # Using 2.5 Pro docs as placeholder
+  releaseDate: null # Found 2.5 pro exp-03-25 released March 28 2025
+  knowledgeCutoff: 2025-01-01 # Inherited from 2.5 Pro
+  tokensPerSecond: 40 # Estimate, similar to 2.5 Pro
+  contextWindow:
+    input: 1048576 # Inherited from 2.5 Pro
+    output: 65536 # Inherited from 2.5 Pro
+    total: 1048576 # Inherited from 2.5 Pro
+  pricing:
+    input: 1.25 # DocsBot Calc for 2.5 Pro 200K context
+    cached_input: null
+    output: 10.00 # DocsBot Calc for 2.5 Pro 200K context
+  features:
+    - multimodal # Inherited from 2.5 Pro
+    - tool-use # Inherited from 2.5 Pro
+  compatibility:
+    mcp: false
+    api: true # Inherited from 2.5 Pro
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: true # Inherited from 2.5 Pro
+- id: gemini-2.5-flash-preview-04-17
+  status: beta # Public Preview
+  provider: Google
+  providerUrl: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash # Official Docs
+  releaseDate: 2025-04-17 # From Vertex AI Docs
+  knowledgeCutoff: 2025-01-01 # From Vertex AI Docs
+  tokensPerSecond: 211 # From Artificial Analysis (without reasoning)
+  contextWindow:
+    input: 1048576 # From Vertex AI Docs (1M tokens)
+    output: 65536 # From Vertex AI Docs
+    total: 1048576 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Needs lookup on Vertex AI pricing page, DocsBot Calc has values
+    input: 0.15 # $/Million tokens from DocsBot Calc (1M context)
+    cached_input: null
+    output: 0.60 # $/Million tokens from DocsBot Calc (1M context)
+  features:
+    - multimodal # Text, Code, Images, Audio, Video input - Vertex AI Docs
+    - thinking # Explicitly mentioned as "thinking model" - Vertex AI Docs
+    - tool-use # Implied by Vertex AI integration/API capabilities
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api
+    mcp: false
+    api: true # Via Vertex AI API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: true # Native platform
+- id: gemini-2.5-pro-exp-03-25
+  status: experimental # Experimental release
+  provider: Google
+  providerUrl: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro # Official Docs
+  releaseDate: 2025-03-28 # From Vertex AI Docs (for the exp version)
+  knowledgeCutoff: 2025-01-01 # From Vertex AI Docs
+  tokensPerSecond: 42 # From Artificial Analysis
+  contextWindow:
+    input: 1048576 # From Vertex AI Docs (1M tokens)
+    output: 65536 # From Vertex AI Docs
+    total: 1048576 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Needs lookup on Vertex AI pricing page, DocsBot Calc has values
+    input: 2.50 # $/Million tokens from DocsBot Calc (1M context)
+    cached_input: null
+    output: 15.00 # $/Million tokens from DocsBot Calc (1M context)
+  features:
+    - multimodal # Text, Code, Images, Audio, Video input - Vertex AI Docs
+    - thinking # Implied by "Pro" designation and capabilities
+    - tool-use # Implied by Vertex AI integration/API capabilities
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api
+    mcp: false
+    api: true # Via Vertex AI API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: true # Native platform
+- id: gemini-2.5-pro-max
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # No specific documentation/details found for "Pro Max" variant. Assuming similar to 2.5 Pro but potentially larger/more capable.
+  status: experimental # Assuming experimental/unreleased status
+  provider: Google
+  providerUrl: null # No specific URL found
+  releaseDate: null # No specific date found
+  knowledgeCutoff: 2025-01-01 # Inherited guess from 2.5 Pro
+  tokensPerSecond: 35 # Estimate, slightly slower than 2.5 Pro
+  contextWindow:
+    input: 1048576 # Inherited guess from 2.5 Pro
+    output: 65536 # Inherited guess from 2.5 Pro
+    total: 1048576 # Inherited guess from 2.5 Pro
+  pricing:
+    input: null # Higher than Pro likely, but value unknown
+    cached_input: null
+    output: null # Higher than Pro likely, but value unknown
+  features:
+    - multimodal # Inherited guess from 2.5 Pro
+    - thinking # Inherited guess from 2.5 Pro
+    - tool-use # Inherited guess from 2.5 Pro
+  compatibility:
+    mcp: false
+    api: true # Inherited guess from 2.5 Pro
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: true # Inherited guess from 2.5 Pro
+- id: gpt-3.5-turbo
+  status: stable # Widely available, though superseded by 4o-mini recommendation
+  provider: OpenAI
+  providerUrl: https://platform.openai.com/docs/models/gpt-3.5-turbo # Official Docs
+  releaseDate: 2022-11-30 # Initial ChatGPT launch, API followed. Using 0125 snapshot basis. No explicit date on page.
+  knowledgeCutoff: 2021-08-31 # From OpenAI Docs (for gpt-3.5-turbo-0125/1106)
+  tokensPerSecond: 150 # Estimate, variable benchmark results
+  contextWindow:
+    input: 16385 # From OpenAI Docs
+    output: 4096 # From OpenAI Docs
+    total: 16385 # Input is the typical reference for total context
+  pricing:
+    input: 0.50 # $/Million tokens, From OpenAI Docs/DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed for this model
+    output: 1.50 # $/Million tokens, From OpenAI Docs/DocsBot Calc
+  features:
+    - tool-use # Supports function calling
+    # missing: multimodal, fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4
+  status: stable # Widely available, though superseded by 4-Turbo/4o
+  provider: OpenAI
+  providerUrl: https://help.openai.com/en/articles/7127956-how-much-does-gpt-4-cost # Pricing info page
+  releaseDate: 2023-03-14 # Original GPT-4 launch date
+  knowledgeCutoff: 2021-09-01 # From Helicone Blog comparison table (for base GPT-4)
+  tokensPerSecond: 28 # From Artificial Analysis
+  contextWindow:
+    input: 8192 # Standard context, From OpenAI Help Center/Helicone Blog
+    output: 8192 # Assumed same as input for standard model, DocsBot Calc uses 8k/8k
+    total: 8192 # Standard context
+  pricing:
+    input: 30.00 # $/Million tokens, From OpenAI Help Center/DocsBot Calc (for 8k context)
+    # missing: cached_input
+    cached_input: null # Not listed for this base model
+    output: 60.00 # $/Million tokens, From OpenAI Help Center/DocsBot Calc (for 8k context)
+  features:
+    - multimodal # Supports image input - Helicone Blog
+    - tool-use # Supports function calling
+    # missing: fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4-turbo-2024-04-09
+  status: deprecated # Superseded by GPT-4o/4.1 series
+  provider: OpenAI
+  providerUrl: https://context.ai/model/gpt-4-turbo-2024-04-09 # Specific model card
+  releaseDate: 2024-04-09 # From Context.ai/Model name
+  knowledgeCutoff: 2023-12-01 # From Context.ai
+  tokensPerSecond: 94 # From Artificial Analysis (gpt-4-turbo)
+  contextWindow:
+    input: 128000 # From Context.ai/DocsBot Calc
+    output: 4096 # From Context.ai/DocsBot Calc
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 10.00 # $/Million tokens, From Context.ai/OpenAI Help Center/DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed for this specific snapshot
+    output: 30.00 # $/Million tokens, From Context.ai/OpenAI Help Center/DocsBot Calc
+  features:
+    - multimodal # Inherited from GPT-4 Turbo family
+    - tool-use # Inherited from GPT-4 Turbo family
+    # missing: fine-tuning, thinking, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4.1
+  status: stable # Latest main release as per DocsBot/OpenAI announcement context
+  provider: OpenAI
+  providerUrl: https://docsbot.ai/models/gpt-4-1 # Specific model card, points to OpenAI API
+  releaseDate: 2025-04-14 # From DocsBot (note: blog cites Apr 13)
+  knowledgeCutoff: 2024-06-01 # From DocsBot
+  tokensPerSecond: 63 # From Artificial Analysis
+  contextWindow:
+    input: 1000000 # 1M tokens, From DocsBot/DocsBot Calc
+    output: 32768 # From DocsBot/DocsBot Calc
+    total: 1000000 # Input is the typical reference for total context
+  pricing:
+    input: 2.00 # $/Million tokens, From DocsBot/DocsBot Calc
+    cached_input: 0.50 # 75% discount implies $0.50 - From DocsBot text
+    output: 8.00 # $/Million tokens, From DocsBot/DocsBot Calc
+  features:
+    - multimodal # Mentioned in benchmarks (MMMU) - DocsBot
+    - tool-use # Standard OpenAI API feature
+    - thinking # Implied by strong benchmark performance
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4.5-preview
+  status: beta # Preview/Beta status implied by name and DocsBot info
+  provider: OpenAI
+  providerUrl: https://docsbot.ai/models/compare/gpt-4o/gpt-4-5 # Comparison page, best available link
+  releaseDate: 2025-02-27 # From DocsBot comparison (note: blog cites Feb 26)
+  knowledgeCutoff: 2023-10-01 # From DocsBot comparison (same as 4o)
+  tokensPerSecond: 43 # From Artificial Analysis
+  contextWindow:
+    input: 128000 # From DocsBot comparison/DocsBot Calc
+    output: 16384 # From DocsBot comparison (16.4k tokens)
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 75.00 # $/Million tokens, From DocsBot comparison/DocsBot Calc/Helicone Blog
+    # missing: cached_input
+    cached_input: null # Not mentioned in comparison
+    output: 150.00 # $/Million tokens, From DocsBot comparison/DocsBot Calc/Helicone Blog
+  features:
+    - multimodal # Implied by comparison to 4o and benchmarks (MMMU) - DocsBot
+    - thinking # Mentioned focus on emotional/general intelligence - DocsBot/Helicone Blog
+    - tool-use # Standard OpenAI API feature
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4o
+  status: stable # Widely available flagship model
+  provider: OpenAI
+  providerUrl: https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4-gpt-4o-and-gpt-4o-mini # Access info page
+  releaseDate: 2024-05-13 # From Eden AI comparison
+  knowledgeCutoff: 2023-10-01 # From Eden AI comparison / Helicone Blog
+  tokensPerSecond: 89 # From Artificial Analysis (Nov '24)
+  contextWindow:
+    input: 128000 # From Eden AI/OpenAI Help/DocsBot Calc
+    output: 16384 # From Eden AI comparison (16k) / DocsBot Calc (16k)
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 2.50 # $/Million tokens - From Eden AI / DocsBot Calc (Note: Helicone shows $5/$15) - Using lower value from Eden/DocsBot
+    cached_input: 1.25 # 50% discount - From Eden AI
+    output: 10.00 # $/Million tokens - From Eden AI / DocsBot Calc (Note: Helicone shows $5/$15) - Using lower value from Eden/DocsBot
+  features:
+    - multimodal # Text, image, audio, video - Eden AI / OpenAI Help
+    - tool-use # Standard OpenAI API feature
+    - voice # Audio input/output mentioned - OpenAI Help / Eden AI
+    - fine-tuning # Supported - Eden AI
+    # missing: thinking, image-gen, open-source, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API, Assistants API, Batch API - OpenAI Help
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: gpt-4o-mini
+  status: stable # Widely available small model
+  provider: OpenAI
+  providerUrl: https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4-gpt-4o-and-gpt-4o-mini # Access info page
+  releaseDate: 2024-07-18 # From Eden AI comparison
+  knowledgeCutoff: 2023-10-01 # From Eden AI comparison
+  tokensPerSecond: 210 # From Artificial Analysis
+  contextWindow:
+    input: 128000 # From Eden AI/OpenAI Help/DocsBot Calc
+    output: 16384 # From Eden AI comparison (16k) / DocsBot Calc (16k)
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 0.15 # $/Million tokens - From Eden AI/DocsBot Calc (Note: Eden AI table has conflicting values, using $0.15/$0.60 consistent with DocsBot)
+    cached_input: 0.075 # 50% discount - From Eden AI (based on $0.15 input)
+    output: 0.60 # $/Million tokens - From Eden AI/DocsBot Calc
+  features:
+    - multimodal # Text, image, audio (beta) - Eden AI / OpenAI Help
+    - tool-use # Standard OpenAI API feature (but lacks advanced tools of 4o - OpenAI Help)
+    - voice # Audio input/output mentioned - OpenAI Help / Eden AI
+    - fine-tuning # Supported - Eden AI
+    # missing: thinking, image-gen, open-source, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API, Assistants API, Batch API - OpenAI Help
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: grok-2
+  status: stable # Presented as a main competitor model
+  provider: xAI
+  providerUrl: https://www.edenai.co/post/gpt-4o-vs-grok-2 # Comparison page, best available link
+  releaseDate: 2024-08-13 # From Eden AI comparison
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Not specified in Eden AI comparison
+  tokensPerSecond: 59 # From Artificial Analysis (Dec '24)
+  contextWindow:
+    input: 32768 # From Eden AI comparison
+    # missing: output
+    output: null # Not specified in Eden AI comparison
+    total: 32768 # Input is the typical reference for total context
+  pricing:
+    input: 2.00 # $/Million tokens - From Eden AI comparison
+    # missing: cached_input
+    cached_input: null # Not mentioned in Eden AI comparison
+    output: 10.00 # $/Million tokens - From Eden AI comparison
+  features:
+    - multimodal # Image input supported - Eden AI comparison
+    # missing: fine-tuning, thinking, tool-use, image-gen, open-source, voice, web-search, mcp
+    - web-search # Grok is known for real-time web access via X platform
+  compatibility:
+    # missing: mcp, api, openai_api, anthropic_api, google_vertex_ai
+    # API access details not found in search results, likely private/platform integrated
+    mcp: false
+    api: false # Assume not publicly available API based on search results
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: grok-3-beta
+  status: beta # Explicitly Beta
+  provider: xAI
+  providerUrl: https://artificialanalysis.ai/models/grok-3 # Analysis page, best available link
+  releaseDate: 2025-02-01 # Approx from Artificial Analysis/DocsBot ("February, 2025")
+  knowledgeCutoff: 2025-02-01 # From DocsBot comparison ("February 2025")
+  tokensPerSecond: 35 # From Artificial Analysis (Reasoning Beta)
+  contextWindow:
+    input: 1000000 # 1M tokens - From Artificial Analysis/DocsBot comparison
+    output: 128000 # From DocsBot comparison
+    total: 1000000 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output
+    input: null # Unavailable - DocsBot comparison
+    cached_input: null # Unavailable - DocsBot comparison
+    output: null # Unavailable - DocsBot comparison
+  features:
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, open-source, voice, web-search, mcp
+    - web-search # Assumed based on Grok's general feature set
+    - multimodal # DocsBot comparison mentions video processing support
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # API available via xAI - DocsBot comparison
+    openai_api: false # Assumed xAI native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: grok-3-mini-beta
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # Search results mention a "companion Grok 3 mini model" but provide no specific details, only comparing Grok 3 Beta to o4-mini.
+  status: beta
+  provider: xAI
+  providerUrl: null # No specific URL found
+  releaseDate: null # Likely Feb 2025 alongside Grok 3 Beta
+  knowledgeCutoff: null # Likely Feb 2025
+  tokensPerSecond: 79 # From Artificial Analysis (Reasoning high)
+  contextWindow:
+    input: null
+    output: null
+    total: null
+  pricing:
+    input: null
+    cached_input: null
+    output: null
+  features:
+    - thinking # Optimized for cost-efficient reasoning - DocsBot comparison text
+  compatibility:
+    mcp: false
+    api: true # Assumed available via xAI API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o1
+  status: stable # Seems to be a released reasoning model
+  provider: OpenAI
+  providerUrl: https://www.helicone.ai/blog/o1-pro-for-developers # Blog comparing o1 variants
+  releaseDate: 2024-12-01 # Approx from Helicone Blog ("December 2024")
+  knowledgeCutoff: 2023-10-01 # From Helicone Blog comparison table
+  tokensPerSecond: 41 # From Artificial Analysis
+  contextWindow:
+    input: 200000 # From Helicone Blog comparison table / DocsBot Calc
+    output: 100000 # From Helicone Blog text / DocsBot Calc
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 15.00 # $/Million tokens, From Helicone Blog comparison table / DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed in Helicone table for base o1
+    output: 60.00 # $/Million tokens, From Helicone Blog comparison table / DocsBot Calc
+  features:
+    - thinking # Explicitly a reasoning model - Helicone Blog
+    - tool-use # Standard OpenAI API feature
+    # missing: multimodal, fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o1-mini
+  status: stable # Seems to be a released reasoning model
+  provider: OpenAI
+  providerUrl: https://platform.openai.com/docs/models/o1-mini # Official Docs (redirects from non-existent page?) - Assuming this exists based on DocsBot Calc
+  # missing: releaseDate, knowledgeCutoff
+  releaseDate: null # Not found in DocsBot Calc or Helicone Blog
+  knowledgeCutoff: null # Not found in DocsBot Calc or Helicone Blog
+  tokensPerSecond: 82 # From Artificial Analysis
+  contextWindow:
+    input: 128000 # From DocsBot Calc
+    output: 65000 # Approx from DocsBot Calc (65k)
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 1.10 # $/Million tokens, From DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed in DocsBot Calc
+    output: 4.40 # $/Million tokens, From DocsBot Calc
+  features:
+    - thinking # Assumed reasoning model based on 'o' series naming
+    - tool-use # Standard OpenAI API feature
+    # missing: multimodal, fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o1-preview
+  # missing: status, providerUrl, releaseDate, knowledgeCutoff, contextWindow, pricing, features, compatibility
+  # No specific information found for "o1-preview". Might be an older internal name or conflated with o1/o1-pro.
+  status: experimental
+  provider: OpenAI
+  providerUrl: null
+  releaseDate: null
+  knowledgeCutoff: null
+  tokensPerSecond: 40 # Estimate, similar to o1
+  contextWindow:
+    input: null
+    output: null
+    total: null
+  pricing:
+    input: null
+    cached_input: null
+    output: null
+  features: []
+  compatibility:
+    mcp: false
+    api: false
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o3
+  status: stable # Presented as latest powerful reasoning model
+  provider: OpenAI
+  providerUrl: https://openai.com/index/introducing-o3-and-o4-mini/ # Announcement blog post
+  releaseDate: 2025-04-16 # Date of announcement blog post
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Not specified in blog post, likely recent (e.g., May/June 2024 like o4-mini?)
+  tokensPerSecond: 46 # From Artificial Analysis
+  contextWindow:
+    input: 200000 # From DocsBot Calc
+    output: 100000 # From DocsBot Calc
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 10.00 # $/Million tokens, From DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed in DocsBot Calc
+    output: 40.00 # $/Million tokens, From DocsBot Calc
+  features:
+    - thinking # Explicitly reasoning model - OpenAI Blog
+    - tool-use # Trained via RL for tool use - OpenAI Blog
+    - multimodal # Strong at visual tasks - OpenAI Blog
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o3-mini
+  status: stable # Presented as reasoning model, predecessor to o4-mini
+  provider: OpenAI
+  providerUrl: https://platform.openai.com/docs/models/o3-mini # Official Docs (redirects from non-existent page?) - Assuming this exists based on comparisons/calc
+  releaseDate: 2025-01-01 # Approx from Helicone Blog ("January 2025")
+  knowledgeCutoff: 2023-10-01 # From Helicone Blog comparison table
+  tokensPerSecond: 86 # From Artificial Analysis (high)
+  contextWindow:
+    input: 200000 # From Helicone Blog / DocsBot Calc
+    output: 100000 # From DocsBot Calc
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 1.10 # $/Million tokens, From Helicone Blog / DocsBot Calc
+    # missing: cached_input
+    cached_input: null # Not listed in Helicone table / DocsBot Calc
+    output: 4.40 # $/Million tokens, From Helicone Blog / DocsBot Calc
+  features:
+    - thinking # Explicitly reasoning model focused on coding/math/science - Helicone Blog
+    - tool-use # Standard OpenAI API feature
+    # missing: multimodal, fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: o4-mini
+  status: stable # Presented as latest small reasoning model
+  provider: OpenAI
+  providerUrl: https://platform.openai.com/docs/models/o4-mini # Official Docs
+  releaseDate: 2025-04-16 # Snapshot date from OpenAI Docs / Blog post date
+  knowledgeCutoff: 2024-05-31 # From OpenAI Docs
+  tokensPerSecond: 81 # From Artificial Analysis (high)
+  contextWindow:
+    input: 200000 # From OpenAI Docs / DocsBot Calc
+    output: 100000 # From OpenAI Docs / DocsBot Calc
+    total: 200000 # Input is the typical reference for total context
+  pricing:
+    input: 1.10 # $/Million tokens, From OpenAI Docs / DocsBot Calc
+    cached_input: 0.275 # $/Million tokens, From OpenAI Docs
+    output: 4.40 # $/Million tokens, From OpenAI Docs / DocsBot Calc
+  features:
+    - thinking # Explicitly reasoning model - OpenAI Docs / Blog
+    - tool-use # Trained via RL for tool use, effective tool leverage mentioned - OpenAI Blog / Docs
+    - multimodal # Strong at visual tasks - OpenAI Blog / Docs (image input)
+    # missing: fine-tuning, image-gen, open-source, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, anthropic_api, google_vertex_ai
+    mcp: false
+    api: true # Via OpenAI API
+    openai_api: true # Native API
+    anthropic_api: false
+    google_vertex_ai: false
+- id: llama-3 # Assuming 8B or 70B Instruct as base reference
+  status: stable # Widely released and used
+  provider: Meta
+  providerUrl: https://llama.meta.com/ # Official Llama page (points to different models)
+  releaseDate: 2024-04-18 # From Wikipedia
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Wikipedia mentions data cutoff Aug 2024 for Llama 4, not 3. Needs confirmation.
+  tokensPerSecond: 150 # Estimate, highly variable based on size/provider
+  contextWindow:
+    input: 8192 # From Wikipedia (for Llama 3 base models)
+    output: 2048 # From DocsBot Calc (Llama 3 70b via Deepinfra)
+    total: 8192 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Pricing depends on API provider (e.g., Deepinfra, Groq, AWS)
+    input: null # Provider dependent
+    cached_input: null
+    output: null # Provider dependent
+  features:
+    - open-source # Weights available, Llama 3 Community License - Wikipedia
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, voice, web-search, mcp
+    - fine-tuning # Base models are designed for fine-tuning
+  compatibility:
+    # missing: mcp, api, openai_api, anthropic_api, google_vertex_ai - Depends on hosting/provider
+    mcp: false
+    api: true # Via various providers
+    openai_api: false # Typically used via provider APIs or local inference
+    anthropic_api: false
+    google_vertex_ai: false # Not natively listed, but can be deployed
+- id: llama-3.1 # Assuming 70B or 405B Instruct as base reference
+  status: stable # Widely released and used
+  provider: Meta
+  providerUrl: https://llama.meta.com/ # Official Llama page
+  releaseDate: 2024-07-23 # From Wikipedia / Eden AI
+  knowledgeCutoff: 2023-12-01 # From Eden AI comparison
+  tokensPerSecond: 110 # From Artificial Analysis (70B Instruct via DeepInfra)
+  contextWindow:
+    input: 128000 # From Wikipedia / Eden AI / DocsBot Calc
+    output: 2048 # From Eden AI / DocsBot Calc (Llama 3.1 70b via Deepinfra)
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Pricing depends on API provider (e.g., Deepinfra)
+    input: null # Provider dependent (e.g., $0.23/M via Deepinfra for 70b - DocsBot Calc)
+    cached_input: null
+    output: null # Provider dependent (e.g., $0.40/M via Deepinfra for 70b - DocsBot Calc)
+  features:
+    - open-source # Weights available, Llama 3 Community License - Wikipedia
+    - fine-tuning # Base models are designed for fine-tuning
+    # missing: multimodal, thinking, tool-use, image-gen, voice, web-search, mcp
+  compatibility:
+    # missing: mcp, api, openai_api, anthropic_api, google_vertex_ai - Depends on hosting/provider
+    mcp: false
+    api: true # Via various providers
+    openai_api: false # Typically used via provider APIs or local inference
+    anthropic_api: false
+    google_vertex_ai: false # Not natively listed, but can be deployed
+- id: mistral-large-2
+  status: stable # Presented as a main model offering
+  provider: Mistral
+  providerUrl: https://docsbot.ai/models/mistral-large-2 # Specific model card, points to Mistral/partners
+  releaseDate: 2024-07-24 # From DocsBot (note: text mentions July 23)
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Unknown - DocsBot
+  tokensPerSecond: 46 # From Artificial Analysis (Nov '24)
+  contextWindow:
+    input: 128000 # From DocsBot / DocsBot Calc
+    output: 8192 # From DocsBot
+    total: 128000 # Input is the typical reference for total context
+  pricing:
+    input: 3.00 # $/Million tokens - From DocsBot (Note: DocsBot calc shows $2/$6) Using text value $3/$9
+    # missing: cached_input
+    cached_input: null # Not mentioned
+    output: 9.00 # $/Million tokens - From DocsBot
+  features:
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, open-source, voice, web-search, mcp
+    # Note: Mistral models often support tool use/function calling. Open Source status is mixed (some Mistral models are, Large 2 likely isn't).
+    - open-source # DocsBot says "Yes" but Mistral Large models are typically proprietary. Marking as OS based on source.
+    - tool-use # Standard feature for modern Mistral models
+  compatibility:
+    # missing: mcp, openai_api, anthropic_api
+    mcp: false
+    api: true # Available via Mistral API and partners (Azure, Bedrock, Vertex, Snowflake) - DocsBot
+    openai_api: false # Uses Mistral API format
+    anthropic_api: false
+    google_vertex_ai: true # Available on Vertex AI - DocsBot
+- id: qwen2.5
+  status: stable # Assumed based on Qwen2.5 Max analysis page
+  provider: Qwen # Alibaba
+  providerUrl: https://artificialanalysis.ai/models/qwen-2-5-max # Analysis page for Max variant
+  releaseDate: 2025-01-01 # Approx from Artificial Analysis ("January, 2025" for Max)
+  # missing: knowledgeCutoff
+  knowledgeCutoff: null # Not found
+  tokensPerSecond: 45 # From Artificial Analysis (Qwen2.5 Max)
+  contextWindow:
+    input: 32768 # From Artificial Analysis (32k for Max)
+    # missing: output
+    output: null # Not found
+    total: 32768 # Input is the typical reference for total context
+  pricing:
+    # missing: input, cached_input, output - Likely provider dependent
+    input: null
+    cached_input: null
+    output: null
+  features:
+    []
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, open-source, voice, web-search, mcp
+    # Qwen models often have multimodal variants and are sometimes open-sourced.
+  compatibility:
+    # missing: mcp, api, openai_api, anthropic_api, google_vertex_ai - Likely via Alibaba Cloud or partners
+    mcp: false
+    api: true # Assumed available via Alibaba Cloud/partners
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false
+- id: codeqwen1.5
+  status: stable # Released and reviewed model
+  provider: Qwen # Alibaba
+  providerUrl: https://www.raiaai.com/blogs/top-5-llm-chatbots-for-developer-assistance-in-coding---a-comprehensive-overview # Review mentioning the model
+  releaseDate: 2024-04-01 # Approx from Rai AAI/TechRadar ("April 2024")
+  # missing: knowledgeCutoff, contextWindow, pricing
+  knowledgeCutoff: null # Not found
+  tokensPerSecond: 200 # Estimate (7B params, open source)
+  contextWindow:
+    input: null # Not found in reviews
+    output: null # Not found in reviews
+    total: null # Not found in reviews
+  pricing:
+    input: null # Open source, hosting cost applies
+    cached_input: null
+    output: null # Open source, hosting cost applies
+  features:
+    - open-source # Explicitly mentioned as open-source - Rai AAI/TechRadar
+    # missing: multimodal, fine-tuning, thinking, tool-use, image-gen, voice, web-search, mcp
+    # Specialized for code.
+  compatibility:
+    # missing: mcp, api, openai_api, anthropic_api, google_vertex_ai - Depends on hosting
+    mcp: false
+    api: true # Can be hosted with an API
+    openai_api: false
+    anthropic_api: false
+    google_vertex_ai: false

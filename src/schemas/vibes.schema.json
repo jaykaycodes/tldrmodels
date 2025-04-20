@@ -1,0 +1,86 @@
+{
+  "$ref": "#/definitions/Vibes",
+  "definitions": {
+    "Vibes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the AI model, matching the id field in the static model info schema."
+          },
+          "discussion_summary": {
+            "type": "string",
+            "description": "A few paragraphs summarizing the overall community discussion about the model."
+          },
+          "task_vibes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "vibe_score": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "The computed vibe score (0 to 1) for the task category."
+                },
+                "total_mentions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "The total number of mentions related to the task category."
+                },
+                "positive_mentions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "The number of positive mentions for the task category."
+                },
+                "negative_mentions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "The number of negative mentions for the task category."
+                },
+                "neutral_mentions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "The number of neutral mentions for the task category."
+                }
+              },
+              "required": [
+                "vibe_score",
+                "total_mentions",
+                "positive_mentions",
+                "negative_mentions",
+                "neutral_mentions"
+              ],
+              "additionalProperties": false
+            },
+            "propertyNames": {
+              "enum": [
+                "overall",
+                "coding",
+                "writing",
+                "research",
+                "chat",
+                "image_tasks",
+                "translation"
+              ]
+            }
+          },
+          "computation_date": {
+            "type": "string",
+            "description": "The date when the vibe data was computed (YYYY-MM-DD)."
+          }
+        },
+        "required": [
+          "id",
+          "discussion_summary",
+          "task_vibes",
+          "computation_date"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

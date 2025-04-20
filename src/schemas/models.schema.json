@@ -1,0 +1,242 @@
+{
+  "$ref": "#/definitions/Models",
+  "definitions": {
+    "Models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the model."
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "beta",
+                  "stable",
+                  "experimental",
+                  "deprecated"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The current status of the model."
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "OpenAI",
+              "Anthropic",
+              "Google",
+              "Meta",
+              "Cohere",
+              "DeepSeek",
+              "Cursor",
+              "xAI",
+              "Mistral",
+              "Qwen",
+              "Other",
+              "Open Source"
+            ],
+            "description": "The company or organization providing the model."
+          },
+          "providerUrl": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "URL of the model documentation on the provider's website."
+          },
+          "releaseDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The release date of the model (YYYY-MM-DD or empty/null if unknown)."
+          },
+          "knowledgeCutoff": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The knowledge cutoff date of the model (YYYY-MM-DD or empty/null if unknown)."
+          },
+          "contextWindow": {
+            "type": "object",
+            "properties": {
+              "input": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "output": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "total": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "input",
+              "output",
+              "total"
+            ],
+            "additionalProperties": false,
+            "description": "Token limits for input and output."
+          },
+          "pricing": {
+            "type": "object",
+            "properties": {
+              "input": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "cached_input": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "output": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "input",
+              "cached_input",
+              "output"
+            ],
+            "additionalProperties": false,
+            "description": "Pricing details per million tokens."
+          },
+          "tokensPerSecond": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The number of tokens per second the model can process."
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "multimodal",
+                "fine-tuning",
+                "thinking",
+                "tool-use",
+                "image-gen",
+                "open-source",
+                "voice",
+                "web-search",
+                "mcp"
+              ]
+            },
+            "description": "List of features supported by the model."
+          },
+          "compatibility": {
+            "type": "object",
+            "properties": {
+              "mcp": {
+                "type": "boolean"
+              },
+              "api": {
+                "type": "boolean"
+              },
+              "openai_api": {
+                "type": "boolean"
+              },
+              "anthropic_api": {
+                "type": "boolean"
+              },
+              "google_vertex_ai": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "mcp",
+              "api",
+              "openai_api",
+              "anthropic_api",
+              "google_vertex_ai"
+            ],
+            "additionalProperties": false,
+            "description": "Compatibility with various APIs and protocols."
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "provider",
+          "providerUrl",
+          "releaseDate",
+          "knowledgeCutoff",
+          "contextWindow",
+          "pricing",
+          "tokensPerSecond",
+          "features",
+          "compatibility"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
