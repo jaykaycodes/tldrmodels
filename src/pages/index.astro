@@ -1,7 +1,131 @@
 ---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+
 import Layout from '#/layouts/Layout.astro'
 
-// const [models] = await Promise.all([getCollection('models')])
+import type { TaskCategory } from '../schemas/benchmarks.schema'
+import {
+	calculateGrade,
+	calculateReasoningScore,
+	formatModelName,
+	formatPrice,
+	getBadgeClass,
+	getSpeedRating,
+	getVibeScore,
+} from '../utils/calculations'
+
+const [models, benchmarks, vibes] = await Promise.all([
+	getCollection('models'),
+	getCollection('benchmarks'),
+	getCollection('vibes'),
+])
+
+// Define our task categories
+const taskCategories: TaskCategory[] = ['coding', 'writing', 'research', 'chat']
+
+// Define model result interface
+interface ModelResult {
+	id: string
+	name: string
+	provider: string
+	score: number
+	vibeScore: number
+	overallVibeScore: number
+	speed: number
+	reasoning: number
+	price: string
+}
+
+// Function to get top models for a given task category
+function getTopModelsForTask(task: TaskCategory): ModelResult[] {
+	// First try to find benchmarks for this task
+	const taskBenchmarks = benchmarks.filter((b) => b.data.primary_task_category === task)
+
+	// If we have benchmark data, use it to rank models
+	if (taskBenchmarks.length > 0) {
+		// Get all model results from relevant benchmarks
+		const allResults = taskBenchmarks.flatMap((benchmark) =>
+			benchmark.data.model_results.map((result) => ({
+				modelId: result.model_id,
+				score: result.score,
+				benchmarkId: benchmark.data.id,
+			})),
+		)
+
+		// Group by model and calculate average score
+		const modelScores: Record<string, { totalScore: number; count: number }> = {}
+		allResults.forEach((result) => {
+			if (!modelScores[result.modelId]) {
+				modelScores[result.modelId] = { totalScore: 0, count: 0 }
+			}
+			modelScores[result.modelId].totalScore += result.score
+			modelScores[result.modelId].count += 1
+		})
+
+		// Calculate average score and sort
+		const rankedModels = Object.entries(modelScores)
+			.map(([modelId, scores]) => ({
+				modelId,
+				avgScore: scores.totalScore / scores.count,
+			}))
+			.sort((a, b) => b.avgScore - a.avgScore)
+			.slice(0, 5)
+
+		// Get full model data
+		return rankedModels.map((ranked) => {
+			const model = models.find((m) => m.data.id === ranked.modelId) as CollectionEntry<'models'> | undefined
+			const modelVibes = vibes.find((v) => v.data.id === ranked.modelId) as CollectionEntry<'vibes'> | undefined
+
+			return {
+				id: ranked.modelId,
+				name: formatModelName(ranked.modelId),
+				provider: model?.data.provider || 'Unknown',
+				score: ranked.avgScore,
+				// Vibe scores for various aspects
+				vibeScore: getVibeScore(modelVibes, task),
+				overallVibeScore: getVibeScore(modelVibes, 'overall'),
+				// Performance indicators
+				speed: model?.data.tokensPerSecond || 0,
+				reasoning: calculateReasoningScore(model),
+				price: formatPrice(model),
+			}
+		})
+	}
+
+	// Fallback to vibes data if no benchmarks
+	else {
+		const modelVibesForTask = vibes
+			.filter((v) => v.data.task_vibes[task])
+			.sort((a, b) => b.data.task_vibes[task].vibe_score - a.data.task_vibes[task].vibe_score)
+			.slice(0, 5)
+
+		return modelVibesForTask.map((v) => {
+			const model = models.find((m) => m.data.id === v.data.id) as CollectionEntry<'models'> | undefined
+
+			return {
+				id: v.data.id,
+				name: formatModelName(v.data.id),
+				provider: model?.data.provider || 'Unknown',
+				score: v.data.task_vibes[task].vibe_score * 100,
+				vibeScore: v.data.task_vibes[task].vibe_score,
+				overallVibeScore: getVibeScore({ data: v.data }, 'overall'),
+				speed: model?.data.tokensPerSecond || 0,
+				reasoning: calculateReasoningScore(model),
+				price: formatPrice(model),
+			}
+		})
+	}
+}
+
+// Get top models for each task
+const topModelsByTask: Record<TaskCategory, ModelResult[]> = {} as Record<TaskCategory, ModelResult[]>
+taskCategories.forEach((task) => {
+	topModelsByTask[task] = getTopModelsForTask(task)
+})
+
+// Start with coding as default active tab
+let activeTask: TaskCategory = 'coding'
 ---
 
 <Layout>
@@ -19,115 +143,81 @@ import Layout from '#/layouts/Layout.astro'
 
 	<!-- Task Category Tabs -->
 	<div class="tabs tabs-boxed justify-center mb-6">
-		<a class="tab tab-active">Coding</a>
-		<a class="tab">Writing</a>
-		<a class="tab">Research</a>
-		<a class="tab">Chat</a>
+		{
+			taskCategories.map((task) => (
+				<a class={`tab ${task === activeTask ? 'tab-active' : ''}`} data-task={task}>
+					{task.charAt(0).toUpperCase() + task.slice(1)}
+				</a>
+			))
+		}
 	</div>
 
-	<!-- Models Table -->
-	<div class="overflow-x-auto rounded-box shadow-md">
-		<table class="table table-zebra w-full">
-			<thead>
-				<tr>
-					<th class="w-12">#</th>
-					<th>Model</th>
-					<th class="hidden md:table-cell">Overall</th>
-					<th>Task Rating</th>
-					<th class="hidden md:table-cell">Speed</th>
-					<th class="hidden lg:table-cell">Reasoning</th>
-					<th class="hidden lg:table-cell">Price</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Example rows - these would be populated from actual data -->
-				<tr>
-					<td>1</td>
-					<td><a href="/models/claude-3-opus" class="font-medium">Claude 3 Opus</a></td>
-					<td class="hidden md:table-cell"><span class="badge badge-primary">A+</span></td>
-					<td><span class="badge badge-success">A</span></td>
-					<td class="hidden md:table-cell">
-						<div class="flex">
-							<span>⚡⚡</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">
-						<div class="flex">
-							<span>🧠🧠🧠🧠</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">$15/$45</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href="/models/gpt-4o" class="font-medium">GPT-4o</a></td>
-					<td class="hidden md:table-cell"><span class="badge badge-primary">A</span></td>
-					<td><span class="badge badge-success">A-</span></td>
-					<td class="hidden md:table-cell">
-						<div class="flex">
-							<span>⚡⚡⚡</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">
-						<div class="flex">
-							<span>🧠🧠🧠🧠</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">$5/$15</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td><a href="/models/claude-3-sonnet" class="font-medium">Claude 3 Sonnet</a></td>
-					<td class="hidden md:table-cell"><span class="badge badge-secondary">B+</span></td>
-					<td><span class="badge badge-success">A-</span></td>
-					<td class="hidden md:table-cell">
-						<div class="flex">
-							<span>⚡⚡⚡</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">
-						<div class="flex">
-							<span>🧠🧠🧠</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">$3/$15</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td><a href="/models/gemini-pro" class="font-medium">Gemini Pro</a></td>
-					<td class="hidden md:table-cell"><span class="badge badge-secondary">B</span></td>
-					<td><span class="badge badge-secondary">B</span></td>
-					<td class="hidden md:table-cell">
-						<div class="flex">
-							<span>⚡⚡⚡</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">
-						<div class="flex">
-							<span>🧠🧠</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">$2/$10</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td><a href="/models/llama-3" class="font-medium">Llama 3</a></td>
-					<td class="hidden md:table-cell"><span class="badge badge-accent">C+</span></td>
-					<td><span class="badge badge-secondary">B-</span></td>
-					<td class="hidden md:table-cell">
-						<div class="flex">
-							<span>⚡⚡⚡⚡</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">
-						<div class="flex">
-							<span>🧠🧠</span>
-						</div>
-					</td>
-					<td class="hidden lg:table-cell">Free</td>
-				</tr>
-			</tbody>
-		</table>
+	<!-- Main Content Area -->
+	<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+		<!-- Models Table (2/3 width on large screens) -->
+		<div class="lg:col-span-2 overflow-x-auto rounded-box shadow-md">
+			{
+				taskCategories.map((task) => (
+					<div class={`task-table ${task === activeTask ? 'block' : 'hidden'}`} data-task-table={task}>
+						<table class="table table-zebra w-full">
+							<thead>
+								<tr>
+									<th class="w-12">#</th>
+									<th>Model</th>
+									<th class="hidden md:table-cell">Overall</th>
+									<th>{task.charAt(0).toUpperCase() + task.slice(1)}</th>
+									<th class="hidden md:table-cell">Speed</th>
+									<th class="hidden lg:table-cell">Reasoning</th>
+									<th class="hidden lg:table-cell">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								{topModelsByTask[task].map((model, index) => (
+									<tr>
+										<td>{index + 1}</td>
+										<td>
+											<a href={`/models/${model.id}`} class="font-medium">
+												{model.name}
+											</a>
+										</td>
+										<td class="hidden md:table-cell">
+											<span class="badge badge-primary">{calculateGrade(model.overallVibeScore * 100)}</span>
+										</td>
+										<td>
+											<span class={`badge ${getBadgeClass(model.vibeScore)}`}>
+												{calculateGrade(model.vibeScore * 100)}
+											</span>
+										</td>
+										<td class="hidden md:table-cell">
+											<div class="flex">
+												{/* Speed rating: 1-5 lightning bolts based on tokensPerSecond */}
+												<span>{'⚡'.repeat(getSpeedRating(model.speed))}</span>
+											</div>
+										</td>
+										<td class="hidden lg:table-cell">
+											<div class="flex">
+												{/* Reasoning rating: 1-5 brain emojis */}
+												<span>{'🧠'.repeat(model.reasoning)}</span>
+											</div>
+										</td>
+										<td class="hidden lg:table-cell">{model.price}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				))
+			}
+		</div>
+
+		<!-- Chart Space (1/3 width on large screens) -->
+		<div class="rounded-box shadow-md bg-base-200 p-4 flex items-center justify-center min-h-[300px]">
+			<div class="text-center text-base-content/70">
+				<p class="text-xl font-semibold mb-2">Model Performance Chart</p>
+				<p>Visualizing top models for each category</p>
+				<!-- Placeholder for chart - will be implemented later -->
+			</div>
+		</div>
 	</div>
 
 	<!-- Awesome Meter Legend -->
@@ -138,3 +228,32 @@ import Layout from '#/layouts/Layout.astro'
 		<div class="badge badge-lg">$Input/$Output per million tokens</div>
 	</div>
 </Layout>
+
+<script>
+	// Simple client-side tab switching
+	document.addEventListener('DOMContentLoaded', () => {
+		const tabs = document.querySelectorAll('.tab')
+
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => {
+				// Update active tab
+				tabs.forEach((t) => t.classList.remove('tab-active'))
+				tab.classList.add('tab-active')
+
+				// Show correct table
+				const taskName = tab.getAttribute('data-task')
+				const tables = document.querySelectorAll('[data-task-table]')
+
+				tables.forEach((table) => {
+					if (table.getAttribute('data-task-table') === taskName) {
+						table.classList.remove('hidden')
+						table.classList.add('block')
+					} else {
+						table.classList.add('hidden')
+						table.classList.remove('block')
+					}
+				})
+			})
+		})
+	})
+</script>

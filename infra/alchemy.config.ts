@@ -1,4 +1,5 @@
 import alchemy from 'alchemy'
+import { D1Database } from 'alchemy/cloudflare'
 import 'alchemy/os'
 
 const stage = Bun.env.ALCHEMY_STAGE ?? (Bun.env.NODE_ENV === 'production' ? 'prod' : 'dev')
@@ -11,6 +12,11 @@ const app = await alchemy('tldrmodels', {
 	phase,
 	quiet,
 	password,
+})
+
+const database = await D1Database('tldrmodels-db', {
+	name: 'tldrmodels-db',
+	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 })
 
 // export const [authStore, storage] = await Promise.all([

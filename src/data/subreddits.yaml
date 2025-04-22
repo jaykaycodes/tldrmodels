@@ -1,0 +1,183 @@
+# list of subreddits to scrape
+
+- id: r/artificial
+  description: Covers all AI topics, including LLMs, with over 167k members discussing advancements and applications.
+  categories:
+    - overall
+    - research
+- id: r/ArtificialInteligence
+  description: Trending AI updates, over 88k members, good for general LLM news and discussions.
+  categories:
+    - overall
+    - research
+- id: r/machinelearningnews
+  description: Daily AI/ML news, highly moderated, over 75k members, includes LLM developments.
+  categories:
+    - overall
+    - research
+- id: r/GPT3
+  description: Discusses text generation and LLMs, suitable for beginners exploring AI applications.
+  categories:
+    - overall
+    - writing
+    - chat
+- id: r/OpenAI
+  description: Focuses on OpenAI’s work, including ChatGPT and DALL·E, with 2.2M+ members.
+  categories:
+    - overall
+    - writing
+    - research
+    - chat
+    - translation
+    - image_tasks
+- id: r/MachineLearning
+  description: Technical posts on ML, including LLMs, over 2.5M members, for advanced discussions.
+  categories:
+    - overall
+    - research
+- id: r/learnmachinelearning
+  description: Beginner-friendly for ML and AI, includes LLM discussions, great for learning.
+  categories:
+    - overall
+    - research
+- id: r/singularity
+  description: Covers AI and futurism, might include LLM topics, lower engagement but speculative.
+  categories:
+    - overall
+- id: r/Oobabooga
+  description: For locally run LLMs, niche but active for technical users experimenting with models.
+  categories:
+    - overall
+- id: r/LocalLLaMA
+  description: Discusses Meta's Llama model, active for LLM enthusiasts and developers.
+  categories:
+    - overall
+- id: r/LLMDevs
+  description: For developers using LLM and NLP tools, smaller but focused on technical applications.
+  categories:
+    - overall
+    - coding
+- id: r/LLMs
+  description: Hub for LLM analysis, good for software devs and AI enthusiasts.
+  categories:
+    - overall
+    - coding
+- id: r/LanguageTechnology
+  description: Focuses on NLP, includes LLMs, for technical discussions on language processing.
+  categories:
+    - overall
+    - translation
+- id: r/cscareerquestions
+  description: Career advice in CS, includes discussions on AI coding tools like LLMs.
+  categories:
+    - coding
+    - overall
+- id: r/LearnProgramming
+  description: Beginner programming, often discusses LLM coding assistance, very active.
+  categories:
+    - coding
+    - overall
+- id: r/webdev
+  description: Web development, includes AI tools for coding, over 1.6M members.
+  categories:
+    - coding
+    - overall
+- id: r/Frontend
+  description: Frontend coding tips, might include LLM assistance for development tasks.
+  categories:
+    - coding
+    - overall
+- id: r/Automate
+  description: Automation with AI, includes LLM coding projects, over 125k members.
+  categories:
+    - coding
+    - overall
+- id: r/NovelAI
+  description: AI for storytelling, popular for creative writing with LLMs, active community.
+  categories:
+    - writing
+    - overall
+- id: r/ChatGPT
+  description: Discusses ChatGPT for writing and chat, very active with 8.9M+ members.
+  categories:
+    - writing
+    - chat
+    - overall
+- id: r/GenerativeAI
+  description: Covers generative models, includes writing and image applications of LLMs.
+  categories:
+    - writing
+    - image_tasks
+    - overall
+- id: r/WritingWithAI
+  description: Explores machine-based writing, ethical considerations, active for AI writing tools.
+  categories:
+    - writing
+    - overall
+- id: r/MLQuestions
+  description: For ML problems, includes LLM research queries, active support for researchers.
+  categories:
+    - research
+    - overall
+- id: r/Chatbots
+  description: Focuses on LLMs like ChatGPT, Bing Chat, etc., active for conversational AI.
+  categories:
+    - chat
+    - overall
+- id: r/AIAssisted
+  description: Shares tips on AI tools, including chatbots, for personal/professional use.
+  categories:
+    - chat
+    - overall
+- id: r/SubSimulatorGPT2
+  description: AI chatbots simulating subreddits, niche but relevant for LLM chat applications.
+  categories:
+    - chat
+    - overall
+- id: r/StableDiffusion
+  description: AI image generation, often uses LLMs for prompts, very active community.
+  categories:
+    - image_tasks
+    - overall
+- id: r/Midjourney
+  description: Focuses on Midjourney AI, includes LLM-driven image creation, 1.1M+ members.
+  categories:
+    - image_tasks
+    - overall
+- id: r/AIArt
+  description: Shares AI-generated art, might include LLM discussions for image creation.
+  categories:
+    - image_tasks
+    - overall
+- id: r/machinetranslation
+  description: Dedicated to AI translation, includes LLM tools, smaller but focused community.
+  categories:
+    - translation
+    - overall
+- id: r/TranslationStudies
+  description: Discusses translation, includes AI tools, professional focus on language.
+  categories:
+    - translation
+    - overall
+- id: r/AIethics
+  description: Ethics in AI, includes LLMs, discusses societal impacts, 3.2k+ members.
+  categories:
+    - overall
+- id: r/AIpolicy
+  description: AI policy discussions, includes LLMs, focuses on regulations and governance.
+  categories:
+    - overall
+- id: r/datascience
+  description: Data science community, often involves LLMs for analysis and modeling.
+  categories:
+    - overall
+    - research
+- id: r/robotics
+  description: Robotics discussions, might include LLMs for NLP or control systems.
+  categories:
+    - overall
+- id: r/computervision
+  description: Computer vision, might include multimodal LLMs for image processing.
+  categories:
+    - overall
+    - image_tasks
