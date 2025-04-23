@@ -8,6 +8,6 @@ export default defineConfig({
 	dbCredentials: {
 		accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 		databaseId: Bun.env.CLOUDFLARE_DATABASE_ID,
-		token: Bun.env.CLOUDFLARE_D1_TOKEN,
+		token: Bun.env.CLOUDFLARE_API_TOKEN,
 	},
 })

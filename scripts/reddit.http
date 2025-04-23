@@ -1,0 +1,27 @@
+@baseUrl=https://oauth.reddit.com
+@headers = Authorization: Bearer {{auth.response.body.access_token}}\nUser-Agent: tldrmodels/1.0
+@subreddit = Cursor
+
+# @name auth
+POST https://www.reddit.com/api/v1/access_token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{$dotenv REDDIT_CLIENT_ID}}:{{$dotenv REDDIT_CLIENT_SECRET}}
+
+grant_type=client_credentials
+
+### Get next page of new posts
+# @name posts
+GET {{baseUrl}}/r/{{subreddit}}/new
+	?show=all
+  &limit=100
+	&after={{after}}
+{{headers}}
+
+# update variables
+@after = {{posts.response.body.data.after}}
+@postId = {{posts.response.body.data.children[0].data.id}}
+
+### Get comments for a post
+# @name comments
+GET {{baseUrl}}/r/{{subreddit}}/comments/{{postId}}
+{{headers}}

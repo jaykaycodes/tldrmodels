@@ -3,6 +3,7 @@
 	"include": [".astro/types.d.ts", "./**/*"],
 	"compilerOptions": {
 		"types": ["@cloudflare/workers-types", "@types/bun"],
+		"plugins": [{ "name": "typescript-plugin-yaml" }],
 
 		"baseUrl": ".",
 		"paths": {

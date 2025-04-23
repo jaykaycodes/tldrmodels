@@ -70,7 +70,7 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[json]": {
-		"editor.defaultFormatter": "biomejs.biome"
+		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
