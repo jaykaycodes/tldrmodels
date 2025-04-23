@@ -1,10 +1,7 @@
 import { env } from 'cloudflare:workers'
-import { sql } from 'drizzle-orm'
 import { z } from 'zod'
 
-import { Discussion, type DiscussionInsert } from '#infra/models'
-
-import { db, safeChunkInsertValues } from './utils'
+import { type DiscussionInsert } from '#infra/models'
 
 export const ParamsSchema = z.object({
 	type: z.literal('reddit'),
@@ -12,29 +9,35 @@ export const ParamsSchema = z.object({
 	sort: z.enum(['new', 'top']),
 })
 
-export async function scrapeDiscussions(subreddit: string, sort: 'new' | 'top') {
+export async function fetchDiscussions(subreddit: string, sort: 'new' | 'top'): Promise<DiscussionInsert[]> {
 	const accessToken = await getAccessToken()
 	console.log(`Crawling ${subreddit} by ${sort}`)
 
 	let after: string | null = null
-	const newIds: number[] = []
+	const discussions: DiscussionInsert[] = []
 
 	for (let i = 0; i < 10; i++) {
 		console.log('Scraping page', i)
-		const results = await scrapePage(subreddit, sort, accessToken, after)
 
-		if (results?.newIds) newIds.push(...results.newIds)
+		try {
+			const results = await fetchPage(subreddit, sort, accessToken, after)
 
-		if (!results?.nextAfter) {
-			console.log(`No more posts to scrape for ${subreddit}, exiting...`)
+			if (results?.discussions) discussions.push(...results.discussions)
+
+			if (!results?.nextAfter) {
+				console.log(`No more posts to scrape for ${subreddit}, exiting...`)
+				break
+			}
+
+			after = results.nextAfter
+			await new Promise((resolve) => setTimeout(resolve, 5_000))
+		} catch (error) {
+			console.error(error)
 			break
 		}
-
-		after = results.nextAfter
-		await new Promise((resolve) => setTimeout(resolve, 5_000))
 	}
 
-	return newIds
+	return discussions
 }
 
 const BASE_URL = 'https://oauth.reddit.com'
@@ -60,13 +63,13 @@ const ListingSchema = z.object({
 })
 
 /** Crawls a single page of a subreddit */
-async function scrapePage(
+async function fetchPage(
 	_subreddit: string,
 	sort: 'new' | 'top',
 	accessToken: string,
 	after?: string | null,
 ): Promise<{
-	newIds: number[]
+	discussions: DiscussionInsert[]
 	nextAfter: string | null
 } | null> {
 	const subreddit = _subreddit.trim().toLowerCase()
@@ -96,7 +99,7 @@ async function scrapePage(
 	}
 
 	console.log(`Fetched ${data.children.length} posts`)
-	const toUpsert: DiscussionInsert[] = data.children.map((child) => ({
+	const discussions: DiscussionInsert[] = data.children.map((child) => ({
 		source: 'reddit',
 		subsource: subreddit,
 		title: child.data.title,
@@ -109,34 +112,7 @@ async function scrapePage(
 		raw: child.data,
 	}))
 
-	if (toUpsert.length > 0) {
-		const chunks = safeChunkInsertValues(Discussion, toUpsert)
-		const newIds = (await db.batch(
-			chunks.map(
-				(chunk) =>
-					db
-						.insert(Discussion)
-						.values(chunk)
-						.onConflictDoUpdate({
-							target: [Discussion.source, Discussion.sourceId],
-							set: {
-								score: sql`excluded.score`,
-								numComments: sql`excluded.num_comments`,
-								updatedAt: new Date(),
-							},
-						})
-						.returning({ id: Discussion.id }),
-				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-			) as any,
-		)) as { id: number }[][]
-
-		return {
-			newIds: newIds.flatMap((r) => r.map((r) => r.id)),
-			nextAfter: data.after,
-		}
-	}
-
-	return null
+	return { nextAfter: data.after, discussions }
 }
 
 async function getAccessToken() {

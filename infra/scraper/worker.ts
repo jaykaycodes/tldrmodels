@@ -1,12 +1,51 @@
 import { env } from 'cloudflare:workers'
+import { sql } from 'drizzle-orm'
 import { z } from 'zod'
+
+import { Discussion, type DiscussionInsert } from '#infra/models'
 
 import * as hn from './hn'
 import * as reddit from './reddit'
-import { subreddits } from './utils'
+import { db, safeChunkInsertValues, subreddits } from './utils'
 
 const ParamsSchema = z.discriminatedUnion('type', [reddit.ParamsSchema, hn.ParamsSchema])
 type Params = z.infer<typeof ParamsSchema>
+
+async function runScrape(params: Params) {
+	let discussions: DiscussionInsert[] = []
+	if (params.type === 'reddit') {
+		discussions = await reddit.fetchDiscussions(params.subreddit, params.sort)
+	} else if (params.type === 'hn') {
+		discussions = await hn.fetchDiscussions()
+	} else {
+		throw new Error(`Unknown scraper type: ${params}`)
+	}
+
+	if (discussions.length === 0) {
+		console.log('No discussions scraped, exiting')
+		return
+	}
+	const chunks = safeChunkInsertValues(Discussion, discussions)
+	await db.batch(
+		chunks.map(
+			(chunk) =>
+				db
+					.insert(Discussion)
+					.values(chunk)
+					.onConflictDoUpdate({
+						target: [Discussion.source, Discussion.sourceId],
+						set: {
+							score: sql`excluded.score`,
+							numComments: sql`excluded.num_comments`,
+							updatedAt: new Date(),
+						},
+					}),
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		) as any,
+	)
+
+	console.log(`Upserted ${discussions.length} discussions`)
+}
 
 export default {
 	async fetch(request: Request) {
@@ -18,9 +57,9 @@ export default {
 				const [_, _r, subreddit, sort] = url.pathname.split('/')
 				if (!subreddit || !sort) return Response.json({ error: 'Invalid path' }, { status: 400 })
 
-				res = await reddit.scrapeDiscussions(subreddit, sort as 'new')
+				res = await runScrape({ type: 'reddit', subreddit, sort: sort as 'new' })
 			} else if (url.pathname === '/hn') {
-				const params = hn.ParamsSchema.parse(url.searchParams)
+				res = await runScrape({ type: 'hn' })
 			} else {
 				return Response.json({ error: 'Unknown request' }, { status: 400 })
 			}
@@ -37,20 +76,8 @@ export default {
 		if (rest.length > 0) console.error('Expected exactly one message, only queueing the first one', event.messages)
 
 		const params = ParamsSchema.parse(message.body)
-
-		let res: unknown
-		if (params.type === 'reddit') {
-			res = await reddit.scrapeDiscussions(params.subreddit, params.sort)
-		} else if (params.type === 'hn') {
-			res = await hn.scrapeDiscussions()
-		} else {
-			// @ts-expect-error
-			throw new Error(`Unknown scraper type: ${params.type}`)
-		}
-
+		await runScrape(params)
 		message.ack()
-
-		return res
 	},
 	async scheduled() {
 		await env.QUEUE.sendBatch([

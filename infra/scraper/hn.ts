@@ -1,4 +1,4 @@
-import { desc, eq, sql } from 'drizzle-orm'
+import { desc, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
 import { Discussion, type DiscussionInsert } from '#infra/models'
@@ -29,7 +29,7 @@ const SearchResultsSchema = z.object({
 })
 
 /** Fetches recent hn discussions, backstopped to either our most recently scraped discussion or 24 hours ago */
-export async function scrapeDiscussions() {
+export async function fetchDiscussions(): Promise<DiscussionInsert[]> {
 	let to = Date.now() / 1000
 	let from = to - 24 * 60 * 60
 
@@ -59,7 +59,7 @@ export async function scrapeDiscussions() {
 
 	console.log(`Found ${hits.length} discussions`)
 
-	const insertions: DiscussionInsert[] = hits.map((hit) => ({
+	const discussions: DiscussionInsert[] = hits.map((hit) => ({
 		source: 'hackernews',
 		sourceId: hit.objectID,
 		title: hit.title,
@@ -72,27 +72,29 @@ export async function scrapeDiscussions() {
 		scrapedAt: new Date(),
 	}))
 
-	if (insertions.length === 0) {
-		console.log('No new discussions found. Exiting...')
-		return
-	}
+	return discussions
 
-	const res = await db
-		.insert(Discussion)
-		.values(insertions)
-		.onConflictDoUpdate({
-			target: [Discussion.source, Discussion.sourceId],
-			set: {
-				title: sql`excluded.title`,
-				text: sql`excluded.story_text`,
-				score: sql`excluded.score`,
-				numComments: sql`excluded.num_comments`,
-				raw: sql`excluded.raw`,
-			},
-		})
-		.returning({ id: Discussion.id })
+	// if (discussions.length === 0) {
+	// 	console.log('No new discussions found. Exiting...')
+	// 	return
+	// }
 
-	console.log(`Inserted ${res.length} discussions (${insertions.length - res.length} already existed)`)
+	// const res = await db
+	// 	.insert(Discussion)
+	// 	.values(discussions)
+	// 	.onConflictDoUpdate({
+	// 		target: [Discussion.source, Discussion.sourceId],
+	// 		set: {
+	// 			title: sql`excluded.title`,
+	// 			text: sql`excluded.story_text`,
+	// 			score: sql`excluded.score`,
+	// 			numComments: sql`excluded.num_comments`,
+	// 			raw: sql`excluded.raw`,
+	// 		},
+	// 	})
+	// 	.returning({ id: Discussion.id })
+
+	// console.log(`Inserted ${res.length} discussions (${discussions.length - res.length} already existed)`)
 }
 
 const BaseCommentSchema = z.object({
