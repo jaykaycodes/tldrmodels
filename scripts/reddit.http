@@ -23,5 +23,6 @@ GET {{baseUrl}}/r/{{subreddit}}/new
 
 ### Get comments for a post
 # @name comments
-GET {{baseUrl}}/r/{{subreddit}}/comments/{{postId}}
+GET {{baseUrl}}/comments/{{postId}}
 {{headers}}
+

@@ -3,12 +3,16 @@ import type { AnyTable, InferInsertModel } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/d1'
 import type { TableConfig } from 'drizzle-orm/sqlite-core'
 import { getTableColumns } from 'drizzle-orm/utils'
+import { z } from 'zod'
+import { errorMap } from 'zod-validation-error'
 
-import type { ScraperEnv } from '../alchemy.run'
+import type { WorkersEnv } from './alchemy.run'
+
+z.setErrorMap(errorMap)
 
 declare module 'cloudflare:workers' {
 	namespace Cloudflare {
-		export interface Env extends ScraperEnv {}
+		export interface Env extends WorkersEnv {}
 	}
 }
 
@@ -72,4 +76,24 @@ export function safeChunkInsertValues<T extends AnyTable<TableConfig>>(table: T,
 		chunkArgsLength += args.length
 	}
 	return chunks
+}
+
+export function cosineSimilarity(a: number[], b: number[]): number {
+	let productSum = 0
+	let normSumA = 0
+	let normSumB = 0
+
+	const maxLen = Math.max(a.length, b.length)
+
+	// The vector that is smaller is effectively padded with 0s
+	for (let i = 0; i < maxLen; i++) {
+		const aVal = a[i] ?? 0
+		const bVal = b[i] ?? 0
+
+		productSum += aVal * bVal
+		normSumA += aVal * aVal
+		normSumB += bVal * bVal
+	}
+
+	return productSum / (Math.sqrt(normSumA) * Math.sqrt(normSumB))
 }

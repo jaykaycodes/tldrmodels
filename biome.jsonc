@@ -24,10 +24,7 @@
 				"useExhaustiveDependencies": {
 					"level": "error",
 					"options": {
-						"hooks": [
-							{ "name": "useAtom", "stableResult": [1] },
-							{ "name": "useSetAtom", "stableResult": [0] }
-						]
+						"hooks": [{ "name": "useAtom", "stableResult": [1] }, { "name": "useSetAtom", "stableResult": [0] }]
 					}
 				}
 			},
@@ -58,7 +55,6 @@
 				// },
 				"useParseIntRadix": "info",
 				"noEnum": "error",
-				"noProcessEnv": "error",
 				"noFloatingPromises": "error"
 			}
 		}

@@ -1,13 +1,19 @@
 import { desc, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
-import { Discussion, type DiscussionInsert } from '#infra/models'
+import { Discussion, type DiscussionInsert } from '../models'
+import { db } from '../utils'
 
-import { db } from './utils'
-
-export const ParamsSchema = z.object({
-	type: z.literal('hn'),
+export const DiscussionsParamsSchema = z.object({
+	source: z.literal('hackernews'),
 })
+export type DiscussionsParams = z.infer<typeof DiscussionsParamsSchema>
+
+export const CommentsParamsSchema = z.object({
+	source: z.literal('hackernews'),
+	discussionId: z.number(),
+})
+export type CommentsParams = z.infer<typeof CommentsParamsSchema>
 
 const HN_API_URL = 'https://hn.algolia.com/api/v1'
 const SEARCH_URL = `${HN_API_URL}/search_by_date`

@@ -10,28 +10,30 @@
 		"preview": "bunx --bun astro preview",
 		"astro": "bunx --bun astro",
 		"infra": "bun run --bun --env-file=../.env --cwd infra alchemy.run.ts",
-		"db": "bun run --bun --env-file=../.env --cwd infra drizzle-kit"
+		"db": "bun run --env-file=../.env --cwd infra drizzle-kit"
 	},
 	"dependencies": {
 		"@astrojs/alpinejs": "^0.4.6",
 		"@astrojs/mdx": "^4.2.4",
 		"@astrojs/sitemap": "^3.3.0",
+		"@google/genai": "^0.9.0",
 		"@iconify-json/lucide": "^1.2.37",
 		"@iconify-json/simple-icons": "^1.2.33",
 		"@iconify/utils": "^2.3.0",
 		"@tailwindcss/vite": "^4.1.4",
 		"@types/alpinejs": "^3.13.11",
-		"alchemy": "^0.12.2",
+		"alchemy": "^0.12.6",
 		"alpinejs": "^3.14.9",
 		"astro": "^5.7.4",
 		"cloudflare": "^4.2.0",
 		"drizzle-orm": "^0.42.0",
 		"tailwindcss": "^4.1.4",
-		"zod": "^3.24.3"
+		"zod": "^3.24.3",
+		"zod-validation-error": "^3.4.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0-beta.1",
-		"@cloudflare/workers-types": "^4.20250420.0",
+		"@cloudflare/workers-types": "^4.20250423.0",
 		"@types/bun": "^1.2.10",
 		"@types/js-yaml": "^4.0.9",
 		"daisyui": "^5.0.27",
