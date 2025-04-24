@@ -6,13 +6,13 @@ import { getTableColumns } from 'drizzle-orm/utils'
 import { z } from 'zod'
 import { errorMap } from 'zod-validation-error'
 
-import type { WorkersEnv } from './alchemy.run'
+import type { ScraperEnv } from './alchemy.run'
 
 z.setErrorMap(errorMap)
 
 declare module 'cloudflare:workers' {
 	namespace Cloudflare {
-		export interface Env extends WorkersEnv {}
+		export interface Env extends ScraperEnv {}
 	}
 }
 
@@ -20,31 +20,22 @@ export const db = drizzle(env.DB)
 
 export const subreddits = [
 	'artificial',
-	'ArtificialIntelligence',
-	'machinelearningnews',
 	'MachineLearning',
 	'OpenAI',
-	'languagemodels',
-	'LargeLanguageModels',
-	'AI',
-	'NLP',
-	'DeepLearning',
 	'singularity',
 	'agi',
 	'LLMDevs',
-	'LLMs',
 	'Cursor',
+	'Windsurf',
+	'ChatGPTCoding',
 	'AutoGPT',
-	'NovelAI',
 	'ChatGPT',
 	'WritingWithAI',
 	'Chatbots',
 	'AIAssisted',
-	'machinetranslation',
 	'GenerativeAI',
 	'StableDiffusion',
-	'AIethics',
-	'AIpolicy',
+	'LocalLLaMA',
 ]
 
 export function uniq<T>(arr: T[]): T[] {

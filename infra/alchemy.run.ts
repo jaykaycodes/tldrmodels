@@ -1,5 +1,5 @@
 import alchemy from 'alchemy'
-import { D1Database, Queue, VectorizeIndex, Worker } from 'alchemy/cloudflare'
+import { D1Database, Queue, Worker } from 'alchemy/cloudflare'
 import 'alchemy/os'
 
 import { scraperJobs } from './jobs'
@@ -21,15 +21,9 @@ const redditClientSecret = alchemy.secret(Bun.env.REDDIT_CLIENT_SECRET)
 const geminiApiKey = alchemy.secret(Bun.env.GEMINI_API_KEY)
 
 export const database = await D1Database('tldrmodels-db', {
+	adopt: true,
 	name: 'tldrmodels-db',
 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
-})
-
-export const discussionsIndex = await VectorizeIndex('tldrmodels-index', {
-	name: 'tldrmodels-index',
-	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
-	dimensions: 768,
-	metric: 'cosine',
 })
 
 export const queue = await Queue('tldrmodels-queue', {
@@ -38,6 +32,7 @@ export const queue = await Queue('tldrmodels-queue', {
 })
 
 export const scraper = await Worker('tldrmodels-scraper', {
+	adopt: true,
 	name: 'tldrmodels-scraper',
 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 	entrypoint: './scraper/worker.ts',
@@ -50,6 +45,8 @@ export const scraper = await Worker('tldrmodels-scraper', {
 	},
 })
 
+export type ScraperEnv = typeof scraper.Env
+
 // export const embeddings = await Worker('tldrmodels-embeddings', {
 // 	name: 'tldrmodels-embeddings',
 // 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
@@ -61,8 +58,5 @@ export const scraper = await Worker('tldrmodels-scraper', {
 // 		GEMINI_API_KEY: geminiApiKey,
 // 	},
 // })
-
-export type WorkersEnv = typeof scraper.Env
-// export type WorkersEnv = typeof embeddings.Env & typeof scraper.Env
 
 await app.finalize()

@@ -166,6 +166,7 @@ export async function fetchComments({ discussionId }: CommentsParams): Promise<D
 		.select()
 		.from(Discussion)
 		.where(and(eq(Discussion.source, 'reddit'), eq(Discussion.id, discussionId)))
+		.limit(1)
 
 	if (!discussion) {
 		console.log(`Discussion ${discussionId} not found. Exiting...`)

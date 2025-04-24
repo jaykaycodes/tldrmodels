@@ -1,12 +1,19 @@
 import { eq, sql } from 'drizzle-orm'
 import { z } from 'zod'
 
-import type { ScraperJob } from '#infra/jobs'
-
 import { Discussion, type DiscussionComment, type DiscussionInsert } from '../models'
 import { db, safeChunkInsertValues } from '../utils'
 import * as hn from './hn'
 import * as reddit from './reddit'
+
+export function runScraper(params: ScraperParams) {
+	switch (params.type) {
+		case 'discussions':
+			return scrapeDiscussions(params.params)
+		case 'comments':
+			return scrapeComments(params.params)
+	}
+}
 
 const DiscussionsParamsSchema = z.discriminatedUnion('source', [
 	reddit.DiscussionsParamsSchema,
@@ -22,11 +29,6 @@ export const ScraperParamsSchema = z.discriminatedUnion('type', [
 	z.object({ type: z.literal('comments'), params: CommentsParamsSchema }),
 ])
 export type ScraperParams = z.infer<typeof ScraperParamsSchema>
-
-export const scrapers = {
-	discussions: scrapeDiscussions,
-	comments: scrapeComments,
-} as const satisfies Record<ScraperJob, Function>
 
 async function scrapeDiscussions(params: DiscussionsParams) {
 	let discussions: DiscussionInsert[] = []

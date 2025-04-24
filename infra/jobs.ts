@@ -4,7 +4,3 @@ export const scraperJobs = {
 } as const
 
 export type ScraperJob = (typeof scraperJobs)[keyof typeof scraperJobs]
-
-export const embeddingsJobs = {
-	'*/15 * * * *': 'embeddings',
-} as const

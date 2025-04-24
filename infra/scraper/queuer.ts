@@ -1,5 +1,5 @@
 import { env } from 'cloudflare:workers'
-import { and, gte, isNotNull, isNull } from 'drizzle-orm'
+import { and, gte, isNotNull, isNull, lt, or } from 'drizzle-orm'
 
 import type { ScraperJob } from '../jobs'
 import { Discussion } from '../models'
@@ -7,25 +7,25 @@ import { db, subreddits } from '../utils'
 import type { ScraperParams } from './scraper'
 
 export async function queueJobs(type: ScraperJob) {
-	const job = jobGetters[type]
-	if (!job) throw new Error(`Unknown job: ${type}`)
+	let jobs: MessageSendRequest<ScraperParams>[] = []
+	switch (type) {
+		case 'discussions':
+			jobs = await getDiscussionJobs()
+			break
+		case 'comments':
+			jobs = await getCommentJobs()
+			break
+		default:
+			throw new Error(`Unknown job: ${type}`)
+	}
 
-	const jobs = await job()
 	console.log(`Queueing ${jobs.length} ${type} jobs`)
-	console.log(jobs)
 
 	// Chunk jobs into batches of 100 to avoid hitting queue limits
 	for (let i = 0; i < jobs.length; i += 100) {
 		const chunk = jobs.slice(i, i + 100)
 		await env.QUEUE.sendBatch(chunk)
 	}
-}
-
-type GetJobsFn = () => Promise<MessageSendRequest<ScraperParams>[]>
-
-const jobGetters: Record<ScraperJob, GetJobsFn> = {
-	discussions: getDiscussionJobs,
-	comments: getCommentJobs,
 }
 
 async function getDiscussionJobs() {
@@ -53,27 +53,34 @@ async function getDiscussionJobs() {
 }
 
 async function getCommentJobs() {
-	const oneDayAgo = new Date(Date.now() - 1000 * 60 * 60 * 24)
+	const now = new Date().getTime()
+	const day = 1000 * 60 * 60 * 24
+	const oneDayAgo = new Date(now - day)
+	const oneWeekAgo = new Date(now - day * 7)
+
 	const discussions = await db
 		.select({ id: Discussion.id, source: Discussion.source })
 		.from(Discussion)
 		.where(
-			and(
-				isNull(Discussion.commentsUpdatedAt),
-				isNotNull(Discussion.relevance),
-				gte(Discussion.relevance, 0.2),
-				gte(Discussion.numComments, 1),
-				// lt(Discussion.timestamp, oneDayAgo),
+			or(
+				// all newly scraped discussions
+				and(
+					isNull(Discussion.commentsUpdatedAt),
+					gte(Discussion.numComments, 1),
+					// lt(Discussion.timestamp, oneDayAgo),
+				),
+				// refresh daily up to a week old
+				and(
+					isNotNull(Discussion.commentsUpdatedAt),
+					lt(Discussion.commentsUpdatedAt, oneDayAgo),
+					gte(Discussion.timestamp, oneWeekAgo),
+				),
 			),
 		)
 		.limit(100)
 
-	return buildCommentJobs(discussions)
-}
-
-function buildCommentJobs(discussion: Pick<Discussion, 'id' | 'source'>[]): MessageSendRequest<ScraperParams>[] {
 	const result: MessageSendRequest<ScraperParams>[] = []
-	for (const d of discussion) {
+	for (const d of discussions) {
 		if (d.source === 'reddit' || d.source === 'hackernews')
 			result.push({
 				body: {
