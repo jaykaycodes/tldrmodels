@@ -1,8 +1,8 @@
 import { zodToJsonSchema } from 'zod-to-json-schema'
 
-import { BenchmarksSchema } from '#/schemas/benchmarks.schema'
-import { ModelsSchema } from '#/schemas/models.schema'
-import { VibesSchema } from '#/schemas/vibes.schema'
+import { BenchmarksSchema } from '../src/schemas/benchmarks.schema'
+import { ModelsSchema } from '../src/schemas/models.schema'
+import { VibesSchema } from '../src/schemas/vibes.schema'
 
 const modelsSchema = zodToJsonSchema(ModelsSchema, 'Models')
 const vibesSchema = zodToJsonSchema(VibesSchema, 'Vibes')

@@ -1,8 +1,8 @@
 import { desc, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
-import { Discussion, type DiscussionInsert } from '../models'
-import { db } from '../utils'
+import db from '#/lib/db'
+import { Discussion, type DiscussionComment, type DiscussionInsert } from '#/lib/models'
 
 export const DiscussionsParamsSchema = z.object({
 	source: z.literal('hackernews'),
@@ -79,28 +79,6 @@ export async function fetchDiscussions(): Promise<DiscussionInsert[]> {
 	}))
 
 	return discussions
-
-	// if (discussions.length === 0) {
-	// 	console.log('No new discussions found. Exiting...')
-	// 	return
-	// }
-
-	// const res = await db
-	// 	.insert(Discussion)
-	// 	.values(discussions)
-	// 	.onConflictDoUpdate({
-	// 		target: [Discussion.source, Discussion.sourceId],
-	// 		set: {
-	// 			title: sql`excluded.title`,
-	// 			text: sql`excluded.story_text`,
-	// 			score: sql`excluded.score`,
-	// 			numComments: sql`excluded.num_comments`,
-	// 			raw: sql`excluded.raw`,
-	// 		},
-	// 	})
-	// 	.returning({ id: Discussion.id })
-
-	// console.log(`Inserted ${res.length} discussions (${discussions.length - res.length} already existed)`)
 }
 
 const BaseCommentSchema = z.object({
@@ -117,7 +95,21 @@ const CommentSchema: z.ZodType<Comment> = BaseCommentSchema.extend({
 })
 
 /** Fetches comments for a discussion */
-export async function fetchComments(discussion: Discussion) {
-	const url = new URL(COMMENTS_URL)
-	throw new Error('Not implemented')
+export async function fetchComments(id: string): Promise<DiscussionComment[]> {
+	const url = new URL(`${COMMENTS_URL}/${id}`)
+	const response = await fetch(url)
+	const { children } = CommentSchema.parse(await response.json())
+
+	return children.map(parseComment)
+}
+
+function parseComment(comment: Comment): DiscussionComment {
+	return {
+		author: comment.author,
+		id: comment.id.toString(),
+		score: comment.points,
+		text: comment.text,
+		timestamp: comment.created_at.getTime(),
+		comments: comment.children?.map(parseComment),
+	}
 }

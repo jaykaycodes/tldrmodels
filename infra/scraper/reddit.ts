@@ -2,8 +2,8 @@ import { env } from 'cloudflare:workers'
 import { and, desc, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
-import { Discussion, type DiscussionComment, type DiscussionInsert } from '../models'
-import { db } from '../utils'
+import db from '#/lib/db'
+import { Discussion, type DiscussionComment, type DiscussionInsert } from '#/lib/models'
 
 const BASE_URL = 'https://oauth.reddit.com'
 
@@ -154,6 +154,7 @@ async function fetchPage(
 				text: child.data.selftext ?? '',
 				sourceId: child.data.id,
 				numComments: child.data.num_comments,
+				relevance: 1, // NOTE: since we're scraping specific subreddits, they're all relevant
 				raw: child.data,
 			})
 	}
@@ -161,21 +162,10 @@ async function fetchPage(
 	return { nextAfter: data.after, discussions }
 }
 
-export async function fetchComments({ discussionId }: CommentsParams): Promise<DiscussionComment[]> {
-	const [discussion] = await db
-		.select()
-		.from(Discussion)
-		.where(and(eq(Discussion.source, 'reddit'), eq(Discussion.id, discussionId)))
-		.limit(1)
-
-	if (!discussion) {
-		console.log(`Discussion ${discussionId} not found. Exiting...`)
-		return []
-	}
-
+export async function fetchComments(id: string): Promise<DiscussionComment[]> {
 	const accessToken = await getAccessToken()
 
-	const url = new URL(`${BASE_URL}/comments/${discussion.sourceId}`)
+	const url = new URL(`${BASE_URL}/comments/${id}`)
 
 	const res = await fetch(url, {
 		headers: {

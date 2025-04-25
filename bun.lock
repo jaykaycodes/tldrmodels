@@ -13,7 +13,7 @@
         "@iconify/utils": "^2.3.0",
         "@tailwindcss/vite": "^4.1.4",
         "@types/alpinejs": "^3.13.11",
-        "alchemy": "^0.12.6",
+        "alchemy": "^0.12.7",
         "alpinejs": "^3.14.9",
         "astro": "^5.7.4",
         "cloudflare": "^4.2.0",
@@ -31,7 +31,6 @@
         "drizzle-kit": "^0.31.0",
         "js-yaml": "^4.1.0",
         "typescript": "^5.8.3",
-        "typescript-plugin-yaml": "rickdgeerling/typescript-plugin-yaml#v0.1.0-beta.2",
         "zod-to-json-schema": "^3.24.5",
       },
     },
@@ -587,7 +586,7 @@
 
     "ai": ["ai@4.3.9", "", { "dependencies": { "@ai-sdk/provider": "1.1.3", "@ai-sdk/provider-utils": "2.2.7", "@ai-sdk/react": "1.2.9", "@ai-sdk/ui-utils": "1.2.8", "@opentelemetry/api": "1.9.0", "jsondiffpatch": "0.6.0" }, "peerDependencies": { "react": "^18 || ^19 || ^19.0.0-rc", "zod": "^3.23.8" }, "optionalPeers": ["react"] }, "sha512-P2RpV65sWIPdUlA4f1pcJ11pB0N1YmqPVLEmC4j8WuBwKY0L3q9vGhYPh0Iv+spKHKyn0wUbMfas+7Z6nTfS0g=="],
 
-    "alchemy": ["alchemy@0.12.6", "", { "peerDependencies": { "@ai-sdk/openai": "^1.1.9", "@ai-sdk/openai-compatible": "^0.2.2", "@aws-sdk/client-dynamodb": "^3.0.0", "@aws-sdk/client-iam": "^3.0.0", "@aws-sdk/client-lambda": "^3.0.0", "@aws-sdk/client-s3": "^3.0.0", "@aws-sdk/client-sagemaker": "^3.0.0", "@aws-sdk/client-ses": "^3.0.0", "@aws-sdk/client-sesv2": "^3.0.0", "@aws-sdk/client-sqs": "^3.0.0", "@aws-sdk/client-sts": "^3.0.0", "@iarna/toml": "^2.2.5", "@octokit/rest": "^21.1.1", "ai": "^4.0.0", "arktype": "^2.0.0", "aws4fetch": "^1.0.20", "cloudflare": "^4.0.0", "diff": "^7.0.0", "esbuild": "^0.25.1", "glob": "^10.0.0", "hono": "^4.0.0", "jszip": "^3.0.0", "libsodium-wrappers": "^0.7.15", "prettier": "^3.0.0", "stripe": "^17.0.0", "turndown": "^7.0.0", "xdg-app-paths": "^8.0.0", "yaml": "^2.0.0", "zod": "^3.0.0" } }, "sha512-ZY2j/AuU5O03iMkCT/AuuZp9s6MDpWPt/lGpN9HN+E2QF0DsJ+syO1QaCIRVOmOS5dJ4BOrbX69MH7JHGw7ouw=="],
+    "alchemy": ["alchemy@0.12.7", "", { "peerDependencies": { "@ai-sdk/openai": "^1.1.9", "@ai-sdk/openai-compatible": "^0.2.2", "@aws-sdk/client-dynamodb": "^3.0.0", "@aws-sdk/client-iam": "^3.0.0", "@aws-sdk/client-lambda": "^3.0.0", "@aws-sdk/client-s3": "^3.0.0", "@aws-sdk/client-sagemaker": "^3.0.0", "@aws-sdk/client-ses": "^3.0.0", "@aws-sdk/client-sesv2": "^3.0.0", "@aws-sdk/client-sqs": "^3.0.0", "@aws-sdk/client-sts": "^3.0.0", "@iarna/toml": "^2.2.5", "@octokit/rest": "^21.1.1", "ai": "^4.0.0", "arktype": "^2.0.0", "aws4fetch": "^1.0.20", "cloudflare": "^4.0.0", "diff": "^7.0.0", "esbuild": "^0.25.1", "glob": "^10.0.0", "hono": "^4.0.0", "jszip": "^3.0.0", "libsodium-wrappers": "^0.7.15", "prettier": "^3.0.0", "stripe": "^17.0.0", "turndown": "^7.0.0", "xdg-app-paths": "^8.0.0", "yaml": "^2.0.0", "zod": "^3.0.0" } }, "sha512-2b+v8rolcjfXssLVa+sqYBgP8vtigvWbbeKj21D9GjiuL75KewGN30gWTD0p9JT6XF8jm4UZTjz9S1tBn07Krw=="],
 
     "alpinejs": ["alpinejs@3.14.9", "", { "dependencies": { "@vue/reactivity": "~3.1.1" } }, "sha512-gqSOhTEyryU9FhviNqiHBHzgjkvtukq9tevew29fTj+ofZtfsYriw4zPirHHOAy9bw8QoL3WGhyk7QqCh5AYlw=="],
 
@@ -1352,8 +1351,6 @@
     "type-fest": ["type-fest@4.40.0", "", {}, "sha512-ABHZ2/tS2JkvH1PEjxFDTUWC8dB5OsIGZP4IFLhR293GqT5Y5qB1WwL2kMPYhQW9DVgVD8Hd7I8gjwPIf5GFkw=="],
 
     "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
-
-    "typescript-plugin-yaml": ["typescript-plugin-yaml@github:rickdgeerling/typescript-plugin-yaml#bbf117d", { "dependencies": { "js-yaml": "^4.1.0" } }, "rickdgeerling-typescript-plugin-yaml-bbf117d"],
 
     "ufo": ["ufo@1.6.1", "", {}, "sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA=="],
 

@@ -1,0 +1,185 @@
+Cursor
+Windsurf
+Augment Code
+Copilot
+vibe coding
+Frontier AI
+Foundation Model
+General-Purpose AI (GPAI)
+Highly Capable AI
+Dual-Use Foundation Model
+Systemic Risk (AI)
+Advanced AI
+AGI (Artificial General Intelligence)
+Superintelligence
+State-of-the-art AI
+Cutting-edge AI
+Parameters (model parameters, billion parameters, trillion parameters)
+Scale (AI scale, model scale)
+Scalability
+Large-Scale AI
+Compute Threshold (FLOPs, floating-point operations, 10^26 FLOPs)
+Training Compute
+Broad Data
+Self-Supervision (self-supervised)
+Multimodality (multimodal AI, text, image, audio, video processing)
+Context Window (context length, tokens, long context)
+Zero-shot Learning
+Few-shot Learning
+Emergent Capabilities (emergence)
+Unpredictability (AI unpredictability)
+Generalization
+Reasoning (AI reasoning)
+Planning (AI planning)
+Code Generation
+Language Understanding
+Natural Language Processing (NLP)
+OpenAI
+Google DeepMind (DeepMind)
+Anthropic
+Meta AI (Facebook AI Research, FAIR)
+Microsoft Research
+Nvidia (AI)
+xAI
+Mistral AI
+Cohere
+Stability AI
+Alibaba (AI Research)
+DeepSeek AI
+EleutherAI
+AI21 Labs
+Stanford AI Lab (SAIL)
+Frontier Model Forum
+Scale AI
+Labelbox
+FAR.AI (AI Safety Institute)
+GPT (GPT-3, GPT-3.5, GPT-4, GPT-4o, GPT-4.5, GPT-o1, GPT-o3)
+Claude (Claude 1, Claude 2, Claude 3, Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku, Claude 3.5 Sonnet, Claude 3.7 Sonnet)
+Gemini (Gemini Pro, Gemini Ultra, Gemini Flash, Gemini Flash-Lite, Gemini 1.0, Gemini 1.5, Gemini 2.0, Gemini 2.5)
+Llama (Llama 1, Llama 2, Llama 3, Llama 3.1, Llama 3.3, Llama 4, Llama 4 Scout, Llama 4 Maverick, Llama 4 Behemoth, Llama 8B, Llama 13B, Llama 70B, Llama 90B Vision, Llama 405B)
+Nemotron (Nemotron-3, Nemotron-4, Nemotron-4 340B)
+Grok (Grok-1, Grok-1.5, Grok-2, Grok-3)
+Mistral (Mistral 7B, Mistral Large, Mistral Large 2, Mistral Small)
+Mixtral (Mixtral 8x7B, Mixtral 8x22B)
+Qwen (Qwen1.5, Qwen2, Qwen2.5)
+DeepSeek (DeepSeek Coder, DeepSeek LLM, DeepSeek R1, DeepSeek V2, DeepSeek V3)
+Phi (Phi-1, Phi-2, Phi-3, Phi-3 Mini, Phi-3 Small, Phi-3 Medium)
+Command R (Command R+)
+Gemma (Gemma 2B, Gemma 7B)
+Falcon (Falcon 40B, Falcon 180B)
+DBRX
+Jamba
+Sora (OpenAI video model)
+Nova (Amazon model)
+AlphaFold
+Transformer Architecture (Transformer model)
+Attention Mechanism (Attention, Self-Attention, Multi-Head Attention, Cross-Attention, Scaled Dot-Product Attention)
+Encoder (Transformer Encoder)
+Decoder (Transformer Decoder)
+Tokenization (Tokenizer, Token)
+Embedding (Word Embedding, Token Embedding, Vector Embedding)
+Positional Encoding
+Pre-training (unsupervised pre-training)
+Fine-tuning (model fine-tuning, SFT, Supervised Fine-Tuning)
+PEFT (Parameter-Efficient Fine-Tuning)
+LoRA (Low-Rank Adaptation)
+Transfer Learning
+RLHF (Reinforcement Learning from Human Feedback)
+Reward Model (RM)
+DPO (Direct Preference Optimization)
+PPO (Proximal Policy Optimization)
+Scaling Laws (AI scaling, compute-optimal scaling, Chinchilla scaling, pretraining scaling, post-training scaling, test-time scaling)
+Self-Supervised Learning (SSL)
+Contrastive Learning
+Masked Language Modeling (MLM)
+Joint Embedding Architecture
+Neural Network
+Deep Learning
+Machine Learning (ML)
+Algorithm
+PyTorch
+TensorFlow
+JAX
+Hugging Face (HuggingFace)
+Hugging Face Transformers
+Hugging Face Hub
+Hugging Face Datasets
+Hugging Face Tokenizers
+LangChain
+LlamaIndex
+Vector Database (Vector Store, Vector Search, Semantic Search)
+Pinecone
+Milvus
+Weaviate
+Chroma (ChromaDB)
+Qdrant
+pgvector
+MLOps (Machine Learning Operations)
+Amazon SageMaker (SageMaker)
+Google Vertex AI (Vertex AI)
+Azure Machine Learning (Azure ML)
+Kubeflow
+MLflow
+Databricks
+Docker
+Kubernetes (K8s)
+API (Application Programming Interface)
+GPU (Graphics Processing Unit, Nvidia GPU, H100)
+TPU (Tensor Processing Unit)
+Mixture of Experts (MoE, Sparse MoE, Expert Network, Gating Network, Expert Routing)
+Agentic AI (AI Agent, Autonomous Agent, Multi-Agent System, AI Planning, AI Reasoning, Tool Use, Digital Labor)
+AI Safety (Safety Alignment)
+AI Alignment (Value Alignment, Goal Alignment, Human Alignment, RICE Principles)
+Interpretability (AI Interpretability, Explainability, XAI, Mechanistic Interpretability)
+Feature Attribution
+Saliency Map
+Black Box (AI)
+Constitutional AI (AI Constitution, Claude's Constitution)
+Responsible AI
+AI Ethics
+AI Governance (Regulation, Policy)
+Long Context (Large Context Window)
+Retrieval-Augmented Generation (RAG)
+Prompt Engineering
+Zero-shot Prompting
+Few-shot Prompting
+Chain-of-Thought (CoT) Prompting
+Synthetic Data
+Benchmark (AI Benchmark, LLM Benchmark)
+Evaluation Metrics (LLM Evaluation)
+Perplexity (PPL)
+Accuracy
+BLEU Score
+ROUGE Score
+F1 Score
+Word Error Rate (WER)
+Pass@k
+MMLU (Massive Multitask Language Understanding)
+HELM (Holistic Evaluation of Language Models)
+BIG-Bench (BBH, BIG-Bench Hard)
+HellaSwag
+ARC (AI2 Reasoning Challenge)
+WinoGrande
+GSM8K
+MATH (benchmark)
+LogiQA
+SQuAD (Stanford Question Answering Dataset)
+DROP (benchmark)
+TruthfulQA
+HumanEval
+CodeXGLUE
+Chatbot Arena (LMSys)
+MT-Bench
+Hallucination (AI Hallucination, Factual Error, Unfaithfulness)
+Hallucination Detection
+Hallucination Mitigation
+Model Confidence
+Seq-Logprob (Sequence Log Probability)
+Sentence Similarity
+LLM-as-Judge
+Human Evaluation
+Red Teaming (AI Red Teaming)
+Adversarial Testing
+Robustness (AI Robustness)
+Fairness (AI Fairness)
+Bias (AI Bias)

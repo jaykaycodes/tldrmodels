@@ -1,22 +1,14 @@
 import { env } from 'cloudflare:workers'
+import { GoogleGenAI } from '@google/genai'
 import type { AnyTable, InferInsertModel } from 'drizzle-orm'
-import { drizzle } from 'drizzle-orm/d1'
 import type { TableConfig } from 'drizzle-orm/sqlite-core'
 import { getTableColumns } from 'drizzle-orm/utils'
 import { z } from 'zod'
 import { errorMap } from 'zod-validation-error'
 
-import type { ScraperEnv } from './alchemy.run'
-
 z.setErrorMap(errorMap)
 
-declare module 'cloudflare:workers' {
-	namespace Cloudflare {
-		export interface Env extends ScraperEnv {}
-	}
-}
-
-export const db = drizzle(env.DB)
+export const gemini = new GoogleGenAI({ apiKey: env.GEMINI_API_KEY })
 
 export const subreddits = [
 	'artificial',

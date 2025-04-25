@@ -1,9 +1,11 @@
 import { env } from 'cloudflare:workers'
-import { and, gte, isNotNull, isNull, lt, or } from 'drizzle-orm'
+import { and, eq, gte, isNotNull, isNull, lt, or } from 'drizzle-orm'
 
-import type { ScraperJob } from '../jobs'
-import { Discussion } from '../models'
-import { db, subreddits } from '../utils'
+import db from '#/lib/db'
+import type { ScraperJob } from '#/lib/jobs'
+import { Discussion } from '#/lib/models'
+import { subreddits } from '#/lib/utils'
+
 import type { ScraperParams } from './scraper'
 
 export async function queueJobs(type: ScraperJob) {
@@ -62,18 +64,23 @@ async function getCommentJobs() {
 		.select({ id: Discussion.id, source: Discussion.source })
 		.from(Discussion)
 		.where(
-			or(
-				// all newly scraped discussions
-				and(
-					isNull(Discussion.commentsUpdatedAt),
-					gte(Discussion.numComments, 1),
-					// lt(Discussion.timestamp, oneDayAgo),
-				),
-				// refresh daily up to a week old
-				and(
-					isNotNull(Discussion.commentsUpdatedAt),
-					lt(Discussion.commentsUpdatedAt, oneDayAgo),
-					gte(Discussion.timestamp, oneWeekAgo),
+			and(
+				// TODO: enable this for all sources when embeddings are working
+				// gte(Discussion.relevance, 0.5),
+				eq(Discussion.source, 'reddit'),
+				or(
+					// all newly scraped discussions
+					and(
+						isNull(Discussion.commentsUpdatedAt),
+						gte(Discussion.numComments, 1),
+						// lt(Discussion.timestamp, oneDayAgo),
+					),
+					// refresh daily up to a week old
+					and(
+						isNotNull(Discussion.commentsUpdatedAt),
+						lt(Discussion.commentsUpdatedAt, oneDayAgo),
+						gte(Discussion.timestamp, oneWeekAgo),
+					),
 				),
 			),
 		)

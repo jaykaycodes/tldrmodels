@@ -1,8 +1,10 @@
-import { eq, sql } from 'drizzle-orm'
+import { and, eq, sql } from 'drizzle-orm'
 import { z } from 'zod'
 
-import { Discussion, type DiscussionComment, type DiscussionInsert } from '../models'
-import { db, safeChunkInsertValues } from '../utils'
+import db from '#/lib/db'
+import { Discussion, type DiscussionComment, type DiscussionInsert } from '#/lib/models'
+import { safeChunkInsertValues } from '#/lib/utils'
+
 import * as hn from './hn'
 import * as reddit from './reddit'
 
@@ -68,11 +70,20 @@ async function scrapeDiscussions(params: DiscussionsParams) {
 
 async function scrapeComments(params: CommentsParams) {
 	let comments: DiscussionComment[] = []
+
+	const [discussion] = await db
+		.select({ id: Discussion.id, sourceId: Discussion.sourceId })
+		.from(Discussion)
+		.where(and(eq(Discussion.source, params.source), eq(Discussion.id, params.discussionId)))
+		.limit(1)
+
+	if (!discussion)
+		throw new Error(`Discussion ${params.discussionId} not found for source ${params.source}. Exiting...`)
+
 	if (params.source === 'reddit') {
-		comments = await reddit.fetchComments(params)
+		comments = await reddit.fetchComments(discussion.sourceId)
 	} else if (params.source === 'hackernews') {
-		console.log('Hackernews comments not implemented')
-		return
+		comments = await hn.fetchComments(discussion.sourceId)
 	} else {
 		throw new Error(`Unknown scraper type: ${params}`)
 	}

@@ -2,7 +2,7 @@ import alchemy from 'alchemy'
 import { D1Database, Queue, Worker } from 'alchemy/cloudflare'
 import 'alchemy/os'
 
-import { scraperJobs } from './jobs'
+import { scraperJobs } from './lib/jobs'
 
 const stage = Bun.env.ALCHEMY_STAGE ?? (Bun.env.NODE_ENV === 'production' ? 'prod' : 'dev')
 const phase = Bun.argv.includes('--destroy') ? 'destroy' : 'up'
@@ -26,26 +26,29 @@ export const database = await D1Database('tldrmodels-db', {
 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 })
 
-export const queue = await Queue('tldrmodels-queue', {
-	name: 'tldrmodels-queue',
+export const queue = await Queue('tldrmodels-jobs', {
+	name: 'tldrmodels-jobs',
 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 })
 
-export const scraper = await Worker('tldrmodels-scraper', {
-	adopt: true,
+export const worker = await Worker('tldrmodels-scraper', {
 	name: 'tldrmodels-scraper',
 	accountId: Bun.env.CLOUDFLARE_ACCOUNT_ID,
 	entrypoint: './scraper/worker.ts',
 	crons: Object.keys(scraperJobs),
+	bundle: {
+		options: { define: { 'Bun.env.NODE_ENV': JSON.stringify('production') } },
+	},
 	bindings: {
 		DB: database,
 		REDDIT_CLIENT_ID: redditClientId,
 		REDDIT_CLIENT_SECRET: redditClientSecret,
 		QUEUE: queue,
+		GEMINI_API_KEY: geminiApiKey,
 	},
 })
 
-export type ScraperEnv = typeof scraper.Env
+export type WorkerEnv = typeof worker.Env
 
 // export const embeddings = await Worker('tldrmodels-embeddings', {
 // 	name: 'tldrmodels-embeddings',

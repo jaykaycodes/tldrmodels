@@ -1,4 +1,5 @@
-import { scraperJobs } from '../jobs'
+import { scraperJobs } from '#/lib/jobs'
+
 import { queueJobs } from './queuer'
 import { runScraper, type ScraperParams, ScraperParamsSchema } from './scraper'
 
