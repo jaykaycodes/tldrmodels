@@ -9,8 +9,14 @@ export default {
 		if (!message) throw new Error('No message')
 		if (rest.length > 0) console.error('Expected exactly one message, only queueing the first one', event.messages)
 
-		const params = ScraperParamsSchema.parse(message.body)
-		await runScraper(params)
+		try {
+			const params = ScraperParamsSchema.parse(message.body)
+			await runScraper(params)
+		} catch (error) {
+			console.error(error)
+			console.log(`The above error occurred while running the following job: ${JSON.stringify(message.body)}`)
+			throw error
+		}
 
 		message.ack()
 	},

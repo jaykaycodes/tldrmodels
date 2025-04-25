@@ -1,5 +1,5 @@
 import { env } from 'cloudflare:workers'
-import { and, eq, gte, isNotNull, isNull, lt, or } from 'drizzle-orm'
+import { and, desc, gte, isNotNull, isNull, lt, or } from 'drizzle-orm'
 
 import db from '#/lib/db'
 import type { ScraperJob } from '#/lib/jobs'
@@ -67,7 +67,7 @@ async function getCommentJobs() {
 			and(
 				// TODO: enable this for all sources when embeddings are working
 				// gte(Discussion.relevance, 0.5),
-				eq(Discussion.source, 'reddit'),
+				// eq(Discussion.source, 'reddit'),
 				or(
 					// all newly scraped discussions
 					and(
@@ -84,16 +84,18 @@ async function getCommentJobs() {
 				),
 			),
 		)
+		.orderBy(desc(Discussion.score), desc(Discussion.numComments), desc(Discussion.timestamp))
 		.limit(100)
 
 	const result: MessageSendRequest<ScraperParams>[] = []
-	for (const d of discussions) {
+	for (const [i, d] of discussions.entries()) {
 		if (d.source === 'reddit' || d.source === 'hackernews')
 			result.push({
 				body: {
 					type: 'comments',
-					params: { source: d.source, discussionId: d.id },
+					discussionId: d.id,
 				} satisfies ScraperParams,
+				delaySeconds: i * 5,
 			})
 	}
 	return result

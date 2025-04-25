@@ -1,6 +1,6 @@
 @baseUrl=https://oauth.reddit.com
 @headers = Authorization: Bearer {{auth.response.body.access_token}}\nUser-Agent: tldrmodels/1.0
-@subreddit = Cursor
+@subreddit = stablediffusion
 
 # @name auth
 POST https://www.reddit.com/api/v1/access_token
@@ -19,7 +19,8 @@ GET {{baseUrl}}/r/{{subreddit}}/new
 
 # update variables
 @after = {{posts.response.body.data.after}}
-@postId = {{posts.response.body.data.children[0].data.id}}
+# @postId = {{posts.response.body.data.children[0].data.id}}
+@postId = 1jwyb6m
 
 ### Get comments for a post
 # @name comments

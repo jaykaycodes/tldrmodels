@@ -93,7 +93,21 @@ const PostSchema = z.object({
 	}),
 })
 
-const AnyElementSchema = z.discriminatedUnion('kind', [CommentSchema, PostSchema])
+const AccountSchema = z.object({ kind: z.literal('t2') })
+const MessageSchema = z.object({ kind: z.literal('t4') })
+const SubredditSchema = z.object({ kind: z.literal('t5') })
+const AwardSchema = z.object({ kind: z.literal('t6') })
+const MoreChildrenSchema = z.object({ kind: z.literal('more') })
+
+const AnyElementSchema = z.discriminatedUnion('kind', [
+	CommentSchema,
+	PostSchema,
+	AccountSchema,
+	MessageSchema,
+	SubredditSchema,
+	AwardSchema,
+	MoreChildrenSchema,
+])
 
 const ListingSchema = z.object({
 	kind: z.literal('Listing'),

@@ -1,4 +1,4 @@
-import { and, eq, sql } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 import { z } from 'zod'
 
 import db from '#/lib/db'
@@ -13,7 +13,7 @@ export function runScraper(params: ScraperParams) {
 		case 'discussions':
 			return scrapeDiscussions(params.params)
 		case 'comments':
-			return scrapeComments(params.params)
+			return scrapeComments(params.discussionId)
 	}
 }
 
@@ -23,12 +23,9 @@ const DiscussionsParamsSchema = z.discriminatedUnion('source', [
 ])
 type DiscussionsParams = z.infer<typeof DiscussionsParamsSchema>
 
-const CommentsParamsSchema = z.discriminatedUnion('source', [reddit.CommentsParamsSchema, hn.CommentsParamsSchema])
-type CommentsParams = z.infer<typeof CommentsParamsSchema>
-
 export const ScraperParamsSchema = z.discriminatedUnion('type', [
 	z.object({ type: z.literal('discussions'), params: DiscussionsParamsSchema }),
-	z.object({ type: z.literal('comments'), params: CommentsParamsSchema }),
+	z.object({ type: z.literal('comments'), discussionId: z.number() }),
 ])
 export type ScraperParams = z.infer<typeof ScraperParamsSchema>
 
@@ -68,24 +65,23 @@ async function scrapeDiscussions(params: DiscussionsParams) {
 	console.log(`Upserted ${discussions.length} discussions`)
 }
 
-async function scrapeComments(params: CommentsParams) {
+async function scrapeComments(discussionId: number) {
 	let comments: DiscussionComment[] = []
 
 	const [discussion] = await db
-		.select({ id: Discussion.id, sourceId: Discussion.sourceId })
+		.select({ id: Discussion.id, sourceId: Discussion.sourceId, source: Discussion.source })
 		.from(Discussion)
-		.where(and(eq(Discussion.source, params.source), eq(Discussion.id, params.discussionId)))
+		.where(eq(Discussion.id, discussionId))
 		.limit(1)
 
-	if (!discussion)
-		throw new Error(`Discussion ${params.discussionId} not found for source ${params.source}. Exiting...`)
+	if (!discussion) throw new Error(`Discussion ${discussionId} not found. Exiting...`)
 
-	if (params.source === 'reddit') {
+	if (discussion.source === 'reddit') {
 		comments = await reddit.fetchComments(discussion.sourceId)
-	} else if (params.source === 'hackernews') {
+	} else if (discussion.source === 'hackernews') {
 		comments = await hn.fetchComments(discussion.sourceId)
 	} else {
-		throw new Error(`Unknown scraper type: ${params}`)
+		throw new Error(`Unknown scraper type: ${discussion.source}`)
 	}
 
 	await db
@@ -94,7 +90,7 @@ async function scrapeComments(params: CommentsParams) {
 			comments,
 			commentsUpdatedAt: new Date(),
 		})
-		.where(eq(Discussion.id, params.discussionId))
+		.where(eq(Discussion.id, discussionId))
 
-	console.log(`Upserted ${comments.length} comments for discussion ${params.discussionId}`)
+	console.log(`Upserted ${comments.length} comments for discussion ${discussionId}`)
 }

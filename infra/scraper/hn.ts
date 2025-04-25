@@ -25,7 +25,7 @@ const SearchResultsSchema = z.object({
 			author: z.string(),
 			created_at_i: z.number(),
 			objectID: z.string(),
-			points: z.number(),
+			points: z.number().nullish(),
 			title: z.string(),
 			story_text: z.string().nullish(),
 			url: z.string().nullish(),
@@ -72,7 +72,7 @@ export async function fetchDiscussions(): Promise<DiscussionInsert[]> {
 		author: hit.author,
 		text: hit.story_text ?? '',
 		timestamp: new Date(hit.created_at_i * 1000),
-		score: hit.points,
+		score: hit.points ?? 0,
 		numComments: hit.num_comments,
 		raw: hit,
 		scrapedAt: new Date(),
@@ -86,7 +86,7 @@ const BaseCommentSchema = z.object({
 	created_at: z.coerce.date(),
 	author: z.string(),
 	text: z.string(),
-	points: z.number(),
+	points: z.number().nullish(),
 })
 type BaseComment = z.infer<typeof BaseCommentSchema>
 type Comment = BaseComment & { children: Comment[] }
@@ -107,7 +107,7 @@ function parseComment(comment: Comment): DiscussionComment {
 	return {
 		author: comment.author,
 		id: comment.id.toString(),
-		score: comment.points,
+		score: comment.points ?? 0,
 		text: comment.text,
 		timestamp: comment.created_at.getTime(),
 		comments: comment.children?.map(parseComment),
