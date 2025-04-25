@@ -69,7 +69,7 @@ async function getCommentJobs() {
 				// gte(Discussion.relevance, 0.5),
 				// eq(Discussion.source, 'reddit'),
 				or(
-					// all newly scraped discussions
+					// all unscraped discussions
 					and(
 						isNull(Discussion.commentsUpdatedAt),
 						gte(Discussion.numComments, 1),

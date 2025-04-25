@@ -85,7 +85,7 @@ const BaseCommentSchema = z.object({
 	id: z.number(),
 	created_at: z.coerce.date(),
 	author: z.string(),
-	text: z.string(),
+	text: z.string().nullish(),
 	points: z.number().nullish(),
 })
 type BaseComment = z.infer<typeof BaseCommentSchema>
@@ -108,7 +108,7 @@ function parseComment(comment: Comment): DiscussionComment {
 		author: comment.author,
 		id: comment.id.toString(),
 		score: comment.points ?? 0,
-		text: comment.text,
+		text: comment.text ?? '',
 		timestamp: comment.created_at.getTime(),
 		comments: comment.children?.map(parseComment),
 	}
